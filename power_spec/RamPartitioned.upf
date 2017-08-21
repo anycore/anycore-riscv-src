@@ -1,0 +1,116 @@
+## CREATE POWER DOMAINS 
+create_power_domain -include_scope PD_RAM 
+create_power_domain PD_PART1 -elements {INST_LOOP[1].ram_inst}
+create_power_domain PD_PART2 -elements {INST_LOOP[2].ram_inst}
+create_power_domain PD_PART3 -elements {INST_LOOP[3].ram_inst}
+create_power_domain PD_PART4 -elements {INST_LOOP[4].ram_inst}
+create_power_domain PD_PART5 -elements {INST_LOOP[5].ram_inst}
+create_power_domain PD_PART6 -elements {INST_LOOP[6].ram_inst}
+create_power_domain PD_PART7 -elements {INST_LOOP[7].ram_inst}
+
+# SUPPLY PORT CREATION
+create_supply_port VDD -direction in                   
+create_supply_port VSS -direction in                   
+
+# SUPPLY NET CREATION
+create_supply_net VDD_PD_PART1 -domain PD_PART1 
+create_supply_net VDD_PD_PART2 -domain PD_PART2 
+create_supply_net VDD_PD_PART3 -domain PD_PART3 
+create_supply_net VDD_PD_PART4 -domain PD_PART4 
+create_supply_net VDD_PD_PART5 -domain PD_PART5 
+create_supply_net VDD_PD_PART6 -domain PD_PART6 
+create_supply_net VDD_PD_PART7 -domain PD_PART7 
+
+create_supply_net VDD -domain PD_RAM                  
+create_supply_net VDD -domain PD_PART1 -reuse
+create_supply_net VDD -domain PD_PART2 -reuse
+create_supply_net VDD -domain PD_PART3 -reuse
+create_supply_net VDD -domain PD_PART4 -reuse
+create_supply_net VDD -domain PD_PART5 -reuse
+create_supply_net VDD -domain PD_PART6 -reuse
+create_supply_net VDD -domain PD_PART7 -reuse
+
+
+create_supply_net VSS -domain PD_RAM                  
+create_supply_net VSS -domain PD_PART1 -reuse
+create_supply_net VSS -domain PD_PART2 -reuse
+create_supply_net VSS -domain PD_PART3 -reuse
+create_supply_net VSS -domain PD_PART4 -reuse
+create_supply_net VSS -domain PD_PART5 -reuse
+create_supply_net VSS -domain PD_PART6 -reuse
+create_supply_net VSS -domain PD_PART7 -reuse
+
+#CONNECT SUPPLY NETS AND PORTS
+connect_supply_net VSS -ports VSS
+connect_supply_net VDD -ports VDD
+
+# SET PRIMARY POWER AND GND NETS FOR EACH DOMAIN
+set_domain_supply_net PD_RAM     -primary_power_net VDD           -primary_ground_net VSS  
+set_domain_supply_net PD_PART1   -primary_power_net VDD_PD_PART1  -primary_ground_net VSS
+set_domain_supply_net PD_PART2   -primary_power_net VDD_PD_PART2  -primary_ground_net VSS
+set_domain_supply_net PD_PART3   -primary_power_net VDD_PD_PART3  -primary_ground_net VSS
+set_domain_supply_net PD_PART4   -primary_power_net VDD_PD_PART4  -primary_ground_net VSS
+set_domain_supply_net PD_PART5   -primary_power_net VDD_PD_PART5  -primary_ground_net VSS
+set_domain_supply_net PD_PART6   -primary_power_net VDD_PD_PART6  -primary_ground_net VSS
+set_domain_supply_net PD_PART7   -primary_power_net VDD_PD_PART7  -primary_ground_net VSS
+
+# POWER SWITCH CREATION
+create_power_switch SW_PD_PART1  -domain PD_PART1 -output_supply_port {vout VDD_PD_PART1} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART2  -domain PD_PART2 -output_supply_port {vout VDD_PD_PART2} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART3  -domain PD_PART3 -output_supply_port {vout VDD_PD_PART3} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART4  -domain PD_PART4 -output_supply_port {vout VDD_PD_PART4} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART5  -domain PD_PART5 -output_supply_port {vout VDD_PD_PART5} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART6  -domain PD_PART6 -output_supply_port {vout VDD_PD_PART6} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PD_PART7  -domain PD_PART7 -output_supply_port {vout VDD_PD_PART7} -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive[1]} -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+
+# PORT STATE CREATION
+add_port_state VDD -state {ACTIVE 0.99} -state {OFF off}
+add_port_state VSS -state {ACTIVE 0.0}
+add_port_state SW_PD_PART1/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART2/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART3/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART4/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART5/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART6/vout  -state {ACTIVE  0.99} -state {OFF off}
+add_port_state SW_PD_PART7/vout  -state {ACTIVE  0.99} -state {OFF off}
+
+# ISOLTATION POLICIES
+set_isolation ISO_PD_PART1       -domain PD_PART1 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART2       -domain PD_PART2 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART3       -domain PD_PART3 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART4       -domain PD_PART4 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART5       -domain PD_PART5 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART6       -domain PD_PART6 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+set_isolation ISO_PD_PART7       -domain PD_PART7 -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0 -diff_supply_only TRUE  
+
+#ISOLATION CONTROL
+set_isolation_control ISO_PD_PART1  -domain PD_PART1 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART2  -domain PD_PART2 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART3  -domain PD_PART3 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART4  -domain PD_PART4 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART5  -domain PD_PART5 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART6  -domain PD_PART6 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+set_isolation_control ISO_PD_PART7  -domain PD_PART7 -isolation_signal fetchLaneActive[1] -isolation_sense low -location parent 
+
+# Power State Table
+create_pst RAM_PST -supplies { VDD VSS 
+                               SW_PD_PART1/vout 
+                               SW_PD_PART2/vout 
+                               SW_PD_PART3/vout 
+                               SW_PD_PART4/vout 
+                               SW_PD_PART5/vout 
+                               SW_PD_PART6/vout 
+                               SW_PD_PART7/vout
+                             }
+
+# Index                                                   VDD      VSS     PD1     PD2     PD3     PD4     PD5     PD6     PD7   
+add_pst_state ALL_OFF                -pst RAM_PST -state {ACTIVE  ACTIVE   OFF     OFF     OFF     OFF     OFF     OFF     OFF  }
+add_pst_state PD1_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE   OFF     OFF     OFF     OFF     OFF     OFF  }
+add_pst_state PD2_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE   OFF     OFF     OFF     OFF     OFF  }
+add_pst_state PD3_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE   OFF     OFF     OFF     OFF  }
+add_pst_state PD4_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE   OFF     OFF     OFF  }
+add_pst_state PD5_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE   OFF     OFF  }
+add_pst_state PD6_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE   OFF  }
+add_pst_state PD7_ON                 -pst RAM_PST -state {ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE  ACTIVE}
+
+

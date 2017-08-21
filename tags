@@ -1,0 +1,1240 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AGEN_ALU	./execute/AGEN_ALU.sv	/^module AGEN_ALU ($/;"	m
+ALCTRL_RAM	./rams/ALCTRL_RAM.sv	/^module ALCTRL_RAM #($/;"	m
+ALCTRL_RAM_PARTITIONED	./rams_partitioned/ALCTRL_RAM_PARTITIONED.sv	/^module ALCTRL_RAM_PARTITIONED #($/;"	m
+ALDATA_RAM	./rams/ALDATA_RAM.sv	/^module ALDATA_RAM #($/;"	m
+ALDATA_RAM_PARTITIONED	./rams_partitioned/ALDATA_RAM_PARTITIONED.sv	/^module ALDATA_RAM_PARTITIONED #($/;"	m
+ALEXCPT_RAM	./rams/ALEXCPT_RAM.sv	/^module ALEXCPT_RAM #($/;"	m
+ALNPC_RAM	./rams/ALNPC_RAM.sv	/^module ALNPC_RAM #($/;"	m
+ALNPC_RAM_PARTITIONED	./rams_partitioned/ALNPC_RAM_PARTITIONED.sv	/^module ALNPC_RAM_PARTITIONED #($/;"	m
+ALREADY_RAM	./rams/ALREADY_RAM.sv	/^module ALREADY_RAM #($/;"	m
+ALVIO_RAM	./rams/ALVIO_RAM.sv	/^module ALVIO_RAM #($/;"	m
+AMT_RAM	./rams/AMT_RAM.sv	/^module AMT_RAM #($/;"	m
+ANTENNATF	./testbenches/simulate.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_chip.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_chip_power.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_chip_reconfig_power.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_power.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_reconfig.sv	/^module ANTENNATF($/;"	m
+ANTENNATF	./testbenches/simulate_reconfig_power.sv	/^module ANTENNATF($/;"	m
+ActiveList	./retire/ActiveList.sv	/^module ActiveList ($/;"	m
+AgeOrdering	./issue/AgeOrdering.sv	/^module AgeOrdering($/;"	m
+AgenLsu	./execute/AgenLsu.sv	/^module AgenLsu ($/;"	m
+AnyCore_Chip	./chip_top/AnyCore_Chip.sv	/^module AnyCore_Chip($/;"	m
+ArchMapTable	./retire/ArchMapTable.sv	/^module ArchMapTable($/;"	m
+BP_RAM	./rams/BP_RAM.sv	/^module BP_RAM #($/;"	m
+BP_RAM_GSHARE	./rams/BP_RAM_GSHARE.sv	/^module BP_RAM_GSHARE #($/;"	m
+BRANCH_TYPE_LOG	./configs/DynamicConfig_ANY1.v	/^`define BRANCH_TYPE_LOG             2$/;"	c
+BRANCH_TYPE_LOG	./configs/StaticConfig2_ANY1.v	/^`define BRANCH_TYPE_LOG             2$/;"	c
+BRANCH_TYPE_LOG	./configs/one-wide.v	/^`define BRANCH_TYPE_LOG             2$/;"	c
+BRANCH_TYPE_LOG	./configs/two-wide.v	/^`define BRANCH_TYPE_LOG             2$/;"	c
+BTB	./fetch/BTB.sv	/^module BTB($/;"	m
+BTB_RAM	./rams/BTB_RAM.sv	/^module BTB_RAM #($/;"	m
+BranchPrediction	./fetch/BranchPrediction_2-bit.sv	/^module BranchPrediction($/;"	m
+BranchPredictionGshare	./fetch/BranchPredictionGshare.sv	/^module BranchPredictionGshare($/;"	m
+Bypass_1D	./regRead/Bypass_1D.sv	/^module Bypass_1D ($/;"	m
+Bypass_2D	./regRead/Bypass_2D.sv	/^module Bypass_2D ($/;"	m
+Bypass_3D	./regRead/Bypass_3D.sv	/^module Bypass_3D ($/;"	m
+Bypass_4D	./regRead/Bypass_4D.sv	/^module Bypass_4D ($/;"	m
+CALL	./configs/DynamicConfig_ANY1.v	/^`define CALL                    2'h1$/;"	c
+CALL	./configs/StaticConfig2_ANY1.v	/^`define CALL                    2'h1$/;"	c
+CALL	./configs/one-wide.v	/^`define CALL                    2'h1$/;"	c
+CALL	./configs/two-wide.v	/^`define CALL                    2'h1$/;"	c
+CAM_PARTITIONED	./rams_configurable/CAM_PARTITIONED.sv	/^module CAM_PARTITIONED #($/;"	m
+CAM_RAM_PARTITIONED	./rams_configurable/CAM_RAM_PARTITIONED.sv	/^module CAM_RAM_PARTITIONED #($/;"	m
+CAM_RAM_STATIC_CONFIG	./rams_configurable/CAM_RAM_STATIC_CONFIG.sv	/^module CAM_RAM_STATIC_CONFIG #($/;"	m
+CAM_STATIC_CONFIG	./rams_configurable/CAM_STATIC_CONFIG.sv	/^module CAM_STATIC_CONFIG #($/;"	m
+CLKPERIOD	./configs/DynamicConfig_ANY1.v	/^`define CLKPERIOD 8.00 \/\/ For Anycore_1 $/;"	c
+CLKPERIOD	./configs/StaticConfig1.v	/^`define CLKPERIOD 0.56\/\/6x0.57$/;"	c
+CLKPERIOD	./configs/StaticConfig2.v	/^`define CLKPERIOD 2.66 \/\/3x0.58$/;"	c
+CLKPERIOD	./configs/StaticConfig2_ANY1.v	/^`define CLKPERIOD 3.42 \/\/6x0.57$/;"	c
+CLKPERIOD	./configs/StaticConfig3.v	/^`define CLKPERIOD 0.56\/\/6x0.57$/;"	c
+CLKPERIOD	./configs/StaticConfig4.v	/^`define CLKPERIOD 0.56\/\/6x0.57$/;"	c
+CLKPERIOD	./configs/StaticConfig5.v	/^`define CLKPERIOD 0.56\/\/6x0.57$/;"	c
+CLKPERIOD	./configs/StaticConfig6.v	/^`define CLKPERIOD 0.56\/\/6x0.57$/;"	c
+CLK_GATE_CELL_FG	./configs/DynamicConfig_ANY1.v	/^`define CLK_GATE_CELL_FG TLATNCAX2TF$/;"	c
+CLK_GATE_CELL_UL	./configs/DynamicConfig_ANY1.v	/^`define CLK_GATE_CELL_UL TLATNCAX8TF$/;"	c
+COMMIT_FOUR_WIDE	./configs/DynamicConfig.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_FOUR_WIDE	./configs/DynamicConfig_ANY1.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_FOUR_WIDE	./configs/StaticConfig5.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_FOUR_WIDE	./configs/StaticConfig6.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_FOUR_WIDE	./configs/one-wide.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_FOUR_WIDE	./configs/two-wide.v	/^`define COMMIT_FOUR_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/DynamicConfig.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/DynamicConfig_ANY1.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/StaticConfig3.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/StaticConfig4.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/StaticConfig5.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/StaticConfig6.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/one-wide.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_THREE_WIDE	./configs/two-wide.v	/^`define COMMIT_THREE_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/DynamicConfig.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/DynamicConfig_ANY1.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig1.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig2.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig2_ANY1.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig3.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig4.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig5.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/StaticConfig6.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/one-wide.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_TWO_WIDE	./configs/two-wide.v	/^`define COMMIT_TWO_WIDE$/;"	c
+COMMIT_WIDTH	./configs/Config1.v	/^`define COMMIT_WIDTH            1$/;"	c
+COMMIT_WIDTH	./configs/DynamicConfig.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig1.v	/^`define COMMIT_WIDTH            2$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig2.v	/^`define COMMIT_WIDTH            2$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define COMMIT_WIDTH            2$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig3.v	/^`define COMMIT_WIDTH            3$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig4.v	/^`define COMMIT_WIDTH            3$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig5.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH	./configs/StaticConfig6.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH	./configs/one-wide.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH	./configs/two-wide.v	/^`define COMMIT_WIDTH            4$/;"	c
+COMMIT_WIDTH_LOG	./configs/Config1.v	/^`define COMMIT_WIDTH_LOG        1$/;"	c
+COMMIT_WIDTH_LOG	./configs/DynamicConfig.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig1.v	/^`define COMMIT_WIDTH_LOG        1$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig2.v	/^`define COMMIT_WIDTH_LOG        1$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig2_ANY1.v	/^`define COMMIT_WIDTH_LOG        1$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig3.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig4.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig5.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/StaticConfig6.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/one-wide.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMMIT_WIDTH_LOG	./configs/two-wide.v	/^`define COMMIT_WIDTH_LOG        2$/;"	c
+COMPLEX_TYPE	./configs/DynamicConfig_ANY1.v	/^`define COMPLEX_TYPE            2'b11$/;"	c
+COMPLEX_TYPE	./configs/StaticConfig2_ANY1.v	/^`define COMPLEX_TYPE            2'b11$/;"	c
+COMPLEX_VECT	./configs/DynamicConfig.v	/^`define COMPLEX_VECT 'b00100$/;"	c
+COMPLEX_VECT	./configs/DynamicConfig_ANY1.v	/^`define COMPLEX_VECT 'b00100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig1.v	/^`define COMPLEX_VECT 'b100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig2.v	/^`define COMPLEX_VECT 'b100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig2_ANY1.v	/^`define COMPLEX_VECT 'b100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig3.v	/^`define COMPLEX_VECT 'b0100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig4.v	/^`define COMPLEX_VECT 'b0100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig5.v	/^`define COMPLEX_VECT 'b00100$/;"	c
+COMPLEX_VECT	./configs/StaticConfig6.v	/^`define COMPLEX_VECT 'b00100$/;"	c
+COND_BRANCH	./configs/DynamicConfig_ANY1.v	/^`define COND_BRANCH             2'h3$/;"	c
+COND_BRANCH	./configs/StaticConfig2_ANY1.v	/^`define COND_BRANCH             2'h3$/;"	c
+COND_BRANCH	./configs/one-wide.v	/^`define COND_BRANCH             2'h3$/;"	c
+COND_BRANCH	./configs/two-wide.v	/^`define COND_BRANCH             2'h3$/;"	c
+CONTROL_TYPE	./configs/DynamicConfig_ANY1.v	/^`define CONTROL_TYPE            2'b01$/;"	c
+CONTROL_TYPE	./configs/StaticConfig2_ANY1.v	/^`define CONTROL_TYPE            2'b01$/;"	c
+CTI_COMMIT_RAM	./rams/CTI_COMMIT_RAM.sv	/^module CTI_COMMIT_RAM #($/;"	m
+CTI_COUNTER_RAM	./rams/CTI_COUNTER_RAM.sv	/^module CTI_COUNTER_RAM #($/;"	m
+CommitLoad	./lsu/CommitLoad.sv	/^module CommitLoad ( $/;"	m
+CommitStore	./lsu/CommitStore.sv	/^module CommitStore ($/;"	m
+Complex_ALU	./execute/Complex_ALU.sv	/^module Complex_ALU #($/;"	m
+Core_OOO	./core_top/Core_OOO.sv	/^module Core_OOO($/;"	m
+CtrlQueue	./fetch/CtrlQueue.sv	/^module CtrlQueue($/;"	m
+Ctrl_ALU	./execute/Ctrl_ALU.sv	/^module Ctrl_ALU ($/;"	m
+DATA_CACHE	./configs/DynamicConfig_ANY1.v	/^`define DATA_CACHE$/;"	c
+DCACHE_BYTES_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_BYTES_IN_LINE (`DCACHE_WORDS_IN_LINE*4)$/;"	c
+DCACHE_BYTES_IN_LINE_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_BYTES_IN_LINE_LOG (`DCACHE_WORDS_IN_LINE_LOG + `DCACHE_WORD_BYTE_OFFSET_LOG)$/;"	c
+DCACHE_WORD_BYTE_OFFSET_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_WORD_BYTE_OFFSET_LOG 2 \/\/ Byte offsets in a data word which is 4 byte long in PISA$/;"	c
+DCACHE_INDEX_BITS	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_INDEX_BITS   `DCACHE_NUM_LINES_LOG$/;"	c
+DCACHE_LD_ADDR_PKT_BITS	./configs/DynamicConfig_ANY1.v	/^	`define DCACHE_LD_ADDR_PKT_BITS 8$/;"	c
+DCACHE_LD_DATA_PKT_BITS	./configs/DynamicConfig_ANY1.v	/^	`define DCACHE_LD_DATA_PKT_BITS 8$/;"	c
+DCACHE_BITS_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_BITS_IN_LINE `DCACHE_WORDS_IN_LINE*`SIZE_DATA  \/\/In bits$/;"	c
+DCACHE_NUM_LINES	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_NUM_LINES 128$/;"	c
+DCACHE_NUM_LINES_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_NUM_LINES_LOG 7$/;"	c
+DCACHE_WORDS_IN_LINE_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_WORDS_IN_LINE_LOG 2\/\/3$/;"	c
+DCACHE_OFFSET_BITS	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_OFFSET_BITS  `DCACHE_WORDS_IN_LINE_LOG$/;"	c
+DCACHE_BLOCK_ADDR_BITS	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_BLOCK_ADDR_BITS (`SIZE_PC - `DCACHE_OFFSET_BITS - `DCACHE_WORD_BYTE_OFFSET_LOG) \/\/ Determines the size of cache line adddresses $/;"	c
+DCACHE_SIZE_STB	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_SIZE_STB   8$/;"	c
+DCACHE_SIZE_STB_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_SIZE_STB_LOG   3$/;"	c
+DCACHE_ST_ADDR_BITS	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_ST_ADDR_BITS (`SIZE_PC - `DCACHE_WORD_BYTE_OFFSET_LOG) \/\/ Determines the size of cache line adddresses $/;"	c
+DCACHE_ST_PKT_BITS	./configs/DynamicConfig_ANY1.v	/^	`define DCACHE_ST_PKT_BITS      8$/;"	c
+DCACHE_TAG_BITS	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_TAG_BITS     (`SIZE_PC - `DCACHE_INDEX_BITS - `DCACHE_OFFSET_BITS - `DCACHE_WORD_BYTE_OFFSET_LOG)$/;"	c
+DCACHE_WORDS_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define DCACHE_WORDS_IN_LINE 4\/\/8$/;"	c
+DCache_controller	./dcache/DCache_controller.sv	/^module DCache_controller($/;"	m
+DEBUG_DATA_RAM	./rams/DEBUG_DATA_RAM.sv	/^module DEBUG_DATA_RAM #($/;"	m
+DEBUG_DATA_RAM_DEPTH	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_DATA_RAM_DEPTH 256$/;"	c
+DEBUG_DATA_RAM_DEPTH	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_DATA_RAM_DEPTH 256$/;"	c
+DEBUG_DATA_RAM_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_DATA_RAM_LOG   8$/;"	c
+DEBUG_DATA_RAM_LOG	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_DATA_RAM_LOG   8$/;"	c
+DEBUG_DATA_RAM_WIDTH	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_DATA_RAM_WIDTH 32$/;"	c
+DEBUG_DATA_RAM_WIDTH	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_DATA_RAM_WIDTH 32$/;"	c
+DEBUG_DATA_RAM_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_DATA_RAM_WIDTH_LOG 5$/;"	c
+DEBUG_INST_RAM	./rams/DEBUG_INST_RAM.sv	/^module DEBUG_INST_RAM #($/;"	m
+DEBUG_INST_RAM_DEPTH	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_INST_RAM_DEPTH 256$/;"	c
+DEBUG_INST_RAM_DEPTH	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_INST_RAM_DEPTH 256$/;"	c
+DEBUG_INST_RAM_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_INST_RAM_LOG   8$/;"	c
+DEBUG_INST_RAM_LOG	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_INST_RAM_LOG   8$/;"	c
+DEBUG_INST_RAM_WIDTH	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_INST_RAM_WIDTH 40$/;"	c
+DEBUG_INST_RAM_WIDTH	./configs/StaticConfig2_ANY1.v	/^  `define DEBUG_INST_RAM_WIDTH 40$/;"	c
+DEBUG_INST_RAM_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^  `define DEBUG_INST_RAM_WIDTH_LOG 6$/;"	c
+DEPTH_LOG	./serdes/Depacketizer.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+DEPTH_LOG	./serdes/Depacketizer_split.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+DEPTH_LOG	./serdes/Depacketizer_wide.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+DEPTH_LOG	./serdes/Packetizer_split.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+DEPTH_LOG	./serdes/Packetizer_wide.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+DISPATCH_FOUR_WIDE	./configs/DynamicConfig.v	/^`define DISPATCH_FOUR_WIDE$/;"	c
+DISPATCH_FOUR_WIDE	./configs/DynamicConfig_ANY1.v	/^`define DISPATCH_FOUR_WIDE$/;"	c
+DISPATCH_FOUR_WIDE	./configs/StaticConfig5.v	/^`define DISPATCH_FOUR_WIDE$/;"	c
+DISPATCH_FOUR_WIDE	./configs/StaticConfig6.v	/^`define DISPATCH_FOUR_WIDE$/;"	c
+DISPATCH_THREE_WIDE	./configs/DynamicConfig.v	/^`define DISPATCH_THREE_WIDE$/;"	c
+DISPATCH_THREE_WIDE	./configs/DynamicConfig_ANY1.v	/^`define DISPATCH_THREE_WIDE$/;"	c
+DISPATCH_THREE_WIDE	./configs/StaticConfig5.v	/^`define DISPATCH_THREE_WIDE$/;"	c
+DISPATCH_THREE_WIDE	./configs/StaticConfig6.v	/^`define DISPATCH_THREE_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/DynamicConfig.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/DynamicConfig_ANY1.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/StaticConfig2_ANY1.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/StaticConfig3.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/StaticConfig4.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/StaticConfig5.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/StaticConfig6.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_TWO_WIDE	./configs/two-wide.v	/^`define DISPATCH_TWO_WIDE$/;"	c
+DISPATCH_WIDTH	./configs/Config1.v	/^`define DISPATCH_WIDTH          1$/;"	c
+DISPATCH_WIDTH	./configs/DynamicConfig.v	/^`define DISPATCH_WIDTH          4$/;"	c
+DISPATCH_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define DISPATCH_WIDTH          4$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig1.v	/^`define DISPATCH_WIDTH          1$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig2.v	/^`define DISPATCH_WIDTH          1$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define DISPATCH_WIDTH          2$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig3.v	/^`define DISPATCH_WIDTH          2$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig4.v	/^`define DISPATCH_WIDTH          2$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig5.v	/^`define DISPATCH_WIDTH          4$/;"	c
+DISPATCH_WIDTH	./configs/StaticConfig6.v	/^`define DISPATCH_WIDTH          4$/;"	c
+DISPATCH_WIDTH	./configs/one-wide.v	/^`define DISPATCH_WIDTH          1$/;"	c
+DISPATCH_WIDTH	./configs/two-wide.v	/^`define DISPATCH_WIDTH          2$/;"	c
+DISPATCH_WIDTH_LOG	./configs/Config1.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/DynamicConfig.v	/^`define DISPATCH_WIDTH_LOG      2$/;"	c
+DISPATCH_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^`define DISPATCH_WIDTH_LOG      2$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig1.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig2.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig2_ANY1.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig3.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig4.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig5.v	/^`define DISPATCH_WIDTH_LOG      2$/;"	c
+DISPATCH_WIDTH_LOG	./configs/StaticConfig6.v	/^`define DISPATCH_WIDTH_LOG      2$/;"	c
+DISPATCH_WIDTH_LOG	./configs/one-wide.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DISPATCH_WIDTH_LOG	./configs/two-wide.v	/^`define DISPATCH_WIDTH_LOG      1$/;"	c
+DYNAMIC_CONFIG	./configs/DynamicConfig.v	/^`define DYNAMIC_CONFIG$/;"	c
+DYNAMIC_CONFIG	./configs/DynamicConfig_ANY1.v	/^`define DYNAMIC_CONFIG$/;"	c
+DebugConfig	./core_top/DebugConfig.sv	/^module DebugConfig($/;"	m
+Decode	./decode/Decode.sv	/^module Decode($/;"	m
+Decode_RISCV	./decode/Decode_RISCV.sv	/^module Decode_RISCV ($/;"	m
+Demux	./execute/Demux.sv	/^module Demux ($/;"	m
+Demux3	./execute/Demux.sv	/^module Demux3 ($/;"	m
+Depacketizer	./serdes/Depacketizer.v	/^module Depacketizer #($/;"	m
+Depacketizer_split	./serdes/Depacketizer_split.v	/^module Depacketizer_split#($/;"	m
+Depacketizer_wide	./serdes/Depacketizer_wide.v	/^module Depacketizer_wide #($/;"	m
+Dispatch	./dispatch/Dispatch.sv	/^module Dispatch($/;"	m
+DispatchedLoad	./lsu/DispatchedLoad.sv	/^module DispatchedLoad ($/;"	m
+DispatchedStore	./lsu/DispatchedStore.sv	/^module DispatchedStore ($/;"	m
+ENABLE_LD_VIOLATION_PRED	./configs/DynamicConfig_ANY1.v	/^`define ENABLE_LD_VIOLATION_PRED$/;"	c
+ENABLE_LD_VIOLATION_PRED	./configs/StaticConfig2_ANY1.v	/^`define ENABLE_LD_VIOLATION_PRED$/;"	c
+ENABLE_LD_VIOLATION_PRED	./configs/one-wide.v	/^`define ENABLE_LD_VIOLATION_PRED$/;"	c
+ENABLE_LD_VIOLATION_PRED	./configs/two-wide.v	/^`define ENABLE_LD_VIOLATION_PRED$/;"	c
+SIZE_EXE_FLAGS	./configs/DynamicConfig_ANY1.v	/^`define SIZE_EXE_FLAGS         8$/;"	c
+SIZE_EXE_FLAGS	./configs/StaticConfig2_ANY1.v	/^`define SIZE_EXE_FLAGS         8$/;"	c
+SIZE_EXE_FLAGS	./configs/one-wide.v	/^`define SIZE_EXE_FLAGS         8$/;"	c
+SIZE_EXE_FLAGS	./configs/two-wide.v	/^`define SIZE_EXE_FLAGS         8$/;"	c
+EXEC_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define EXEC_WIDTH `ISSUE_WIDTH $/;"	c
+EXEC_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define EXEC_WIDTH `ISSUE_WIDTH $/;"	c
+Encoder	./issue/Encoder.sv	/^module Encoder #($/;"	m
+ExePipeScheduler	./dispatch/ExePipeScheduler.sv	/^module ExePipeScheduler($/;"	m
+Execute_Ctrl	./execute/Execute_Ctrl.sv	/^module Execute_Ctrl ($/;"	m
+Execute_M	./execute/Execute_M.sv	/^module Execute_M ($/;"	m
+Execute_SC	./execute/Execute_SC.sv	/^module Execute_SC #($/;"	m
+ExecutionPipe_Ctrl	./execute/ExecutionPipe_Ctrl.sv	/^module ExecutionPipe_Ctrl ($/;"	m
+ExecutionPipe_M	./execute/ExecutionPipe_M.sv	/^module ExecutionPipe_M ($/;"	m
+ExecutionPipe_SC	./execute/ExecutionPipe_SC.sv	/^module ExecutionPipe_SC #($/;"	m
+FETCH_FOUR_WIDE	./configs/DynamicConfig.v	/^`define FETCH_FOUR_WIDE$/;"	c
+FETCH_FOUR_WIDE	./configs/DynamicConfig_ANY1.v	/^`define FETCH_FOUR_WIDE$/;"	c
+FETCH_FOUR_WIDE	./configs/StaticConfig5.v	/^`define FETCH_FOUR_WIDE$/;"	c
+FETCH_FOUR_WIDE	./configs/StaticConfig6.v	/^`define FETCH_FOUR_WIDE$/;"	c
+FETCH_THREE_WIDE	./configs/DynamicConfig.v	/^`define FETCH_THREE_WIDE$/;"	c
+FETCH_THREE_WIDE	./configs/DynamicConfig_ANY1.v	/^`define FETCH_THREE_WIDE$/;"	c
+FETCH_THREE_WIDE	./configs/StaticConfig5.v	/^`define FETCH_THREE_WIDE$/;"	c
+FETCH_THREE_WIDE	./configs/StaticConfig6.v	/^`define FETCH_THREE_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/DynamicConfig.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/DynamicConfig_ANY1.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/StaticConfig2_ANY1.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/StaticConfig3.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/StaticConfig4.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/StaticConfig5.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/StaticConfig6.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_TWO_WIDE	./configs/two-wide.v	/^`define FETCH_TWO_WIDE$/;"	c
+FETCH_WIDTH	./configs/Config1.v	/^`define FETCH_WIDTH             1$/;"	c
+FETCH_WIDTH	./configs/DynamicConfig.v	/^`define FETCH_WIDTH             4$/;"	c
+FETCH_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define FETCH_WIDTH             4$/;"	c
+FETCH_WIDTH	./configs/StaticConfig1.v	/^`define FETCH_WIDTH             1$/;"	c
+FETCH_WIDTH	./configs/StaticConfig2.v	/^`define FETCH_WIDTH             1$/;"	c
+FETCH_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define FETCH_WIDTH             2$/;"	c
+FETCH_WIDTH	./configs/StaticConfig3.v	/^`define FETCH_WIDTH             2$/;"	c
+FETCH_WIDTH	./configs/StaticConfig4.v	/^`define FETCH_WIDTH             2$/;"	c
+FETCH_WIDTH	./configs/StaticConfig5.v	/^`define FETCH_WIDTH             4$/;"	c
+FETCH_WIDTH	./configs/StaticConfig6.v	/^`define FETCH_WIDTH             4$/;"	c
+FETCH_WIDTH	./configs/one-wide.v	/^`define FETCH_WIDTH             1$/;"	c
+FETCH_WIDTH	./configs/two-wide.v	/^`define FETCH_WIDTH             2$/;"	c
+FETCH_WIDTH_LOG	./configs/Config1.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/DynamicConfig.v	/^`define FETCH_WIDTH_LOG         2$/;"	c
+FETCH_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^`define FETCH_WIDTH_LOG         2$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig1.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig2.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig2_ANY1.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig3.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig4.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig5.v	/^`define FETCH_WIDTH_LOG         2$/;"	c
+FETCH_WIDTH_LOG	./configs/StaticConfig6.v	/^`define FETCH_WIDTH_LOG         2$/;"	c
+FETCH_WIDTH_LOG	./configs/one-wide.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FETCH_WIDTH_LOG	./configs/two-wide.v	/^`define FETCH_WIDTH_LOG         1$/;"	c
+FP_ALU	./execute/FP_ALU.sv	/^module FP_ALU ($/;"	m
+FREELIST_RAM	./rams/FREELIST_RAM.sv	/^module FREELIST_RAM #($/;"	m
+FREELIST_RAM_PARTITIONED	./rams_partitioned/FREELIST_RAM_PARTITIONED.sv	/^module FREELIST_RAM_PARTITIONED #($/;"	m
+FU0	./configs/DynamicConfig_ANY1.v	/^`define FU0                     2'b00     \/\/ Simple ALU$/;"	c
+FU0	./configs/StaticConfig2_ANY1.v	/^`define FU0                     2'b00     \/\/ Simple ALU$/;"	c
+FU0	./configs/one-wide.v	/^`define FU0                     2'b00     \/\/ Simple ALU$/;"	c
+FU0	./configs/two-wide.v	/^`define FU0                     2'b00     \/\/ Simple ALU$/;"	c
+FU0_LATENCY	./configs/DynamicConfig_ANY1.v	/^`define FU0_LATENCY             1$/;"	c
+FU0_LATENCY	./configs/StaticConfig2_ANY1.v	/^`define FU0_LATENCY             1$/;"	c
+FU0_LATENCY	./configs/one-wide.v	/^`define FU0_LATENCY             1$/;"	c
+FU0_LATENCY	./configs/two-wide.v	/^`define FU0_LATENCY             1$/;"	c
+FU1	./configs/DynamicConfig_ANY1.v	/^`define FU1                     2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+FU1	./configs/StaticConfig2_ANY1.v	/^`define FU1                     2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+FU1	./configs/one-wide.v	/^`define FU1                     2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+FU1	./configs/two-wide.v	/^`define FU1                     2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+FU1_LATENCY	./configs/DynamicConfig_ANY1.v	/^`define FU1_LATENCY             5$/;"	c
+FU1_LATENCY	./configs/StaticConfig2_ANY1.v	/^`define FU1_LATENCY             5$/;"	c
+FU1_LATENCY	./configs/one-wide.v	/^`define FU1_LATENCY             3$/;"	c
+FU1_LATENCY	./configs/two-wide.v	/^`define FU1_LATENCY             3$/;"	c
+FU2	./configs/DynamicConfig_ANY1.v	/^`define FU2                     2'b10     \/\/ ALU for CONTROL Instructions$/;"	c
+FU2	./configs/StaticConfig2_ANY1.v	/^`define FU2                     2'b10     \/\/ ALU for CONTROL Instructions$/;"	c
+FU2	./configs/one-wide.v	/^`define FU2                     2'b10     \/\/ ALU for CONTROL Instructions$/;"	c
+FU2	./configs/two-wide.v	/^`define FU2                     2'b10     \/\/ ALU for CONTROL Instructions$/;"	c
+FU2_LATENCY	./configs/DynamicConfig_ANY1.v	/^`define FU2_LATENCY             1$/;"	c
+FU2_LATENCY	./configs/StaticConfig2_ANY1.v	/^`define FU2_LATENCY             1$/;"	c
+FU2_LATENCY	./configs/one-wide.v	/^`define FU2_LATENCY             1$/;"	c
+FU2_LATENCY	./configs/two-wide.v	/^`define FU2_LATENCY             1$/;"	c
+FU3	./configs/DynamicConfig_ANY1.v	/^`define FU3                     2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+FU3	./configs/StaticConfig2_ANY1.v	/^`define FU3                     2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+FU3	./configs/one-wide.v	/^`define FU3                     2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+FU3	./configs/two-wide.v	/^`define FU3                     2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+FU3_LATENCY	./configs/DynamicConfig_ANY1.v	/^`define FU3_LATENCY             2$/;"	c
+FU3_LATENCY	./configs/StaticConfig2_ANY1.v	/^`define FU3_LATENCY             2$/;"	c
+FU3_LATENCY	./configs/one-wide.v	/^`define FU3_LATENCY             2$/;"	c
+FU3_LATENCY	./configs/two-wide.v	/^`define FU3_LATENCY             2$/;"	c
+Fetch1Fetch2	./fetch/Fetch1Fetch2.sv	/^module Fetch1Fetch2($/;"	m
+Fetch2Decode	./fetch/Fetch2Decode.sv	/^module Fetch2Decode($/;"	m
+FetchStage1	./fetch/FetchStage1.sv	/^module FetchStage1($/;"	m
+FetchStage2	./fetch/FetchStage2.sv	/^module FetchStage2($/;"	m
+ForwardCheck	./execute/ForwardCheck.sv	/^module ForwardCheck ($/;"	m
+FreeIssueq	./issue/FreeIssueq.sv	/^module FreeIssueq ($/;"	m
+GET_ARCH_PC	./configs/DynamicConfig_ANY1.v	/^`define GET_ARCH_PC             $getArchPC()$/;"	c
+GET_ARCH_PC	./configs/DynamicConfig_ANY1.v	/^`define GET_ARCH_PC             0$/;"	c
+GET_ARCH_PC	./configs/StaticConfig2_ANY1.v	/^`define GET_ARCH_PC             $getArchPC()$/;"	c
+GET_ARCH_PC	./configs/StaticConfig2_ANY1.v	/^`define GET_ARCH_PC             0$/;"	c
+GET_ARCH_PC	./configs/one-wide.v	/^`define GET_ARCH_PC             $getArchPC()$/;"	c
+GET_ARCH_PC	./configs/one-wide.v	/^`define GET_ARCH_PC             0$/;"	c
+GET_ARCH_PC	./configs/two-wide.v	/^`define GET_ARCH_PC             $getArchPC()$/;"	c
+GET_ARCH_PC	./configs/two-wide.v	/^`define GET_ARCH_PC             0$/;"	c
+IBUFF_RAM	./rams/IBUFF_RAM.sv	/^module IBUFF_RAM #($/;"	m
+ICACHE_BYTES_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_BYTES_IN_LINE (`ICACHE_BITS_IN_LINE\/8) \/\/40$/;"	c
+ICACHE_BYTES_IN_LINE_LOG	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_BYTES_IN_LINE_LOG (`ICACHE_INST_BYTE_OFFSET_LOG + `FETCH_WIDTH_LOG) \/\/log2(40)$/;"	c
+ICACHE_INST_BYTE_OFFSET_LOG	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_INST_BYTE_OFFSET_LOG 3 \/\/ Byte offsets in individual instructions which are 8 byte long in PISA$/;"	c
+ICACHE_INDEX_BITS	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_INDEX_BITS   `ICACHE_NUM_LINES_LOG$/;"	c
+ICACHE_INSTS_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_INSTS_IN_LINE 2*(2**`FETCH_WIDTH_LOG)  \/\/ 8$/;"	c
+ICACHE_INST_PKT_BITS	./configs/DynamicConfig_ANY1.v	/^	`define ICACHE_INST_PKT_BITS  8$/;"	c
+ICACHE_BITS_IN_LINE	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_BITS_IN_LINE `ICACHE_INSTS_IN_LINE*`SIZE_INSTRUCTION  \/\/In bits$/;"	c
+ICACHE_NUM_LINES	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_NUM_LINES 64\/\/128$/;"	c
+ICACHE_NUM_LINES_LOG	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_NUM_LINES_LOG 6\/\/7$/;"	c
+ICACHE_OFFSET_BITS	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_OFFSET_BITS  (`FETCH_WIDTH_LOG+1)$/;"	c
+ICACHE_PC_PKT_BITS	./configs/DynamicConfig_ANY1.v	/^	`define ICACHE_PC_PKT_BITS    8$/;"	c
+SIZE_INSTRUCTION	./configs/DynamicConfig_ANY1.v	/^  `define SIZE_INSTRUCTION 40$/;"	c
+ICACHE_BLOCK_ADDR_BITS	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_BLOCK_ADDR_BITS  (`SIZE_PC - `ICACHE_OFFSET_BITS - `ICACHE_INST_BYTE_OFFSET_LOG) \/\/ Determines the size of cache line adddresses $/;"	c
+ICACHE_TAG_BITS	./configs/DynamicConfig_ANY1.v	/^  `define ICACHE_TAG_BITS     (`SIZE_PC - `ICACHE_INDEX_BITS - `ICACHE_OFFSET_BITS - `ICACHE_INST_BYTE_OFFSET_LOG)$/;"	c
+ICache_controller	./icache/ICache_controller.sv	/^module ICache_controller#($/;"	m
+ID	./serdes/Depacketizer.v	/^    parameter ID            = 0,$/;"	c
+ID	./serdes/Depacketizer_split.v	/^    parameter ID            = 0,$/;"	c
+ID	./serdes/Depacketizer_wide.v	/^    parameter ID            = 0,$/;"	c
+ID	./serdes/Packetizer.v	/^    parameter ID            = 0,$/;"	c
+ID	./serdes/Packetizer_split.v	/^    parameter ID            = 0,$/;"	c
+ID	./serdes/Packetizer_wide.v	/^    parameter ID            = 0,$/;"	c
+INSTRUCTION_TYPE0	./configs/DynamicConfig_ANY1.v	/^`define INSTRUCTION_TYPE0       2'b00     \/\/ Simple ALU$/;"	c
+INSTRUCTION_TYPE0	./configs/StaticConfig2_ANY1.v	/^`define INSTRUCTION_TYPE0       2'b00     \/\/ Simple ALU$/;"	c
+INSTRUCTION_TYPE0	./configs/one-wide.v	/^`define INSTRUCTION_TYPE0       2'b00     \/\/ Simple ALU$/;"	c
+INSTRUCTION_TYPE0	./configs/two-wide.v	/^`define INSTRUCTION_TYPE0       2'b00     \/\/ Simple ALU$/;"	c
+INSTRUCTION_TYPE1	./configs/DynamicConfig_ANY1.v	/^`define INSTRUCTION_TYPE1       2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+INSTRUCTION_TYPE1	./configs/StaticConfig2_ANY1.v	/^`define INSTRUCTION_TYPE1       2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+INSTRUCTION_TYPE1	./configs/one-wide.v	/^`define INSTRUCTION_TYPE1       2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+INSTRUCTION_TYPE1	./configs/two-wide.v	/^`define INSTRUCTION_TYPE1       2'b01     \/\/ Complex ALU (for MULTIPLY & DIVIDE)$/;"	c
+INSTRUCTION_TYPE2	./configs/DynamicConfig_ANY1.v	/^`define INSTRUCTION_TYPE2       2'b10     \/\/ CONTROL Instructions$/;"	c
+INSTRUCTION_TYPE2	./configs/StaticConfig2_ANY1.v	/^`define INSTRUCTION_TYPE2       2'b10     \/\/ CONTROL Instructions$/;"	c
+INSTRUCTION_TYPE2	./configs/one-wide.v	/^`define INSTRUCTION_TYPE2       2'b10     \/\/ CONTROL Instructions$/;"	c
+INSTRUCTION_TYPE2	./configs/two-wide.v	/^`define INSTRUCTION_TYPE2       2'b10     \/\/ CONTROL Instructions$/;"	c
+INSTRUCTION_TYPE3	./configs/DynamicConfig_ANY1.v	/^`define INSTRUCTION_TYPE3       2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+INSTRUCTION_TYPE3	./configs/StaticConfig2_ANY1.v	/^`define INSTRUCTION_TYPE3       2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+INSTRUCTION_TYPE3	./configs/one-wide.v	/^`define INSTRUCTION_TYPE3       2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+INSTRUCTION_TYPE3	./configs/two-wide.v	/^`define INSTRUCTION_TYPE3       2'b11     \/\/ LOAD\/STORE Address Generator$/;"	c
+INSTRUCTION_TYPES	./configs/DynamicConfig_ANY1.v	/^`define INSTRUCTION_TYPES       4$/;"	c
+INSTRUCTION_TYPES	./configs/StaticConfig2_ANY1.v	/^`define INSTRUCTION_TYPES       4$/;"	c
+INSTRUCTION_TYPES	./configs/one-wide.v	/^`define INSTRUCTION_TYPES       4$/;"	c
+INSTRUCTION_TYPES	./configs/two-wide.v	/^`define INSTRUCTION_TYPES       4$/;"	c
+INST_CACHE	./configs/DynamicConfig_ANY1.v	/^`define INST_CACHE$/;"	c
+INST_NAME	./serdes/Depacketizer.v	/^    parameter INST_NAME     = "Depacketizer"$/;"	c
+INST_NAME	./serdes/Depacketizer_wide.v	/^    parameter INST_NAME     = "Depacketizer_wide"$/;"	c
+INST_QUEUE	./configs/DynamicConfig.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/DynamicConfig_ANY1.v	/^`define INST_QUEUE              16$/;"	c
+INST_QUEUE	./configs/StaticConfig1.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/StaticConfig2.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/StaticConfig2_ANY1.v	/^`define INST_QUEUE              8$/;"	c
+INST_QUEUE	./configs/StaticConfig3.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/StaticConfig4.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/StaticConfig5.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/StaticConfig6.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/one-wide.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE	./configs/two-wide.v	/^`define INST_QUEUE              32$/;"	c
+INST_QUEUE_LOG	./configs/DynamicConfig.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/DynamicConfig_ANY1.v	/^`define INST_QUEUE_LOG          4$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig1.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig2.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig2_ANY1.v	/^`define INST_QUEUE_LOG          3$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig3.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig4.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig5.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/StaticConfig6.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/one-wide.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_QUEUE_LOG	./configs/two-wide.v	/^`define INST_QUEUE_LOG          5$/;"	c
+INST_TYPES_LOG	./configs/DynamicConfig_ANY1.v	/^`define INST_TYPES_LOG          2$/;"	c
+INST_TYPES_LOG	./configs/StaticConfig2_ANY1.v	/^`define INST_TYPES_LOG          2$/;"	c
+INST_TYPES_LOG	./configs/one-wide.v	/^`define INST_TYPES_LOG          2$/;"	c
+INST_TYPES_LOG	./configs/two-wide.v	/^`define INST_TYPES_LOG          2$/;"	c
+IQFREELIST_RAM	./rams/IQFREELIST_RAM.sv	/^module IQFREELIST_RAM #($/;"	m
+IQFREELIST_RAM_PARTITIONED	./rams_partitioned/IQFREELIST_RAM_PARTITIONED.sv	/^module IQFREELIST_RAM_PARTITIONED #($/;"	m
+IQPAYLOAD_RAM	./rams/IQPAYLOAD_RAM.sv	/^module IQPAYLOAD_RAM #($/;"	m
+IQPAYLOAD_RAM_PARTITIONED	./rams_partitioned/IQPAYLOAD_RAM_PARTITIONED.sv	/^module IQPAYLOAD_RAM_PARTITIONED #($/;"	m
+ISSUE_FIVE_WIDE	./configs/DynamicConfig.v	/^`define ISSUE_FIVE_WIDE$/;"	c
+ISSUE_FIVE_WIDE	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_FIVE_WIDE$/;"	c
+ISSUE_FIVE_WIDE	./configs/StaticConfig5.v	/^`define ISSUE_FIVE_WIDE$/;"	c
+ISSUE_FIVE_WIDE	./configs/StaticConfig6.v	/^`define ISSUE_FIVE_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/DynamicConfig.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/StaticConfig3.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/StaticConfig4.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/StaticConfig5.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_FOUR_WIDE	./configs/StaticConfig6.v	/^`define ISSUE_FOUR_WIDE$/;"	c
+ISSUE_THREE_DEEP	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_THREE_DEEP$/;"	c
+ISSUE_THREE_WIDE	./configs/Config1.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/DynamicConfig.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig1.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig2.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig3.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig4.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig5.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/StaticConfig6.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/one-wide.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_THREE_WIDE	./configs/two-wide.v	/^`define ISSUE_THREE_WIDE$/;"	c
+ISSUE_TWO_DEEP	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_TWO_DEEP$/;"	c
+ISSUE_TWO_WIDE	./configs/Config1.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/DynamicConfig.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig1.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig2.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig3.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig4.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig5.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/StaticConfig6.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/one-wide.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_TWO_WIDE	./configs/two-wide.v	/^`define ISSUE_TWO_WIDE$/;"	c
+ISSUE_WIDTH	./configs/Config1.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH	./configs/DynamicConfig.v	/^`define ISSUE_WIDTH             5$/;"	c
+ISSUE_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_WIDTH             5$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig1.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig2.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig3.v	/^`define ISSUE_WIDTH             4$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig4.v	/^`define ISSUE_WIDTH             4$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig5.v	/^`define ISSUE_WIDTH             5$/;"	c
+ISSUE_WIDTH	./configs/StaticConfig6.v	/^`define ISSUE_WIDTH             5$/;"	c
+ISSUE_WIDTH	./configs/one-wide.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH	./configs/two-wide.v	/^`define ISSUE_WIDTH             3$/;"	c
+ISSUE_WIDTH_LOG	./configs/Config1.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/DynamicConfig.v	/^`define ISSUE_WIDTH_LOG         3 $/;"	c
+ISSUE_WIDTH_LOG	./configs/DynamicConfig_ANY1.v	/^`define ISSUE_WIDTH_LOG         3 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig1.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig2.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig2_ANY1.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig3.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig4.v	/^`define ISSUE_WIDTH_LOG         2 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig5.v	/^`define ISSUE_WIDTH_LOG         3 $/;"	c
+ISSUE_WIDTH_LOG	./configs/StaticConfig6.v	/^`define ISSUE_WIDTH_LOG         3 $/;"	c
+ISSUE_WIDTH_LOG	./configs/one-wide.v	/^`define ISSUE_WIDTH_LOG         2$/;"	c
+ISSUE_WIDTH_LOG	./configs/two-wide.v	/^`define ISSUE_WIDTH_LOG         2$/;"	c
+InstBufRename	./decode/InstBufRename.sv	/^module InstBufRename($/;"	m
+InstructionBuffer	./decode/InstructionBuffer.sv	/^module InstructionBuffer($/;"	m
+InstructionBufferLane	./decode/InstructionBuffer_Lane.sv	/^module InstructionBufferLane($/;"	m
+IssueLane	./issue/IssueLane.sv	/^module IssueLane #(parameter ISSUE_LANE_ID = 0) $/;"	m
+IssuePartition	./issue/IssuePartition.sv	/^module IssuePartition #(parameter PARTITION_SIZE = `SIZE_ISSUEQ\/`NUM_PARTS_IQ, PARTITION_ID = 0)$/;"	m
+IssueQFreeList	./issue/IssueQFreeList.sv	/^module IssueQFreeList($/;"	m
+IssueQRegRead	./issue/IssueQRegRead.sv	/^module IssueQRegRead #(parameter NUM_LANES = `ISSUE_WIDTH)$/;"	m
+IssueQueue	./issue/IssueQueue.sv	/^module IssueQueue ( $/;"	m
+IssueQueuePartitioned	./issue/IssueQueuePartitioned.sv	/^module IssueQueuePartitioned ( $/;"	m
+JUMP_TYPE	./configs/DynamicConfig_ANY1.v	/^`define JUMP_TYPE               2'h2$/;"	c
+JUMP_TYPE	./configs/StaticConfig2_ANY1.v	/^`define JUMP_TYPE               2'h2$/;"	c
+JUMP_TYPE	./configs/one-wide.v	/^`define JUMP_TYPE               2'h2$/;"	c
+JUMP_TYPE	./configs/two-wide.v	/^`define JUMP_TYPE               2'h2$/;"	c
+L1DataCache	./lsu/L1DataCache.sv	/^module L1DataCache($/;"	m
+L1ICache	./fetch/L1ICache.sv	/^module L1ICache ($/;"	m
+LDQ_CAM	./rams/LDQ_CAM.sv	/^module LDQ_CAM #($/;"	m
+LDQ_CAM_PARTITIONED	./rams_partitioned/LDQ_CAM_PARTITIONED.sv	/^module LDQ_CAM_PARTITIONED #($/;"	m
+LDQ_RAM	./rams/LDQ_RAM.sv	/^module LDQ_RAM #($/;"	m
+LDQ_RAM_PARTITIONED	./rams_partitioned/LDQ_RAM_PARTITIONED.sv	/^module LDQ_RAM_PARTITIONED #($/;"	m
+LDST_BYTE	./configs/DynamicConfig_ANY1.v	/^`define LDST_BYTE               2'b00$/;"	c
+LDST_BYTE	./configs/StaticConfig2_ANY1.v	/^`define LDST_BYTE               2'b00$/;"	c
+LDST_BYTE	./configs/one-wide.v	/^`define LDST_BYTE               2'b00$/;"	c
+LDST_BYTE	./configs/two-wide.v	/^`define LDST_BYTE               2'b00$/;"	c
+LDST_DOUBLE_WORD	./configs/DynamicConfig_ANY1.v	/^`define LDST_DOUBLE_WORD        2'b11$/;"	c
+LDST_DOUBLE_WORD	./configs/StaticConfig2_ANY1.v	/^`define LDST_DOUBLE_WORD        2'b11$/;"	c
+LDST_DOUBLE_WORD	./configs/one-wide.v	/^`define LDST_DOUBLE_WORD        2'b11$/;"	c
+LDST_DOUBLE_WORD	./configs/two-wide.v	/^`define LDST_DOUBLE_WORD        2'b11$/;"	c
+LDST_HALF_WORD	./configs/DynamicConfig_ANY1.v	/^`define LDST_HALF_WORD          2'b01$/;"	c
+LDST_HALF_WORD	./configs/StaticConfig2_ANY1.v	/^`define LDST_HALF_WORD          2'b01$/;"	c
+LDST_HALF_WORD	./configs/one-wide.v	/^`define LDST_HALF_WORD          2'b01$/;"	c
+LDST_HALF_WORD	./configs/two-wide.v	/^`define LDST_HALF_WORD          2'b01$/;"	c
+LDST_TYPES_LOG	./configs/DynamicConfig_ANY1.v	/^`define LDST_TYPES_LOG          2$/;"	c
+LDST_TYPES_LOG	./configs/StaticConfig2_ANY1.v	/^`define LDST_TYPES_LOG          2$/;"	c
+LDST_TYPES_LOG	./configs/one-wide.v	/^`define LDST_TYPES_LOG          2$/;"	c
+LDST_TYPES_LOG	./configs/two-wide.v	/^`define LDST_TYPES_LOG          2$/;"	c
+LDST_WORD	./configs/DynamicConfig_ANY1.v	/^`define LDST_WORD               2'b10$/;"	c
+LDST_WORD	./configs/StaticConfig2_ANY1.v	/^`define LDST_WORD               2'b10$/;"	c
+LDST_WORD	./configs/one-wide.v	/^`define LDST_WORD               2'b10$/;"	c
+LDST_WORD	./configs/two-wide.v	/^`define LDST_WORD               2'b10$/;"	c
+LDVIO_RAM	./rams/LDVIO_RAM.sv	/^module LDVIO_RAM #($/;"	m
+LDVIO_VLD_RAM	./rams/LDVIO_VLD_RAM.sv	/^module LDVIO_VLD_RAM #($/;"	m
+LDX_path	./lsu/LDX_path.sv	/^module LDX_path ($/;"	m
+LDX_path_structured	./lsu/LDX_path_structured.sv	/^module LDX_path_structured ($/;"	m
+LSU	./lsu/LoadStoreUnit.sv	/^module LSU ($/;"	m
+LSUControl	./lsu/LSUControl.sv	/^module LSUControl ($/;"	m
+LSUDatapath	./lsu/LSUDatapath.sv	/^module LSUDatapath ($/;"	m
+LoadViolationPred	./dispatch/ldViolationPred.sv	/^module LoadViolationPred ($/;"	m
+LogicBist	./bist/LogicBist.sv	/^module LogicBist #($/;"	m
+MEMORY_TYPE	./configs/DynamicConfig_ANY1.v	/^`define MEMORY_TYPE             2'b00$/;"	c
+MEMORY_TYPE	./configs/StaticConfig2_ANY1.v	/^`define MEMORY_TYPE             2'b00$/;"	c
+MUX2_CUSTOM	./rams_configurable/RAM_PARTITIONED.sv	/^module MUX2_CUSTOM #($/;"	m
+MUX2_CUSTOM	./rams_configurable/RAM_PARTITIONED_NO_DECODE.sv	/^module MUX2_CUSTOM #($/;"	m
+MUX2_CUSTOM	./rams_configurable/RAM_PARTITIONED_SHARED_DECODE.sv	/^module MUX2_CUSTOM #($/;"	m
+MemBist	./bist/MemBist.sv	/^module MemBist #($/;"	m
+Mux	./execute/Mux.sv	/^module Mux ($/;"	m
+Mux3	./execute/Mux.sv	/^module Mux3 ($/;"	m
+NUM_PARTS_RF	./configs/DynamicConfig_ANY1.v	/^`define NUM_PARTS_RF 4        \/\/ The number of partitions for register file RAMs$/;"	c
+NUM_PARTS_RF_LOG	./configs/DynamicConfig_ANY1.v	/^`define NUM_PARTS_RF_LOG 2    $/;"	c
+NUM_RECOVER_CYCLES	./configs/one-wide.v	/^`define NUM_RECOVER_CYCLES (34 + `NUM_RECOVER_PACKET - 1)\/`NUM_RECOVER_PACKET \/\/ Note: this is ceil$/;"	c
+NUM_RECOVER_CYCLES	./configs/two-wide.v	/^`define NUM_RECOVER_CYCLES (34 + `NUM_RECOVER_PACKET - 1)\/`NUM_RECOVER_PACKET \/\/ Note: this is ceil$/;"	c
+NUM_RECOVER_PACKETS	./configs/one-wide.v	/^`define NUM_RECOVER_PACKETS `COMMIT_WIDTH$/;"	c
+NUM_RECOVER_PACKETS	./configs/one-wide.v	/^`define NUM_RECOVER_PACKETS `DISPATCH_WIDTH$/;"	c
+NUM_RECOVER_PACKETS	./configs/two-wide.v	/^`define NUM_RECOVER_PACKETS `COMMIT_WIDTH$/;"	c
+NUM_RECOVER_PACKETS	./configs/two-wide.v	/^`define NUM_RECOVER_PACKETS `DISPATCH_WIDTH$/;"	c
+N_ARCH_REGS	./configs/DynamicConfig_ANY1.v	/^`define N_ARCH_REGS             34$/;"	c
+N_ARCH_REGS	./configs/StaticConfig2_ANY1.v	/^`define N_ARCH_REGS             34$/;"	c
+N_PKTS_BITS	./serdes/Packetizer.v	/^    parameter N_PKTS_BITS   = 4, \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+N_REPAIR_CYCLES	./configs/DynamicConfig_ANY1.v	/^`define N_REPAIR_CYCLES        (`N_ARCH_REGS + `N_REPAIR_PACKETS - 1)\/`N_REPAIR_PACKETS \/\/ Note: the integer part of this expression is ceil(N_ARCH_REGS\/N_REPAIR_PACKETS)$/;"	c
+N_REPAIR_CYCLES	./configs/StaticConfig2_ANY1.v	/^`define N_REPAIR_CYCLES        (`N_ARCH_REGS + `N_REPAIR_PACKETS - 1)\/`N_REPAIR_PACKETS \/\/ Note: the integer part of this expression is ceil(N_ARCH_REGS\/N_REPAIR_PACKETS)$/;"	c
+N_REPAIR_CYCLES	./configs/two-wide.v	/^`define N_REPAIR_CYCLES         4$/;"	c
+N_REPAIR_PACKETS	./configs/DynamicConfig_ANY1.v	/^`define N_REPAIR_PACKETS        6  \/\/ If this is greater than COMMIT_WIDTH, AMT will have N_REPAIR_PACKETS number of read ports$/;"	c
+N_REPAIR_PACKETS	./configs/StaticConfig2_ANY1.v	/^`define N_REPAIR_PACKETS        6  \/\/ If this is greater than COMMIT_WIDTH, AMT will have N_REPAIR_PACKETS number of read ports$/;"	c
+N_REPAIR_PACKETS	./configs/two-wide.v	/^`define N_REPAIR_PACKETS        (34 + `N_REPAIR_CYCLES - 1)\/`N_REPAIR_CYCLES \/\/ Note: this is ceil(34\/N_REPAIR_CYCLES)$/;"	c
+PAYLOAD_WIDTH	./serdes/Depacketizer.v	/^    parameter PAYLOAD_WIDTH = 128,$/;"	c
+PAYLOAD_WIDTH	./serdes/Depacketizer_split.v	/^    parameter PAYLOAD_WIDTH = 128,$/;"	c
+PAYLOAD_WIDTH	./serdes/Depacketizer_wide.v	/^    parameter PAYLOAD_WIDTH = 512,$/;"	c
+PAYLOAD_WIDTH	./serdes/Packetizer.v	/^    parameter PAYLOAD_WIDTH = 128,$/;"	c
+PAYLOAD_WIDTH	./serdes/Packetizer_split.v	/^    parameter PAYLOAD_WIDTH = 128,$/;"	c
+PAYLOAD_WIDTH	./serdes/Packetizer_wide.v	/^    parameter PAYLOAD_WIDTH = 512,$/;"	c
+PERF_MON	./configs/DynamicConfig_ANY1.v	/^`define PERF_MON 1$/;"	c
+PGIsolationCell	./lib/PGIsolationCell.sv	/^module PGIsolationCell #(WIDTH = 1)$/;"	m
+PIPEREG_CLK_GATE	./configs/DynamicConfig_ANY1.v	/^`define PIPEREG_CLK_GATE 1$/;"	c
+POSTICG_X9B_A12TR	./lib/clk_gater_ul.sv	/^  module POSTICG_X9B_A12TR (ECK, E, SEN, CK);$/;"	m
+PRF_RAM	./rams/PRF_RAM.sv	/^module PRF_RAM #($/;"	m
+PRF_RAM_PARTITIONED	./rams_partitioned/PRF_RAM_PARTITIONED.sv	/^module PRF_RAM_PARTITIONED #($/;"	m
+PUSH_AF_LVL	./serdes/Packetizer.v	/^    parameter PUSH_AF_LVL   = 2,$/;"	c
+Packetizer	./serdes/Packetizer.v	/^module Packetizer #($/;"	m
+Packetizer_split	./serdes/Packetizer_split.v	/^module Packetizer_split#($/;"	m
+Packetizer_wide	./serdes/Packetizer_wide.v	/^module Packetizer_wide #($/;"	m
+PerfMon	./core_top/PerfMon.sv	/^module PerfMon($/;"	m
+PhyRegFile	./regRead/PhyRegFile.sv	/^module PhyRegFile ($/;"	m
+PhyRegFileBytePipelined	./regRead/PhyRegFileBytePipelined.sv	/^module PhyRegFileBytePipelined ($/;"	m
+PipeLineReg	./lib/PipeLineReg.sv	/^module PipeLineReg $/;"	m
+PowerManager	./core_top/PowerManager.sv	/^module PowerManager($/;"	m
+PreDecode_RISCV	./decode/PreDecode_RISCV.sv	/^module PreDecode_RISCV($/;"	m
+PriorityEncoder	./issue/PriorityEncoder.sv	/^module PriorityEncoder #($/;"	m
+PriorityEncoderRR	./issue/PriorityEncoderRR.sv	/^module PriorityEncoderRR #($/;"	m
+RAM_1R1W	./rams/RAM_1R1W.sv	/^module RAM_1R1W( addr0_i,addr0wr_i,we0_i,data0wr_i,$/;"	m
+RAM_1R2W	./rams/RAM_1R2W.sv	/^module RAM_1R2W #($/;"	m
+RAM_4R1W	./rams/RAM_4R1W.sv	/^module RAM_4R1W($/;"	m
+RAM_8R4W	./rams/RAM_8R4W.sv	/^module RAM_8R4W($/;"	m
+RAM_CONFIGURABLE	./rams_configurable/RAM_CONFIGURABLE.sv	/^module RAM_CONFIGURABLE #($/;"	m
+RAM_PARTITIONED	./rams_configurable/RAM_PARTITIONED.sv	/^module RAM_PARTITIONED #($/;"	m
+RAM_PARTITIONED_NO_DECODE	./rams_configurable/RAM_PARTITIONED_NO_DECODE.sv	/^module RAM_PARTITIONED_NO_DECODE #($/;"	m
+RAM_PARTITIONED_SHARED_DECODE	./rams_configurable/RAM_PARTITIONED_SHARED_DECODE.sv	/^module RAM_PARTITIONED_SHARED_DECODE #($/;"	m
+RAM_PG_1R1W	./rams_configurable/RAM_PG_1R1W.sv	/^module RAM_PG_1R1W( pwrGate_i,addr0_i,addrWr_i,we_i,data_i,$/;"	m
+RAM_PG_2R1W	./rams_configurable/RAM_PG_2R1W.sv	/^module RAM_PG_2R1W( pwrGate_i,addr0_i,addr1_i,addrWr_i,we_i,data_i,$/;"	m
+RAM_RESET_SEQ	./configs/StaticConfig2_ANY1.v	/^`define RAM_RESET_SEQ 1$/;"	c
+RAM_RESET_ZERO	./configs/StaticConfig2_ANY1.v	/^`define RAM_RESET_ZERO 0$/;"	c
+RAM_STATIC_CONFIG	./rams_configurable/RAM_STATIC_CONFIG.sv	/^module RAM_STATIC_CONFIG #($/;"	m
+RAM_STATIC_CONFIG_NO_DECODE	./rams_configurable/RAM_STATIC_CONFIG_NO_DECODE.sv	/^module RAM_STATIC_CONFIG_NO_DECODE #($/;"	m
+RAS	./fetch/RAS.sv	/^module RAS($/;"	m
+RAS_RAM	./rams/RAS_RAM.sv	/^module RAS_RAM #($/;"	m
+READ_OPCODE	./configs/DynamicConfig_ANY1.v	/^`define READ_OPCODE(a)          $random$/;"	c
+READ_OPCODE	./configs/DynamicConfig_ANY1.v	/^`define READ_OPCODE(a)          $read_opcode(a)$/;"	c
+READ_OPCODE	./configs/StaticConfig2_ANY1.v	/^`define READ_OPCODE(a)          $random$/;"	c
+READ_OPCODE	./configs/StaticConfig2_ANY1.v	/^`define READ_OPCODE(a)          $read_opcode(a)$/;"	c
+READ_OPCODE	./configs/one-wide.v	/^`define READ_OPCODE(a)          $random$/;"	c
+READ_OPCODE	./configs/one-wide.v	/^`define READ_OPCODE(a)          $read_opcode(a)$/;"	c
+READ_OPCODE	./configs/two-wide.v	/^`define READ_OPCODE(a)          $random$/;"	c
+READ_OPCODE	./configs/two-wide.v	/^`define READ_OPCODE(a)          $read_opcode(a)$/;"	c
+READ_OPERAND	./configs/DynamicConfig_ANY1.v	/^`define READ_OPERAND(a)         $random$/;"	c
+READ_OPERAND	./configs/DynamicConfig_ANY1.v	/^`define READ_OPERAND(a)         $read_operand(a)$/;"	c
+READ_OPERAND	./configs/StaticConfig2_ANY1.v	/^`define READ_OPERAND(a)         $random$/;"	c
+READ_OPERAND	./configs/StaticConfig2_ANY1.v	/^`define READ_OPERAND(a)         $read_operand(a)$/;"	c
+READ_OPERAND	./configs/one-wide.v	/^`define READ_OPERAND(a)         $random$/;"	c
+READ_OPERAND	./configs/one-wide.v	/^`define READ_OPERAND(a)         $read_operand(a)$/;"	c
+READ_OPERAND	./configs/two-wide.v	/^`define READ_OPERAND(a)         $random$/;"	c
+READ_OPERAND	./configs/two-wide.v	/^`define READ_OPERAND(a)         $read_operand(a)$/;"	c
+READ_SIGNED_BYTE	./configs/DynamicConfig_ANY1.v	/^`define READ_SIGNED_BYTE(a)     $random$/;"	c
+READ_SIGNED_BYTE	./configs/DynamicConfig_ANY1.v	/^`define READ_SIGNED_BYTE(a)     $readSignedByte(a)$/;"	c
+READ_SIGNED_BYTE	./configs/StaticConfig2_ANY1.v	/^`define READ_SIGNED_BYTE(a)     $random$/;"	c
+READ_SIGNED_BYTE	./configs/StaticConfig2_ANY1.v	/^`define READ_SIGNED_BYTE(a)     $readSignedByte(a)$/;"	c
+READ_SIGNED_BYTE	./configs/one-wide.v	/^`define READ_SIGNED_BYTE(a)     $random$/;"	c
+READ_SIGNED_BYTE	./configs/one-wide.v	/^`define READ_SIGNED_BYTE(a)     $readSignedByte(a)$/;"	c
+READ_SIGNED_BYTE	./configs/two-wide.v	/^`define READ_SIGNED_BYTE(a)     $random$/;"	c
+READ_SIGNED_BYTE	./configs/two-wide.v	/^`define READ_SIGNED_BYTE(a)     $readSignedByte(a)$/;"	c
+READ_SIGNED_HALF	./configs/DynamicConfig_ANY1.v	/^`define READ_SIGNED_HALF(a)     $random$/;"	c
+READ_SIGNED_HALF	./configs/DynamicConfig_ANY1.v	/^`define READ_SIGNED_HALF(a)     $readSignedHalf(a)$/;"	c
+READ_SIGNED_HALF	./configs/StaticConfig2_ANY1.v	/^`define READ_SIGNED_HALF(a)     $random$/;"	c
+READ_SIGNED_HALF	./configs/StaticConfig2_ANY1.v	/^`define READ_SIGNED_HALF(a)     $readSignedHalf(a)$/;"	c
+READ_SIGNED_HALF	./configs/one-wide.v	/^`define READ_SIGNED_HALF(a)     $random$/;"	c
+READ_SIGNED_HALF	./configs/one-wide.v	/^`define READ_SIGNED_HALF(a)     $readSignedHalf(a)$/;"	c
+READ_SIGNED_HALF	./configs/two-wide.v	/^`define READ_SIGNED_HALF(a)     $random$/;"	c
+READ_SIGNED_HALF	./configs/two-wide.v	/^`define READ_SIGNED_HALF(a)     $readSignedHalf(a)$/;"	c
+READ_UNSIGNED_BYTE	./configs/DynamicConfig_ANY1.v	/^`define READ_UNSIGNED_BYTE(a)   $random$/;"	c
+READ_UNSIGNED_BYTE	./configs/DynamicConfig_ANY1.v	/^`define READ_UNSIGNED_BYTE(a)   $readUnsignedByte(a)$/;"	c
+READ_UNSIGNED_BYTE	./configs/StaticConfig2_ANY1.v	/^`define READ_UNSIGNED_BYTE(a)   $random$/;"	c
+READ_UNSIGNED_BYTE	./configs/StaticConfig2_ANY1.v	/^`define READ_UNSIGNED_BYTE(a)   $readUnsignedByte(a)$/;"	c
+READ_UNSIGNED_BYTE	./configs/one-wide.v	/^`define READ_UNSIGNED_BYTE(a)   $random$/;"	c
+READ_UNSIGNED_BYTE	./configs/one-wide.v	/^`define READ_UNSIGNED_BYTE(a)   $readUnsignedByte(a)$/;"	c
+READ_UNSIGNED_BYTE	./configs/two-wide.v	/^`define READ_UNSIGNED_BYTE(a)   $random$/;"	c
+READ_UNSIGNED_BYTE	./configs/two-wide.v	/^`define READ_UNSIGNED_BYTE(a)   $readUnsignedByte(a)$/;"	c
+READ_UNSIGNED_HALF	./configs/DynamicConfig_ANY1.v	/^`define READ_UNSIGNED_HALF(a)   $random$/;"	c
+READ_UNSIGNED_HALF	./configs/DynamicConfig_ANY1.v	/^`define READ_UNSIGNED_HALF(a)   $readUnsignedHalf(a)$/;"	c
+READ_UNSIGNED_HALF	./configs/StaticConfig2_ANY1.v	/^`define READ_UNSIGNED_HALF(a)   $random$/;"	c
+READ_UNSIGNED_HALF	./configs/StaticConfig2_ANY1.v	/^`define READ_UNSIGNED_HALF(a)   $readUnsignedHalf(a)$/;"	c
+READ_UNSIGNED_HALF	./configs/one-wide.v	/^`define READ_UNSIGNED_HALF(a)   $random$/;"	c
+READ_UNSIGNED_HALF	./configs/one-wide.v	/^`define READ_UNSIGNED_HALF(a)   $readUnsignedHalf(a)$/;"	c
+READ_UNSIGNED_HALF	./configs/two-wide.v	/^`define READ_UNSIGNED_HALF(a)   $random$/;"	c
+READ_UNSIGNED_HALF	./configs/two-wide.v	/^`define READ_UNSIGNED_HALF(a)   $readUnsignedHalf(a)$/;"	c
+READ_WORD	./configs/DynamicConfig_ANY1.v	/^`define READ_WORD(a)            $random$/;"	c
+READ_WORD	./configs/DynamicConfig_ANY1.v	/^`define READ_WORD(a)            $readWord(a)$/;"	c
+READ_WORD	./configs/StaticConfig2_ANY1.v	/^`define READ_WORD(a)            $random$/;"	c
+READ_WORD	./configs/StaticConfig2_ANY1.v	/^`define READ_WORD(a)            $readWord(a)$/;"	c
+READ_WORD	./configs/one-wide.v	/^`define READ_WORD(a)            $random$/;"	c
+READ_WORD	./configs/one-wide.v	/^`define READ_WORD(a)            $readWord(a)$/;"	c
+READ_WORD	./configs/two-wide.v	/^`define READ_WORD(a)            $random$/;"	c
+READ_WORD	./configs/two-wide.v	/^`define READ_WORD(a)            $readWord(a)$/;"	c
+REG_DATA_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define REG_DATA_WIDTH 8$/;"	c
+REG_RA	./configs/DynamicConfig_ANY1.v	/^`define REG_RA                  31$/;"	c
+REG_RA	./configs/StaticConfig2_ANY1.v	/^`define REG_RA                  31$/;"	c
+REG_RA	./configs/one-wide.v	/^`define REG_RA                  31$/;"	c
+REG_RA	./configs/two-wide.v	/^`define REG_RA                  31$/;"	c
+RETURN	./configs/DynamicConfig_ANY1.v	/^`define RETURN                  2'h0$/;"	c
+RETURN	./configs/StaticConfig2_ANY1.v	/^`define RETURN                  2'h0$/;"	c
+RETURN	./configs/one-wide.v	/^`define RETURN                  2'h0$/;"	c
+RETURN	./configs/two-wide.v	/^`define RETURN                  2'h0$/;"	c
+RMT_RAM	./rams/RMT_RAM.sv	/^module RMT_RAM #($/;"	m
+RSR	./issue/RSR.sv	/^module RSR ($/;"	m
+RSRLane	./issue/RSRLane.sv	/^module RSRLane #(parameter LANE_ID = 0, FU_LATENCY = 1)$/;"	m
+RegRead	./regRead/RegRead.sv	/^module RegRead ($/;"	m
+RegReadExecute	./regRead/RegReadExecute.sv	/^module RegReadExecute ($/;"	m
+RegisterConsolidate	./core_top/RegisterConsolidate.sv	/^module RegisterConsolidate( $/;"	m
+Rename	./rename/Rename.sv	/^module Rename($/;"	m
+RenameDispatch	./rename/RenameDispatch.sv	/^module RenameDispatch($/;"	m
+RenameLane	./rename/RenameLane.sv	/^module RenameLane $/;"	m
+RenameMapTable	./rename/RenameMapTable.sv	/^module RenameMapTable($/;"	m
+ResetControl	./core_top/ResetControl.sv	/^module ResetControl($/;"	m
+SCRATCH_PAD	./configs/StaticConfig2_ANY1.v	/^`define SCRATCH_PAD$/;"	c
+SIMPLE_TYPE	./configs/DynamicConfig_ANY1.v	/^`define SIMPLE_TYPE             2'b10$/;"	c
+SIMPLE_TYPE	./configs/StaticConfig2_ANY1.v	/^`define SIMPLE_TYPE             2'b10$/;"	c
+SIMPLE_VECT	./configs/DynamicConfig.v	/^`define SIMPLE_VECT 'b11100$/;"	c
+SIMPLE_VECT	./configs/DynamicConfig_ANY1.v	/^`define SIMPLE_VECT 'b11100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig1.v	/^`define SIMPLE_VECT 'b100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig2.v	/^`define SIMPLE_VECT 'b100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig2_ANY1.v	/^`define SIMPLE_VECT 'b100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig3.v	/^`define SIMPLE_VECT 'b1100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig4.v	/^`define SIMPLE_VECT 'b1100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig5.v	/^`define SIMPLE_VECT 'b11100$/;"	c
+SIMPLE_VECT	./configs/StaticConfig6.v	/^`define SIMPLE_VECT 'b11100$/;"	c
+SIZE_ACTIVELIST	./configs/Config1.v	/^`define SIZE_ACTIVELIST         96$/;"	c
+SIZE_ACTIVELIST	./configs/DynamicConfig.v	/^`define SIZE_ACTIVELIST         160$/;"	c
+SIZE_ACTIVELIST	./configs/DynamicConfig_ANY1.v	/^`define SIZE_ACTIVELIST         128$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig1.v	/^`define SIZE_ACTIVELIST         96$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig2.v	/^`define SIZE_ACTIVELIST         128$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig2_ANY1.v	/^`define SIZE_ACTIVELIST         48$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig3.v	/^`define SIZE_ACTIVELIST         96$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig4.v	/^`define SIZE_ACTIVELIST         128$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig5.v	/^`define SIZE_ACTIVELIST         128$/;"	c
+SIZE_ACTIVELIST	./configs/StaticConfig6.v	/^`define SIZE_ACTIVELIST         160$/;"	c
+SIZE_ACTIVELIST	./configs/one-wide.v	/^`define SIZE_ACTIVELIST         64$/;"	c
+SIZE_ACTIVELIST	./configs/two-wide.v	/^`define SIZE_ACTIVELIST         128$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/Config1.v	/^`define SIZE_ACTIVELIST_LOG     7$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/DynamicConfig.v	/^`define SIZE_ACTIVELIST_LOG     9$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_ACTIVELIST_LOG     7$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig1.v	/^`define SIZE_ACTIVELIST_LOG     7$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig2.v	/^`define SIZE_ACTIVELIST_LOG     8$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_ACTIVELIST_LOG     6$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig3.v	/^`define SIZE_ACTIVELIST_LOG     7$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig4.v	/^`define SIZE_ACTIVELIST_LOG     8$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig5.v	/^`define SIZE_ACTIVELIST_LOG     8$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/StaticConfig6.v	/^`define SIZE_ACTIVELIST_LOG     9$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/one-wide.v	/^`define SIZE_ACTIVELIST_LOG     6$/;"	c
+SIZE_ACTIVELIST_LOG	./configs/two-wide.v	/^`define SIZE_ACTIVELIST_LOG     7$/;"	c
+SIZE_BTB	./configs/DynamicConfig_ANY1.v	/^`define SIZE_BTB                32*(1<<`FETCH_WIDTH_LOG) \/\/ Num BTB lanes is power of 2$/;"	c
+SIZE_BTB	./configs/StaticConfig2_ANY1.v	/^`define SIZE_BTB                32*(1<<`FETCH_WIDTH_LOG) \/\/ Num BTB lanes is power of 2$/;"	c
+SIZE_BTB	./configs/one-wide.v	/^`define SIZE_BTB                4096$/;"	c
+SIZE_BTB	./configs/two-wide.v	/^`define SIZE_BTB                4096$/;"	c
+SIZE_BTB_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_BTB_LOG            (5+`FETCH_WIDTH_LOG)$/;"	c
+SIZE_BTB_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_BTB_LOG            5+`FETCH_WIDTH_LOG$/;"	c
+SIZE_BTB_LOG	./configs/one-wide.v	/^`define SIZE_BTB_LOG            12$/;"	c
+SIZE_BTB_LOG	./configs/two-wide.v	/^`define SIZE_BTB_LOG            12$/;"	c
+SIZE_BYTE_OFFSET	./configs/one-wide.v	/^`define SIZE_BYTE_OFFSET        3$/;"	c
+SIZE_BYTE_OFFSET	./configs/two-wide.v	/^`define SIZE_BYTE_OFFSET        3$/;"	c
+SIZE_CNT_TABLE	./configs/DynamicConfig_ANY1.v	/^`define SIZE_CNT_TABLE          32*(1<<`FETCH_WIDTH_LOG) \/\/ Num BTB lanes is power of 2$/;"	c
+SIZE_CNT_TABLE	./configs/StaticConfig2_ANY1.v	/^`define SIZE_CNT_TABLE          32*(1<<`FETCH_WIDTH_LOG) \/\/ Num BTB lanes is power of 2$/;"	c
+SIZE_CNT_TABLE	./configs/one-wide.v	/^`define SIZE_CNT_TABLE          65536$/;"	c
+SIZE_CNT_TABLE	./configs/two-wide.v	/^`define SIZE_CNT_TABLE          65536$/;"	c
+SIZE_CNT_TBL_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_CNT_TBL_LOG        (5+`FETCH_WIDTH_LOG)$/;"	c
+SIZE_CNT_TBL_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_CNT_TBL_LOG        5+`FETCH_WIDTH_LOG$/;"	c
+SIZE_CNT_TBL_LOG	./configs/one-wide.v	/^`define SIZE_CNT_TBL_LOG        16$/;"	c
+SIZE_CNT_TBL_LOG	./configs/two-wide.v	/^`define SIZE_CNT_TBL_LOG        16$/;"	c
+SIZE_CTI_LOG	./configs/DynamicConfig.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_CTI_LOG            4$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig1.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig2.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_CTI_LOG            4$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig3.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig4.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig5.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/StaticConfig6.v	/^`define SIZE_CTI_LOG            5$/;"	c
+SIZE_CTI_LOG	./configs/one-wide.v	/^`define SIZE_CTI_LOG            4$/;"	c
+SIZE_CTI_LOG	./configs/two-wide.v	/^`define SIZE_CTI_LOG            4$/;"	c
+SIZE_CTI_QUEUE	./configs/DynamicConfig.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/DynamicConfig_ANY1.v	/^`define SIZE_CTI_QUEUE          16$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig1.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig2.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig2_ANY1.v	/^`define SIZE_CTI_QUEUE          16$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig3.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig4.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig5.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/StaticConfig6.v	/^`define SIZE_CTI_QUEUE          32$/;"	c
+SIZE_CTI_QUEUE	./configs/one-wide.v	/^`define SIZE_CTI_QUEUE          16$/;"	c
+SIZE_CTI_QUEUE	./configs/two-wide.v	/^`define SIZE_CTI_QUEUE          16$/;"	c
+SIZE_DATA	./configs/DynamicConfig_ANY1.v	/^`define SIZE_DATA               32$/;"	c
+SIZE_DATA	./configs/StaticConfig2_ANY1.v	/^`define SIZE_DATA               32$/;"	c
+SIZE_DATA	./configs/one-wide.v	/^`define SIZE_DATA               32$/;"	c
+SIZE_DATA	./configs/two-wide.v	/^`define SIZE_DATA               32$/;"	c
+SIZE_DATA_BYTE_OFFSET	./configs/DynamicConfig_ANY1.v	/^`define SIZE_DATA_BYTE_OFFSET   2$/;"	c
+SIZE_DATA_BYTE_OFFSET	./configs/StaticConfig2_ANY1.v	/^`define SIZE_DATA_BYTE_OFFSET   2$/;"	c
+SIZE_VIRT_ADDR	./configs/DynamicConfig_ANY1.v	/^`define SIZE_VIRT_ADDR        32$/;"	c
+SIZE_VIRT_ADDR	./configs/StaticConfig2_ANY1.v	/^`define SIZE_VIRT_ADDR        32$/;"	c
+SIZE_VIRT_ADDR	./configs/one-wide.v	/^`define SIZE_VIRT_ADDR        32$/;"	c
+SIZE_VIRT_ADDR	./configs/two-wide.v	/^`define SIZE_VIRT_ADDR        32$/;"	c
+SIZE_FREE_LIST	./configs/Config1.v	/^`define SIZE_FREE_LIST          (`SIZE_ACTIVELIST)$/;"	c
+SIZE_FREE_LIST	./configs/DynamicConfig.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 96$/;"	c
+SIZE_FREE_LIST	./configs/DynamicConfig_ANY1.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 94$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig1.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 32$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig2.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 30$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig2_ANY1.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 14$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig3.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 32$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig4.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 62$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig5.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 64$/;"	c
+SIZE_FREE_LIST	./configs/StaticConfig6.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT) \/\/ 96$/;"	c
+SIZE_FREE_LIST	./configs/one-wide.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT)$/;"	c
+SIZE_FREE_LIST	./configs/two-wide.v	/^`define SIZE_FREE_LIST          (`SIZE_PHYSICAL_TABLE-`SIZE_RMT)$/;"	c
+SIZE_FREE_LIST_LOG	./configs/Config1.v	/^`define SIZE_FREE_LIST_LOG      (`SIZE_ACTIVELIST_LOG)$/;"	c
+SIZE_FREE_LIST_LOG	./configs/DynamicConfig.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig1.v	/^`define SIZE_FREE_LIST_LOG      6$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig2.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_FREE_LIST_LOG      4$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig3.v	/^`define SIZE_FREE_LIST_LOG      6$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig4.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig5.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/StaticConfig6.v	/^`define SIZE_FREE_LIST_LOG      7$/;"	c
+SIZE_FREE_LIST_LOG	./configs/one-wide.v	/^`define SIZE_FREE_LIST_LOG      5$/;"	c
+SIZE_FREE_LIST_LOG	./configs/two-wide.v	/^`define SIZE_FREE_LIST_LOG      6$/;"	c
+SIZE_IMMEDIATE	./configs/DynamicConfig_ANY1.v	/^`define SIZE_IMMEDIATE          16$/;"	c
+SIZE_IMMEDIATE	./configs/StaticConfig2_ANY1.v	/^`define SIZE_IMMEDIATE          16$/;"	c
+SIZE_IMMEDIATE	./configs/one-wide.v	/^`define SIZE_IMMEDIATE          16$/;"	c
+SIZE_IMMEDIATE	./configs/two-wide.v	/^`define SIZE_IMMEDIATE          16$/;"	c
+SIZE_INSTRUCTION	./configs/DynamicConfig_ANY1.v	/^`define SIZE_INSTRUCTION        64$/;"	c
+SIZE_INSTRUCTION	./configs/StaticConfig2_ANY1.v	/^`define SIZE_INSTRUCTION        64$/;"	c
+SIZE_INSTRUCTION	./configs/one-wide.v	/^`define SIZE_INSTRUCTION        64$/;"	c
+SIZE_INSTRUCTION	./configs/two-wide.v	/^`define SIZE_INSTRUCTION        64$/;"	c
+SIZE_INSTRUCTION_BYTE	./configs/DynamicConfig_ANY1.v	/^`define SIZE_INSTRUCTION_BYTE   8$/;"	c
+SIZE_INSTRUCTION_BYTE	./configs/StaticConfig2_ANY1.v	/^`define SIZE_INSTRUCTION_BYTE   8$/;"	c
+SIZE_INST_BYTE_OFFSET	./configs/DynamicConfig_ANY1.v	/^`define SIZE_INST_BYTE_OFFSET   3$/;"	c
+SIZE_INST_BYTE_OFFSET	./configs/StaticConfig2_ANY1.v	/^`define SIZE_INST_BYTE_OFFSET   3$/;"	c
+SIZE_ISSUEQ	./configs/Config1.v	/^`define SIZE_ISSUEQ             16$/;"	c
+SIZE_ISSUEQ	./configs/DynamicConfig.v	/^`define SIZE_ISSUEQ             64$/;"	c
+SIZE_ISSUEQ	./configs/DynamicConfig_ANY1.v	/^`define SIZE_ISSUEQ             64$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig1.v	/^`define SIZE_ISSUEQ             16$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig2.v	/^`define SIZE_ISSUEQ             32$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig2_ANY1.v	/^`define SIZE_ISSUEQ             16$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig3.v	/^`define SIZE_ISSUEQ             32$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig4.v	/^`define SIZE_ISSUEQ             48$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig5.v	/^`define SIZE_ISSUEQ             48$/;"	c
+SIZE_ISSUEQ	./configs/StaticConfig6.v	/^`define SIZE_ISSUEQ             64$/;"	c
+SIZE_ISSUEQ	./configs/one-wide.v	/^`define SIZE_ISSUEQ             16$/;"	c
+SIZE_ISSUEQ	./configs/two-wide.v	/^`define SIZE_ISSUEQ             32$/;"	c
+SIZE_ISSUEQ_LOG	./configs/Config1.v	/^`define SIZE_ISSUEQ_LOG         4$/;"	c
+SIZE_ISSUEQ_LOG	./configs/DynamicConfig.v	/^`define SIZE_ISSUEQ_LOG         6$/;"	c
+SIZE_ISSUEQ_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_ISSUEQ_LOG         6$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig1.v	/^`define SIZE_ISSUEQ_LOG         4$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig2.v	/^`define SIZE_ISSUEQ_LOG         5$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_ISSUEQ_LOG         4$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig3.v	/^`define SIZE_ISSUEQ_LOG         5$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig4.v	/^`define SIZE_ISSUEQ_LOG         6$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig5.v	/^`define SIZE_ISSUEQ_LOG         6$/;"	c
+SIZE_ISSUEQ_LOG	./configs/StaticConfig6.v	/^`define SIZE_ISSUEQ_LOG         6$/;"	c
+SIZE_ISSUEQ_LOG	./configs/one-wide.v	/^`define SIZE_ISSUEQ_LOG         4$/;"	c
+SIZE_ISSUEQ_LOG	./configs/two-wide.v	/^`define SIZE_ISSUEQ_LOG         5$/;"	c
+SIZE_LD_VIOLATION_PRED	./configs/DynamicConfig_ANY1.v	/^`define SIZE_LD_VIOLATION_PRED     128 $/;"	c
+SIZE_LD_VIOLATION_PRED	./configs/StaticConfig2_ANY1.v	/^`define SIZE_LD_VIOLATION_PRED     128 $/;"	c
+SIZE_LD_VIOLATION_PRED	./configs/one-wide.v	/^`define SIZE_LD_VIOLATION_PRED     1024$/;"	c
+SIZE_LD_VIOLATION_PRED	./configs/two-wide.v	/^`define SIZE_LD_VIOLATION_PRED     1024$/;"	c
+SIZE_LD_VIOLATION_PRED_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_LD_VIOLATION_PRED_LOG 7$/;"	c
+SIZE_LD_VIOLATION_PRED_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_LD_VIOLATION_PRED_LOG 7$/;"	c
+SIZE_LD_VIOLATION_PRED_LOG	./configs/one-wide.v	/^`define SIZE_LD_VIOLATION_PRED_LOG 10$/;"	c
+SIZE_LD_VIOLATION_PRED_LOG	./configs/two-wide.v	/^`define SIZE_LD_VIOLATION_PRED_LOG 10$/;"	c
+SIZE_LSQ	./configs/Config1.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ	./configs/DynamicConfig.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ	./configs/DynamicConfig_ANY1.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ	./configs/StaticConfig1.v	/^`define SIZE_LSQ                16$/;"	c
+SIZE_LSQ	./configs/StaticConfig2.v	/^`define SIZE_LSQ                16$/;"	c
+SIZE_LSQ	./configs/StaticConfig2_ANY1.v	/^`define SIZE_LSQ                8$/;"	c
+SIZE_LSQ	./configs/StaticConfig3.v	/^`define SIZE_LSQ                16$/;"	c
+SIZE_LSQ	./configs/StaticConfig4.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ	./configs/StaticConfig5.v	/^`define SIZE_LSQ                16$/;"	c
+SIZE_LSQ	./configs/StaticConfig6.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ	./configs/one-wide.v	/^`define SIZE_LSQ                16$/;"	c
+SIZE_LSQ	./configs/two-wide.v	/^`define SIZE_LSQ                32$/;"	c
+SIZE_LSQ_LOG	./configs/Config1.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_LSQ_LOG	./configs/DynamicConfig.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_LSQ_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig1.v	/^`define SIZE_LSQ_LOG            4$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig2.v	/^`define SIZE_LSQ_LOG            4$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_LSQ_LOG            3$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig3.v	/^`define SIZE_LSQ_LOG            4$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig4.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig5.v	/^`define SIZE_LSQ_LOG            4$/;"	c
+SIZE_LSQ_LOG	./configs/StaticConfig6.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_LSQ_LOG	./configs/one-wide.v	/^`define SIZE_LSQ_LOG            4$/;"	c
+SIZE_LSQ_LOG	./configs/two-wide.v	/^`define SIZE_LSQ_LOG            5$/;"	c
+SIZE_OPCODE_I	./configs/DynamicConfig_ANY1.v	/^`define SIZE_OPCODE_I           8       \/\/ opcode size used for implementation$/;"	c
+SIZE_OPCODE_I	./configs/StaticConfig2_ANY1.v	/^`define SIZE_OPCODE_I           8       \/\/ opcode size used for implementation$/;"	c
+SIZE_OPCODE_I	./configs/one-wide.v	/^`define SIZE_OPCODE_I           8       \/\/ opcode size used for implementation$/;"	c
+SIZE_OPCODE_I	./configs/two-wide.v	/^`define SIZE_OPCODE_I           8        \/\/ opcode size used for implementation$/;"	c
+SIZE_OPCODE_P	./configs/DynamicConfig_ANY1.v	/^`define SIZE_OPCODE_P           32      \/\/ opcode size from original PISA i.e. 32bits$/;"	c
+SIZE_OPCODE_P	./configs/StaticConfig2_ANY1.v	/^`define SIZE_OPCODE_P           32       \/\/ opcode size from original PISA i.e. 32bits$/;"	c
+SIZE_OPCODE_P	./configs/one-wide.v	/^`define SIZE_OPCODE_P           32       \/\/ opcode size from original PISA i.e. 32bits$/;"	c
+SIZE_OPCODE_P	./configs/two-wide.v	/^`define SIZE_OPCODE_P           32       \/\/ opcode size from original PISA i.e. 32bits$/;"	c
+SIZE_PC	./configs/DynamicConfig_ANY1.v	/^`define SIZE_PC                 32$/;"	c
+SIZE_PC	./configs/StaticConfig2_ANY1.v	/^`define SIZE_PC                 32$/;"	c
+SIZE_PC	./configs/one-wide.v	/^`define SIZE_PC                 32$/;"	c
+SIZE_PC	./configs/two-wide.v	/^`define SIZE_PC                 32$/;"	c
+SIZE_PHYSICAL_LOG	./configs/Config1.v	/^`define SIZE_PHYSICAL_LOG       (`SIZE_ACTIVELIST_LOG+1)$/;"	c
+SIZE_PHYSICAL_LOG	./configs/DynamicConfig.v	/^`define SIZE_PHYSICAL_LOG       9$/;"	c
+SIZE_PHYSICAL_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_PHYSICAL_LOG       7$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig1.v	/^`define SIZE_PHYSICAL_LOG       7$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig2.v	/^`define SIZE_PHYSICAL_LOG       8$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_PHYSICAL_LOG       6$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig3.v	/^`define SIZE_PHYSICAL_LOG       7$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig4.v	/^`define SIZE_PHYSICAL_LOG       8$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig5.v	/^`define SIZE_PHYSICAL_LOG       8$/;"	c
+SIZE_PHYSICAL_LOG	./configs/StaticConfig6.v	/^`define SIZE_PHYSICAL_LOG       9$/;"	c
+SIZE_PHYSICAL_LOG	./configs/one-wide.v	/^`define SIZE_PHYSICAL_LOG       6$/;"	c
+SIZE_PHYSICAL_LOG	./configs/two-wide.v	/^`define SIZE_PHYSICAL_LOG       7$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/Config1.v	/^`define SIZE_PHYSICAL_TABLE     (`SIZE_ACTIVELIST+`SIZE_RMT)$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/DynamicConfig.v	/^`define SIZE_PHYSICAL_TABLE     160$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/DynamicConfig_ANY1.v	/^`define SIZE_PHYSICAL_TABLE     128$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig1.v	/^`define SIZE_PHYSICAL_TABLE     96$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig2.v	/^`define SIZE_PHYSICAL_TABLE     128$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig2_ANY1.v	/^`define SIZE_PHYSICAL_TABLE     48$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig3.v	/^`define SIZE_PHYSICAL_TABLE     96$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig4.v	/^`define SIZE_PHYSICAL_TABLE     128$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig5.v	/^`define SIZE_PHYSICAL_TABLE     128$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/StaticConfig6.v	/^`define SIZE_PHYSICAL_TABLE     160$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/one-wide.v	/^`define SIZE_PHYSICAL_TABLE     64$/;"	c
+SIZE_PHYSICAL_TABLE	./configs/two-wide.v	/^`define SIZE_PHYSICAL_TABLE     96$/;"	c
+SIZE_PREDICTION_CNT	./configs/DynamicConfig_ANY1.v	/^`define SIZE_PREDICTION_CNT     2$/;"	c
+SIZE_PREDICTION_CNT	./configs/StaticConfig2_ANY1.v	/^`define SIZE_PREDICTION_CNT     2$/;"	c
+SIZE_PREDICTION_CNT	./configs/one-wide.v	/^`define SIZE_PREDICTION_CNT     2$/;"	c
+SIZE_PREDICTION_CNT	./configs/two-wide.v	/^`define SIZE_PREDICTION_CNT     2$/;"	c
+SIZE_RAS	./configs/DynamicConfig.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RAS                8$/;"	c
+SIZE_RAS	./configs/StaticConfig1.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/StaticConfig2.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RAS                8$/;"	c
+SIZE_RAS	./configs/StaticConfig3.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/StaticConfig4.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/StaticConfig5.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/StaticConfig6.v	/^`define SIZE_RAS                16$/;"	c
+SIZE_RAS	./configs/one-wide.v	/^`define SIZE_RAS                8$/;"	c
+SIZE_RAS	./configs/two-wide.v	/^`define SIZE_RAS                8$/;"	c
+SIZE_RAS_LOG	./configs/DynamicConfig.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RAS_LOG            3$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig1.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig2.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RAS_LOG            3$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig3.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig4.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig5.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/StaticConfig6.v	/^`define SIZE_RAS_LOG            4$/;"	c
+SIZE_RAS_LOG	./configs/one-wide.v	/^`define SIZE_RAS_LOG            3$/;"	c
+SIZE_RAS_LOG	./configs/two-wide.v	/^`define SIZE_RAS_LOG            3$/;"	c
+SIZE_RD	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RD                 8$/;"	c
+SIZE_RD	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RD                 8$/;"	c
+SIZE_RD	./configs/one-wide.v	/^`define SIZE_RD                 8$/;"	c
+SIZE_RD	./configs/two-wide.v	/^`define SIZE_RD                 8$/;"	c
+SIZE_RMT	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RMT                34$/;"	c
+SIZE_RMT	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RMT                34$/;"	c
+SIZE_RMT	./configs/one-wide.v	/^`define SIZE_RMT                34$/;"	c
+SIZE_RMT	./configs/two-wide.v	/^`define SIZE_RMT                34$/;"	c
+SIZE_RMT_LOG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RMT_LOG            6$/;"	c
+SIZE_RMT_LOG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RMT_LOG            6$/;"	c
+SIZE_RMT_LOG	./configs/one-wide.v	/^`define SIZE_RMT_LOG            6$/;"	c
+SIZE_RMT_LOG	./configs/two-wide.v	/^`define SIZE_RMT_LOG            6$/;"	c
+SIZE_RS	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RS                 8$/;"	c
+SIZE_RS	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RS                 8$/;"	c
+SIZE_RS	./configs/one-wide.v	/^`define SIZE_RS                 8$/;"	c
+SIZE_RS	./configs/two-wide.v	/^`define SIZE_RS                 8$/;"	c
+SIZE_RT	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RT                 8$/;"	c
+SIZE_RT	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RT                 8$/;"	c
+SIZE_RT	./configs/one-wide.v	/^`define SIZE_RT                 8$/;"	c
+SIZE_RT	./configs/two-wide.v	/^`define SIZE_RT                 8$/;"	c
+SIZE_RU	./configs/DynamicConfig_ANY1.v	/^`define SIZE_RU                 8$/;"	c
+SIZE_RU	./configs/StaticConfig2_ANY1.v	/^`define SIZE_RU                 8$/;"	c
+SIZE_RU	./configs/one-wide.v	/^`define SIZE_RU                 8$/;"	c
+SIZE_RU	./configs/two-wide.v	/^`define SIZE_RU                 8$/;"	c
+SIZE_SELECT_BLOCK	./configs/DynamicConfig_ANY1.v	/^`define SIZE_SELECT_BLOCK       8$/;"	c
+SIZE_SELECT_BLOCK	./configs/StaticConfig2_ANY1.v	/^`define SIZE_SELECT_BLOCK       8$/;"	c
+SIZE_SELECT_BLOCK	./configs/one-wide.v	/^`define SIZE_SELECT_BLOCK       8$/;"	c
+SIZE_SELECT_BLOCK	./configs/two-wide.v	/^`define SIZE_SELECT_BLOCK       8$/;"	c
+SIZE_SPECIAL_REG	./configs/DynamicConfig_ANY1.v	/^`define SIZE_SPECIAL_REG        2         \/\/ In case of SimpleScalar HI and LO$/;"	c
+SIZE_SPECIAL_REG	./configs/StaticConfig2_ANY1.v	/^`define SIZE_SPECIAL_REG        2         \/\/ In case of SimpleScalar HI and LO$/;"	c
+SIZE_SPECIAL_REG	./configs/one-wide.v	/^`define SIZE_SPECIAL_REG        2         \/\/ In case of SimpleScalar HI and LO$/;"	c
+SIZE_SPECIAL_REG	./configs/two-wide.v	/^`define SIZE_SPECIAL_REG        2        \/\/ In case of SimpleScalar HI and LO$/;"	c
+SIZE_TARGET	./configs/DynamicConfig_ANY1.v	/^`define SIZE_TARGET             26$/;"	c
+SIZE_TARGET	./configs/StaticConfig2_ANY1.v	/^`define SIZE_TARGET             26$/;"	c
+SIZE_TARGET	./configs/one-wide.v	/^`define SIZE_TARGET             26$/;"	c
+SIZE_TARGET	./configs/two-wide.v	/^`define SIZE_TARGET             26$/;"	c
+SRAM_DATA_WIDTH	./configs/DynamicConfig.v	/^`define SRAM_DATA_WIDTH 8$/;"	c
+SRAM_DATA_WIDTH	./configs/DynamicConfig_ANY1.v	/^`define SRAM_DATA_WIDTH 8$/;"	c
+SRAM_DATA_WIDTH	./configs/StaticConfig2_ANY1.v	/^`define SRAM_DATA_WIDTH 8$/;"	c
+SRAM_DATA_WIDTH	./configs/one-wide.v	/^`define SRAM_DATA_WIDTH 8$/;"	c
+SRAM_DATA_WIDTH	./configs/two-wide.v	/^`define SRAM_DATA_WIDTH 8$/;"	c
+STQ_CAM	./rams/STQ_CAM.sv	/^module STQ_CAM #($/;"	m
+STQ_CAM_PARTITIONED	./rams_partitioned/STQ_CAM_PARTITIONED.sv	/^module STQ_CAM_PARTITIONED #($/;"	m
+STQ_FOLLOWINGLD_RAM	./rams/STQ_FOLLOWINGLD_RAM.sv	/^module STQ_FOLLOWINGLD_RAM #($/;"	m
+STQ_FOLLOWINGLD_RAM_PARTITIONED	./rams_partitioned/STQ_FOLLOWINGLD_RAM_PARTITIONED.sv	/^module STQ_FOLLOWINGLD_RAM_PARTITIONED #($/;"	m
+STQ_RAM	./rams/STQ_RAM.sv	/^module STQ_RAM #($/;"	m
+STQ_RAM_PARTITIONED	./rams_partitioned/STQ_RAM_PARTITIONED.sv	/^module STQ_RAM_PARTITIONED #($/;"	m
+STRUCT_PARTS	./configs/DynamicConfig_ANY1.v	/^`define STRUCT_PARTS 4        \/\/ The number of partitions for reconfigurable structures$/;"	c
+STRUCT_PARTS	./configs/StaticConfig2_ANY1.v	/^`define STRUCT_PARTS 4    \/\/ The number of partitions for reconfigurable structures$/;"	c
+STRUCT_PARTS_LOG	./configs/DynamicConfig_ANY1.v	/^`define STRUCT_PARTS_LOG 2    $/;"	c
+STRUCT_PARTS_LOG	./configs/StaticConfig2_ANY1.v	/^`define STRUCT_PARTS_LOG 2    \/\/ The number of partitions for reconfigurable structures$/;"	c
+STRUCT_PARTS_LSQ	./configs/DynamicConfig_ANY1.v	/^`define STRUCT_PARTS_LSQ 2        \/\/ The number of partitions for register file RAMs$/;"	c
+STRUCT_PARTS_LSQ_LOG	./configs/DynamicConfig_ANY1.v	/^`define STRUCT_PARTS_LSQ_LOG 1    $/;"	c
+STX_path	./lsu/STX_path.sv	/^module STX_path ($/;"	m
+STX_path_structured	./lsu/STX_path_structured.sv	/^module STX_path_structured ($/;"	m
+Select	./issue/Select.sv	/^module Select #($/;"	m
+SelectBetweenBlocks	./issue/SelectBetweenBlocks.sv	/^module SelectBetweenBlocks #($/;"	m
+SelectBlock	./issue/SelectBlock.sv	/^module SelectBlock #($/;"	m
+SelectFromBlock	./issue/SelectFromBlock.sv	/^module SelectFromBlock #($/;"	m
+SelectInst	./fetch/SelectInst.sv	/^module SelectInst($/;"	m
+Simple_ALU	./execute/Simple_ALU.sv	/^module Simple_ALU ($/;"	m
+SpecFreeList	./rename/SpecFreeList.sv	/^module SpecFreeList($/;"	m
+SupRegFile	./regRead/SupRegFile.sv	/^module SupRegFile ($/;"	m
+THREE_SIMPLE	./configs/DynamicConfig.v	/^`define THREE_SIMPLE$/;"	c
+THREE_SIMPLE	./configs/DynamicConfig_ANY1.v	/^`define THREE_SIMPLE$/;"	c
+THREE_SIMPLE	./configs/StaticConfig5.v	/^`define THREE_SIMPLE$/;"	c
+THREE_SIMPLE	./configs/StaticConfig6.v	/^`define THREE_SIMPLE$/;"	c
+THROTTLE	./serdes/Packetizer_wide.v	/^    parameter THROTTLE      = 0, \/\/ Throttles the issuing of packets to L2 if 1$/;"	c
+THROTTLE_THRESHOLD	./serdes/Packetizer.v	/^    parameter THROTTLE_THRESHOLD      = 2  \/\/ Maximum number of outstanding requests to L2$/;"	c
+TLATNCAX8TF	./lib/clk_gater_ul.sv	/^  module TLATNCAX8TF (ECK, E, CK);$/;"	m
+TWO_SIMPLE	./configs/DynamicConfig.v	/^`define TWO_SIMPLE$/;"	c
+TWO_SIMPLE	./configs/DynamicConfig_ANY1.v	/^`define TWO_SIMPLE$/;"	c
+TWO_SIMPLE	./configs/StaticConfig3.v	/^`define TWO_SIMPLE$/;"	c
+TWO_SIMPLE	./configs/StaticConfig4.v	/^`define TWO_SIMPLE$/;"	c
+TWO_SIMPLE	./configs/StaticConfig5.v	/^`define TWO_SIMPLE$/;"	c
+TWO_SIMPLE	./configs/StaticConfig6.v	/^`define TWO_SIMPLE$/;"	c
+WAKEUP_CAM	./rams/WAKEUP_CAM.sv	/^module WAKEUP_CAM #($/;"	m
+WAKEUP_CAM_PARTITIONED	./rams_partitioned/WAKEUP_CAM_PARTITIONED.sv	/^module WAKEUP_CAM_PARTITIONED #($/;"	m
+WRITE_BYTE	./configs/DynamicConfig_ANY1.v	/^`define WRITE_BYTE(a,b)         $writeByte(a,b)$/;"	c
+WRITE_BYTE	./configs/DynamicConfig_ANY1.v	/^`define WRITE_BYTE(a,b)         \/\/$/;"	c
+WRITE_BYTE	./configs/StaticConfig2_ANY1.v	/^`define WRITE_BYTE(a,b)         $writeByte(a,b)$/;"	c
+WRITE_BYTE	./configs/StaticConfig2_ANY1.v	/^`define WRITE_BYTE(a,b)         \/\/$/;"	c
+WRITE_BYTE	./configs/one-wide.v	/^`define WRITE_BYTE(a,b)         $writeByte(a,b)$/;"	c
+WRITE_BYTE	./configs/one-wide.v	/^`define WRITE_BYTE(a,b)         \/\/$/;"	c
+WRITE_BYTE	./configs/two-wide.v	/^`define WRITE_BYTE(a,b)         $writeByte(a,b)$/;"	c
+WRITE_BYTE	./configs/two-wide.v	/^`define WRITE_BYTE(a,b)         \/\/$/;"	c
+WRITE_HALF	./configs/DynamicConfig_ANY1.v	/^`define WRITE_HALF(a,b)         $writeHalf(a,b)$/;"	c
+WRITE_HALF	./configs/DynamicConfig_ANY1.v	/^`define WRITE_HALF(a,b)         \/\/$/;"	c
+WRITE_HALF	./configs/StaticConfig2_ANY1.v	/^`define WRITE_HALF(a,b)         $writeHalf(a,b)$/;"	c
+WRITE_HALF	./configs/StaticConfig2_ANY1.v	/^`define WRITE_HALF(a,b)         \/\/$/;"	c
+WRITE_HALF	./configs/one-wide.v	/^`define WRITE_HALF(a,b)         $writeHalf(a,b)$/;"	c
+WRITE_HALF	./configs/one-wide.v	/^`define WRITE_HALF(a,b)         \/\/$/;"	c
+WRITE_HALF	./configs/two-wide.v	/^`define WRITE_HALF(a,b)         $writeHalf(a,b)$/;"	c
+WRITE_HALF	./configs/two-wide.v	/^`define WRITE_HALF(a,b)         \/\/$/;"	c
+WRITE_WORD	./configs/DynamicConfig_ANY1.v	/^`define WRITE_WORD(a,b)         $writeWord(a,b)$/;"	c
+WRITE_WORD	./configs/DynamicConfig_ANY1.v	/^`define WRITE_WORD(a,b)         \/\/$/;"	c
+WRITE_WORD	./configs/StaticConfig2_ANY1.v	/^`define WRITE_WORD(a,b)         $writeWord(a,b)$/;"	c
+WRITE_WORD	./configs/StaticConfig2_ANY1.v	/^`define WRITE_WORD(a,b)         \/\/$/;"	c
+WRITE_WORD	./configs/one-wide.v	/^`define WRITE_WORD(a,b)         $writeWord(a,b)$/;"	c
+WRITE_WORD	./configs/one-wide.v	/^`define WRITE_WORD(a,b)         \/\/$/;"	c
+WRITE_WORD	./configs/two-wide.v	/^`define WRITE_WORD(a,b)         $writeWord(a,b)$/;"	c
+WRITE_WORD	./configs/two-wide.v	/^`define WRITE_WORD(a,b)         \/\/$/;"	c
+Writeback_Ctrl	./writeback/Writeback_Ctrl.sv	/^module Writeback_Ctrl ($/;"	m
+Writeback_M	./writeback/Writeback_M.sv	/^module Writeback_M ($/;"	m
+Writeback_SC	./writeback/Writeback_SC.sv	/^module Writeback_SC ($/;"	m
+_status_word	./core_top/PerfMon.sv	/^    program_status_word     <= 9'h0; \/\/ making it 16 bit, only LSB 9 are used currently.$/;"	p
+_status_word	./core_top/PerfMon.sv	/^    program_status_word     <= {fetch1_stall_i,ctiq_stall_i,instBuf_stall_i,freelist_stall_i,backend_stall_i,ldq_stall_i,stq_stall_i,iq_stall_i,rob_stall_i}    ;$/;"	p
+asym_fifo_2c	./serdes/asym_fifo_2c.v	/^module asym_fifo_2c #($/;"	m
+byte_order	./serdes/asym_fifo_2c.v	/^    parameter byte_order        = 0   \/\/ 0=byte 0 is MSB, 1=byte 0 is LSB$/;"	c
+clk_gater_fg	./lib/clk_gater_fg.sv	/^module clk_gater_fg(clk_i,clkGated_o,clkEn_i);$/;"	m
+clk_gater_ul	./lib/clk_gater_ul.sv	/^module clk_gater_ul(clk_i,clkGated_o,clkEn_i);$/;"	m
+clk_packet	./serdes/Packetizer.v	/^    input                       clk_packet,$/;"	p
+clk_packet	./serdes/Packetizer_wide.v	/^    input                       clk_packet,$/;"	p
+clk_payload	./serdes/Depacketizer.v	/^    input                       clk_payload,$/;"	p
+clk_payload	./serdes/Depacketizer_split.v	/^    input                       clk_payload,$/;"	p
+clk_payload	./serdes/Depacketizer_wide.v	/^    input                       clk_payload,$/;"	p
+data_in_width	./serdes/asym_fifo_2c.v	/^    parameter data_in_width     = 8,$/;"	c
+data_packet	./serdes/Packetizer.v	/^wire [PACKET_WIDTH-1:0]         data_packet;$/;"	n
+data_packet	./serdes/Packetizer_split.v	/^wire [PACKET_WIDTH-1:0]         data_packet;$/;"	n
+data_packet	./serdes/Packetizer_wide.v	/^wire [PACKET_WIDTH-1:0]         data_packet;$/;"	n
+depth	./serdes/asym_fifo_2c.v	/^    parameter depth             = 16,$/;"	c
+err_mode	./serdes/asym_fifo_2c.v	/^    parameter err_mode          = 0,  \/\/ 0=latched, 1=unlatched$/;"	c
+header_packet	./serdes/Packetizer.v	/^wire [PACKET_WIDTH-1:0]         header_packet;$/;"	n
+header_packet	./serdes/Packetizer_split.v	/^wire [PACKET_WIDTH-1:0]         header_packet;$/;"	n
+header_packet	./serdes/Packetizer_wide.v	/^wire [PACKET_WIDTH-1:0]         header_packet;$/;"	n
+i	./serdes/Depacketizer.v	/^    integer i;$/;"	r
+i	./serdes/Depacketizer_wide.v	/^    integer i;$/;"	r
+i	./serdes/Packetizer.v	/^    integer i;$/;"	r
+i	./serdes/Packetizer_wide.v	/^    integer i;$/;"	r
+id	./serdes/Packetizer.v	/^wire                            id;$/;"	n
+id	./serdes/Packetizer_split.v	/^wire                            id;$/;"	n
+id	./serdes/Packetizer_wide.v	/^wire                            id;$/;"	n
+input	./serdes/Depacketizer.v	/^    input                       clk_packet,$/;"	c
+input	./serdes/Depacketizer.v	/^    input  [PACKET_WIDTH-1:0]   packet_i,$/;"	p
+input	./serdes/Depacketizer_split.v	/^    input                       clk_packet,$/;"	p
+input	./serdes/Depacketizer_split.v	/^    input  [PACKET_WIDTH-1:0]   packet_i,$/;"	p
+input	./serdes/Depacketizer_wide.v	/^    input                       clk_packet,$/;"	c
+input	./serdes/Depacketizer_wide.v	/^    input  [PACKET_WIDTH-1:0]   packet_i,$/;"	p
+input	./serdes/Packetizer.v	/^    input                       clk_payload,$/;"	c
+input	./serdes/Packetizer.v	/^    input                       packet_received_i$/;"	p
+input	./serdes/Packetizer.v	/^    input  [PAYLOAD_WIDTH-1:0]  payload_i,$/;"	p
+input	./serdes/Packetizer_split.v	/^    input                       clk_packet,$/;"	p
+input	./serdes/Packetizer_split.v	/^    input                       clk_payload,$/;"	p
+input	./serdes/Packetizer_split.v	/^    input                       packet_grant_i$/;"	p
+input	./serdes/Packetizer_split.v	/^    input  [PAYLOAD_WIDTH-1:0]  payload_i,$/;"	p
+input	./serdes/Packetizer_wide.v	/^    input                       clk_payload,$/;"	p
+input	./serdes/Packetizer_wide.v	/^    input                       packet_received_i$/;"	p
+input	./serdes/Packetizer_wide.v	/^    input  [PAYLOAD_WIDTH-1:0]  payload_i,$/;"	p
+input	./serdes/asym_fifo_2c.v	/^    input                       clk_pop,        \/\/ input clk for pop$/;"	c
+input	./serdes/asym_fifo_2c.v	/^    input                       flush_n,        \/\/ flush partial word, active low$/;"	p
+input	./serdes/asym_fifo_2c.v	/^    input  [data_in_width-1:0]  data_i,         \/\/ data to push$/;"	p
+integer	./serdes/Depacketizer.v	/^    input integer value;$/;"	p
+integer	./serdes/Depacketizer.v	/^function integer clog2;$/;"	f
+integer	./serdes/Depacketizer_wide.v	/^    input integer value;$/;"	p
+integer	./serdes/Depacketizer_wide.v	/^function integer clog2;$/;"	f
+integer	./serdes/Packetizer.v	/^    input integer value;$/;"	p
+integer	./serdes/Packetizer.v	/^function integer clog2;$/;"	f
+integer	./serdes/Packetizer_wide.v	/^    input integer value;$/;"	p
+integer	./serdes/Packetizer_wide.v	/^function integer clog2;$/;"	f
+l2	./testbenches/l2.sv	/^module l2 ($/;"	m
+l2_dcache	./testbenches/l2_dcache.sv	/^module l2_dcache #($/;"	m
+l2_icache	./testbenches/l2_icache.sv	/^module l2_icache #($/;"	m
+lock_o	./serdes/Packetizer.v	/^    output                      lock_o,$/;"	p
+lock_o	./serdes/Packetizer_wide.v	/^    output                      lock_o,$/;"	p
+memory_hier	./testbenches/memory_hier.sv	/^module memory_hier ($/;"	m
+n_pkts	./serdes/Packetizer.v	/^wire [N_PKTS_LOG:0]             n_pkts;$/;"	n
+n_pkts	./serdes/Packetizer_split.v	/^wire [N_PKTS_BITS-1:0]          n_pkts;$/;"	n
+n_pkts	./serdes/Packetizer_wide.v	/^wire [N_PKTS_LOG:0]             n_pkts;$/;"	n
+num_outstanding_pkts	./serdes/Packetizer.v	/^reg   [3:0]                     num_outstanding_pkts;$/;"	r
+num_outstanding_pkts	./serdes/Packetizer_wide.v	/^reg   [3:0]                     num_outstanding_pkts;$/;"	r
+output	./serdes/Depacketizer.v	/^    output                      packet_received_o$/;"	p
+output	./serdes/Depacketizer.v	/^    output [PAYLOAD_WIDTH-1:0]  payload_o,$/;"	p
+output	./serdes/Depacketizer_split.v	/^    output [PAYLOAD_WIDTH-1:0]  payload_o,$/;"	p
+output	./serdes/Depacketizer_wide.v	/^    output                      packet_received_o$/;"	p
+output	./serdes/Depacketizer_wide.v	/^    output [PAYLOAD_WIDTH-1:0]  payload_o,$/;"	p
+output	./serdes/Packetizer.v	/^    output                      packet_req_o,$/;"	p
+output	./serdes/Packetizer.v	/^    output                      push_af_o,$/;"	p
+output	./serdes/Packetizer.v	/^    output [PACKET_WIDTH-1:0]   packet_o,$/;"	p
+output	./serdes/Packetizer_split.v	/^    output                      lock_o,$/;"	p
+output	./serdes/Packetizer_wide.v	/^    output                      packet_req_o,$/;"	p
+output	./serdes/Packetizer_wide.v	/^    output                      push_af_o,$/;"	p
+output	./serdes/Packetizer_wide.v	/^    output [PACKET_WIDTH-1:0]   packet_o,$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      pop_ae_o,       \/\/ almost empty$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      pop_af_o,       \/\/ almost full$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      pop_error_o     \/\/ underrun$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      push_ae_o,      \/\/ almost empty$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      push_af_o,      \/\/ almost full$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      push_error_o,   \/\/ overrun$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output                      ram_full_o,     \/\/ full$/;"	p
+output	./serdes/asym_fifo_2c.v	/^    output [data_out_width-1:0] data_o,         \/\/ data to pop$/;"	p
+packet	./serdes/Packetizer.v	/^reg  [PACKET_WIDTH-1:0]         packet;$/;"	r
+packet	./serdes/Packetizer_split.v	/^reg  [PACKET_WIDTH-1:0]         packet;$/;"	r
+packet	./serdes/Packetizer_wide.v	/^reg  [PACKET_WIDTH-1:0]         packet;$/;"	r
+packet_af_o	./serdes/Depacketizer.v	/^    output                      packet_af_o,$/;"	p
+packet_af_o	./serdes/Depacketizer_split.v	/^    output                      packet_af_o,$/;"	p
+packet_af_o	./serdes/Depacketizer_wide.v	/^    output                      packet_af_o,$/;"	p
+packet_grant_d1	./serdes/Packetizer.v	/^reg packet_grant_d1;$/;"	r
+packet_grant_d1	./serdes/Packetizer_wide.v	/^reg packet_grant_d1;$/;"	r
+packet_grant_i	./serdes/Packetizer.v	/^    input                       packet_grant_i,$/;"	p
+packet_grant_i	./serdes/Packetizer_wide.v	/^    input                       packet_grant_i,$/;"	p
+packet_id	./serdes/Depacketizer.v	/^wire                            packet_id;$/;"	n
+packet_id	./serdes/Depacketizer_split.v	/^wire                            packet_id;$/;"	n
+packet_id	./serdes/Depacketizer_wide.v	/^reg                             packet_id;$/;"	r
+packet_issued	./serdes/Packetizer.v	/^reg                             packet_issued;$/;"	r
+packet_issued	./serdes/Packetizer_wide.v	/^reg                             packet_issued;$/;"	r
+packet_n_pkts	./serdes/Depacketizer.v	/^wire [N_PKTS_LOG:0]             packet_n_pkts;$/;"	n
+packet_n_pkts	./serdes/Depacketizer_split.v	/^wire [N_PKTS_BITS-1:0]          packet_n_pkts;$/;"	n
+packet_n_pkts	./serdes/Depacketizer_wide.v	/^wire [N_PKTS_LOG:0]             packet_n_pkts;$/;"	n
+packet_num	./serdes/Depacketizer.v	/^reg  [N_PKTS_LOG:0]             packet_num;$/;"	r
+packet_num	./serdes/Depacketizer_split.v	/^reg  [N_PKTS_BITS-1:0]          packet_num;$/;"	r
+packet_num	./serdes/Depacketizer_wide.v	/^reg  [N_PKTS_LOG:0]             packet_num;$/;"	r
+packet_num	./serdes/Packetizer.v	/^reg  [N_PKTS_LOG:0]             packet_num;$/;"	r
+packet_num	./serdes/Packetizer_split.v	/^reg  [N_PKTS_BITS-1:0]          packet_num;$/;"	r
+packet_num	./serdes/Packetizer_wide.v	/^reg  [N_PKTS_LOG:0]             packet_num;$/;"	r
+packet_o	./serdes/Packetizer_split.v	/^    output [PACKET_WIDTH-1:0]   packet_o,$/;"	p
+packet_req_o	./serdes/Packetizer_split.v	/^    output                      packet_req_o,$/;"	p
+packet_valid	./serdes/Depacketizer.v	/^wire                            packet_valid;$/;"	n
+packet_valid	./serdes/Depacketizer_split.v	/^wire                            packet_valid;$/;"	n
+packet_valid	./serdes/Depacketizer_wide.v	/^reg                             packet_valid;$/;"	r
+packet_valid_d1	./serdes/Depacketizer_wide.v	/^reg                             packet_valid_d1;$/;"	r
+parameter	./serdes/Depacketizer.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Depacketizer.v	/^    parameter N_PKTS_BITS   = 4, \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+parameter	./serdes/Depacketizer.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Depacketizer_split.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Depacketizer_split.v	/^    parameter N_PKTS_BITS   = 4 \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+parameter	./serdes/Depacketizer_split.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Depacketizer_wide.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Depacketizer_wide.v	/^    parameter N_PKTS_BITS   = 4, \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+parameter	./serdes/Depacketizer_wide.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Packetizer.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Packetizer.v	/^    parameter DEPTH_LOG     = 4,$/;"	c
+parameter	./serdes/Packetizer.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Packetizer.v	/^    parameter THROTTLE      = 0, \/\/ Throttles the issuing of packets to L2 if 1$/;"	c
+parameter	./serdes/Packetizer_split.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Packetizer_split.v	/^    parameter N_PKTS_BITS   = 4 \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+parameter	./serdes/Packetizer_split.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Packetizer_wide.v	/^    parameter DEPTH         = 16,$/;"	c
+parameter	./serdes/Packetizer_wide.v	/^    parameter N_PKTS_BITS   = 4, \/\/ must be the maximum number of bits used by any packetizer\/depacketizer$/;"	c
+parameter	./serdes/Packetizer_wide.v	/^    parameter PACKET_WIDTH  = 16,$/;"	c
+parameter	./serdes/Packetizer_wide.v	/^    parameter THROTTLE_THRESHOLD      = 2  \/\/ Maximum number of outstanding requests to L2$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter data_out_width    = 8,$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter depth_log         = 4,$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter pop_af_lvl        = 15, \/\/ pop almost full$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter push_af_lvl       = 15, \/\/ push almost full$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter push_sync         = 1,  \/\/ 1=single reg, 2=double, 3=triple$/;"	c
+parameter	./serdes/asym_fifo_2c.v	/^    parameter rst_mode          = 0,  \/\/ 0=async, 1=sync$/;"	c
+part_wd_o	./serdes/asym_fifo_2c.v	/^    output                      part_wd_o,      \/\/ partial word in input buffer$/;"	p
+payload_grant	./serdes/Packetizer.v	/^wire                            payload_grant;$/;"	n
+payload_grant	./serdes/Packetizer_split.v	/^wire                            payload_grant;$/;"	n
+payload_grant	./serdes/Packetizer_wide.v	/^wire                            payload_grant;$/;"	n
+payload_grant_d1	./serdes/Packetizer.v	/^reg                             payload_grant_d1;$/;"	r
+payload_grant_d1	./serdes/Packetizer_split.v	/^reg                             payload_grant_d1;$/;"	r
+payload_grant_d1	./serdes/Packetizer_wide.v	/^reg                             payload_grant_d1;$/;"	r
+payload_grant_d2	./serdes/Packetizer.v	/^reg                             payload_grant_d2;$/;"	r
+payload_grant_d2	./serdes/Packetizer_split.v	/^reg                             payload_grant_d2;$/;"	r
+payload_grant_d2	./serdes/Packetizer_wide.v	/^reg                             payload_grant_d2;$/;"	r
+payload_grant_o	./serdes/Packetizer.v	/^    output                      payload_grant_o,$/;"	p
+payload_grant_o	./serdes/Packetizer_split.v	/^    output                      payload_grant_o,$/;"	p
+payload_grant_o	./serdes/Packetizer_wide.v	/^    output                      payload_grant_o,$/;"	p
+payload_req_i	./serdes/Packetizer.v	/^    input                       payload_req_i,$/;"	p
+payload_req_i	./serdes/Packetizer_split.v	/^    input                       payload_req_i,$/;"	p
+payload_req_i	./serdes/Packetizer_wide.v	/^    input                       payload_req_i,$/;"	p
+payload_valid_o	./serdes/Depacketizer.v	/^    output                      payload_valid_o,$/;"	p
+payload_valid_o	./serdes/Depacketizer_split.v	/^    output                      payload_valid_o$/;"	p
+payload_valid_o	./serdes/Depacketizer_wide.v	/^    output                      payload_valid_o,$/;"	p
+pop_ae_lvl	./serdes/asym_fifo_2c.v	/^    parameter pop_ae_lvl        = 1, \/\/ pop almost empty$/;"	c
+pop_empty	./serdes/Depacketizer.v	/^wire                            pop_empty;$/;"	n
+pop_empty	./serdes/Depacketizer_wide.v	/^wire                            pop_empty;$/;"	n
+pop_empty	./serdes/Packetizer.v	/^wire                            pop_empty;$/;"	n
+pop_empty	./serdes/Packetizer_wide.v	/^wire                            pop_empty;$/;"	n
+pop_empty_hi	./serdes/Depacketizer_split.v	/^wire                            pop_empty_hi;$/;"	n
+pop_empty_hi	./serdes/Packetizer_split.v	/^wire                            pop_empty_hi;$/;"	n
+pop_empty_lo	./serdes/Depacketizer_split.v	/^wire                            pop_empty_lo;$/;"	n
+pop_empty_lo	./serdes/Packetizer_split.v	/^wire                            pop_empty_lo;$/;"	n
+pop_empty_o	./serdes/asym_fifo_2c.v	/^    output                      pop_empty_o,    \/\/ empty$/;"	p
+pop_full_o	./serdes/asym_fifo_2c.v	/^    output                      pop_full_o,     \/\/ full$/;"	p
+pop_hf_o	./serdes/asym_fifo_2c.v	/^    output                      pop_hf_o,       \/\/ half full$/;"	p
+pop_req_n	./serdes/Packetizer.v	/^wire                            pop_req_n;$/;"	n
+pop_req_n	./serdes/Packetizer_split.v	/^wire                            pop_req_n;$/;"	n
+pop_req_n	./serdes/Packetizer_wide.v	/^wire                            pop_req_n;$/;"	n
+pop_req_n	./serdes/asym_fifo_2c.v	/^    input                       pop_req_n,      \/\/ pop request, active low$/;"	p
+pop_sync	./serdes/asym_fifo_2c.v	/^    parameter pop_sync          = 1,  \/\/ 1=single reg, 2=double, 3=triple$/;"	c
+ppa_decode	./decode/ppa_decode.sv	/^module ppa_decode$/;"	m
+ppa_dispatch	./dispatch/ppa_dispatch.sv	/^module ppa_dispatch$/;"	m
+ppa_execute_ctrl	./execute/ppa_execute_ctrl.sv	/^module ppa_execute_ctrl$/;"	m
+ppa_execute_m	./execute/ppa_execute_m.sv	/^module ppa_execute_m$/;"	m
+ppa_execute_sc	./execute/ppa_execute_sc.sv	/^module ppa_execute_sc$/;"	m
+ppa_fetch1	./fetch/ppa_fetch1.sv	/^module ppa_fetch1$/;"	m
+ppa_fetch2	./fetch/ppa_fetch2.sv	/^module ppa_fetch2$/;"	m
+ppa_rename	./rename/ppa_rename.sv	/^module ppa_rename$/;"	m
+process_packet	./serdes/Depacketizer.v	/^wire                            process_packet;$/;"	n
+process_packet	./serdes/Depacketizer_split.v	/^wire                            process_packet;$/;"	n
+process_packet	./serdes/Depacketizer_wide.v	/^wire                            process_packet;$/;"	n
+process_packet_reg	./serdes/Depacketizer.v	/^reg                             process_packet_reg;$/;"	r
+process_packet_reg	./serdes/Depacketizer_split.v	/^reg                             process_packet_reg;$/;"	r
+process_packet_reg	./serdes/Depacketizer_wide.v	/^reg                             process_packet_reg;$/;"	r
+push_ae_lvl	./serdes/asym_fifo_2c.v	/^    parameter push_ae_lvl       = 1, \/\/ push almost empty$/;"	c
+push_af	./serdes/Depacketizer.v	/^wire                            push_af;$/;"	n
+push_af	./serdes/Depacketizer_wide.v	/^wire                            push_af;$/;"	n
+push_af	./serdes/Packetizer.v	/^wire                            push_af;$/;"	n
+push_af	./serdes/Packetizer_wide.v	/^wire                            push_af;$/;"	n
+push_af_hi	./serdes/Depacketizer_split.v	/^wire                            push_af_hi;$/;"	n
+push_af_hi	./serdes/Packetizer_split.v	/^wire                            push_af_hi;$/;"	n
+push_af_lo	./serdes/Depacketizer_split.v	/^wire                            push_af_lo;$/;"	n
+push_af_lo	./serdes/Packetizer_split.v	/^wire                            push_af_lo;$/;"	n
+push_empty_o	./serdes/asym_fifo_2c.v	/^    output                      push_empty_o,   \/\/ empty$/;"	p
+push_full_o	./serdes/asym_fifo_2c.v	/^    output                      push_full_o,    \/\/ very full$/;"	p
+push_hf_o	./serdes/asym_fifo_2c.v	/^    output                      push_hf_o,      \/\/ half full$/;"	p
+push_req_n	./serdes/Depacketizer.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/Depacketizer_split.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/Depacketizer_wide.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/Packetizer.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/Packetizer_split.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/Packetizer_wide.v	/^wire                            push_req_n;$/;"	n
+push_req_n	./serdes/asym_fifo_2c.v	/^    input                       push_req_n,     \/\/ push request, active low$/;"	p
+rd_addr	./serdes/asym_fifo_2c.v	/^wire [depth_log-1  : 0] rd_addr;$/;"	n
+rd_data	./serdes/asym_fifo_2c.v	/^wire [data_width-1 : 0] rd_data;$/;"	n
+reset	./serdes/Depacketizer_split.v	/^    input                       reset,$/;"	p
+reset	./serdes/Packetizer_split.v	/^    input                       reset,$/;"	p
+reset	./serdes/Packetizer_wide.v	/^    input                       reset,$/;"	p
+rst_n	./serdes/asym_fifo_2c.v	/^    input                       rst_n,          \/\/ reset, active low$/;"	p
+simulate	./testbenches/RAM_CONFIGURABLE_tb.sv	/^module simulate();$/;"	m
+simulate	./testbenches/RAM_PARTITIONED_tb.sv	/^module simulate();$/;"	m
+simulate	./testbenches/RAM_STATIC_CONFIG_tb.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_chip.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_chip_power.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_chip_reconfig.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_chip_reconfig_power.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_power.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_reconfig.sv	/^module simulate();$/;"	m
+simulate	./testbenches/simulate_reconfig_power.sv	/^module simulate();$/;"	m
+start_packet	./serdes/Packetizer_wide.v	/^wire [PACKET_WIDTH-1:0]         start_packet;$/;"	n
+tmp	./serdes/Depacketizer.v	/^    integer tmp;$/;"	r
+tmp	./serdes/Depacketizer_wide.v	/^    integer tmp;$/;"	r
+tmp	./serdes/Packetizer.v	/^    integer tmp;$/;"	r
+tmp	./serdes/Packetizer_wide.v	/^    integer tmp;$/;"	r
+we_n	./serdes/asym_fifo_2c.v	/^wire                    we_n;$/;"	n
+wr_addr	./serdes/asym_fifo_2c.v	/^wire [depth_log-1  : 0] wr_addr;$/;"	n
+wr_data	./serdes/asym_fifo_2c.v	/^wire [data_width-1 : 0] wr_data;$/;"	n

@@ -1,0 +1,101 @@
+## CREATE POWER DOMAINS 
+create_power_domain PD_CAM 
+create_power_domain PD_PART0 -elements {INST_LOOP[0].cam_instance} -scope INST_LOOP[0].cam_instance 
+create_power_domain PD_PART1 -elements {INST_LOOP[1].cam_instance} -scope INST_LOOP[1].cam_instance 
+create_power_domain PD_PART2 -elements {INST_LOOP[2].cam_instance} -scope INST_LOOP[2].cam_instance 
+create_power_domain PD_PART3 -elements {INST_LOOP[3].cam_instance} -scope INST_LOOP[3].cam_instance 
+
+## SUPPLY NETWORK - PD_PART0
+create_supply_net VDD -domain INST_LOOP[0].cam_instance/PD_PART0
+create_supply_net VSS -domain INST_LOOP[0].cam_instance/PD_PART0 
+
+create_supply_port VDD -domain INST_LOOP[0].cam_instance/PD_PART0 
+create_supply_port VSS -domain INST_LOOP[0].cam_instance/PD_PART0
+
+connect_supply_net INST_LOOP[0].cam_instance/VDD -ports {INST_LOOP[0].cam_instance/VDD} 
+connect_supply_net INST_LOOP[0].cam_instance/VSS -ports {INST_LOOP[0].cam_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[0].cam_instance/PD_PART0 -primary_power_net INST_LOOP[0].cam_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[0].cam_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART1
+create_supply_net VDD -domain INST_LOOP[1].cam_instance/PD_PART1
+create_supply_net VSS -domain INST_LOOP[1].cam_instance/PD_PART1 
+
+create_supply_port VDD -domain INST_LOOP[1].cam_instance/PD_PART1 
+create_supply_port VSS -domain INST_LOOP[1].cam_instance/PD_PART1
+
+connect_supply_net INST_LOOP[1].cam_instance/VDD -ports {INST_LOOP[1].cam_instance/VDD} 
+connect_supply_net INST_LOOP[1].cam_instance/VSS -ports {INST_LOOP[1].cam_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[1].cam_instance/PD_PART1 -primary_power_net INST_LOOP[1].cam_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[1].cam_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART2
+create_supply_net VDD -domain INST_LOOP[2].cam_instance/PD_PART2
+create_supply_net VSS -domain INST_LOOP[2].cam_instance/PD_PART2 
+
+create_supply_port VDD -domain INST_LOOP[2].cam_instance/PD_PART2 
+create_supply_port VSS -domain INST_LOOP[2].cam_instance/PD_PART2
+
+connect_supply_net INST_LOOP[2].cam_instance/VDD -ports {INST_LOOP[2].cam_instance/VDD} 
+connect_supply_net INST_LOOP[2].cam_instance/VSS -ports {INST_LOOP[2].cam_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[2].cam_instance/PD_PART2 -primary_power_net INST_LOOP[2].cam_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[2].cam_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART3
+create_supply_net VDD -domain INST_LOOP[3].cam_instance/PD_PART3
+create_supply_net VSS -domain INST_LOOP[3].cam_instance/PD_PART3 
+
+create_supply_port VDD -domain INST_LOOP[3].cam_instance/PD_PART3 
+create_supply_port VSS -domain INST_LOOP[3].cam_instance/PD_PART3
+
+connect_supply_net INST_LOOP[3].cam_instance/VDD -ports {INST_LOOP[3].cam_instance/VDD} 
+connect_supply_net INST_LOOP[3].cam_instance/VSS -ports {INST_LOOP[3].cam_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[3].cam_instance/PD_PART3 -primary_power_net INST_LOOP[3].cam_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[3].cam_instance/VSS 
+
+## SUPPLY NETWORK - PD_CAM 
+create_supply_port VDD 
+create_supply_port VSS 
+
+create_supply_net VDD -domain PD_CAM 
+create_supply_net VSS -domain PD_CAM 
+
+create_supply_net PART0_VDD -domain PD_CAM 
+create_supply_net PART1_VDD -domain PD_CAM 
+create_supply_net PART2_VDD -domain PD_CAM 
+create_supply_net PART3_VDD -domain PD_CAM 
+
+set_domain_supply_net PD_CAM -primary_power_net VDD -primary_ground_net VSS 
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net PART0_VDD -ports {INST_LOOP[0].cam_instance/VDD} 
+connect_supply_net PART1_VDD -ports {INST_LOOP[1].cam_instance/VDD} 
+connect_supply_net PART2_VDD -ports {INST_LOOP[2].cam_instance/VDD} 
+connect_supply_net PART3_VDD -ports {INST_LOOP[3].cam_instance/VDD} 
+connect_supply_net VSS -ports {VSS  INST_LOOP[0].cam_instance/VSS \
+                                    INST_LOOP[1].cam_instance/VSS \
+                                    INST_LOOP[2].cam_instance/VSS \
+                                    INST_LOOP[3].cam_instance/VSS} 
+
+## Power Switches
+create_power_switch PD_PART0_SW -domain PD_CAM -output_supply_port {vout PART0_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[0]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART1_SW -domain PD_CAM -output_supply_port {vout PART1_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[1]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART2_SW -domain PD_CAM -output_supply_port {vout PART2_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[2]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART3_SW -domain PD_CAM -output_supply_port {vout PART3_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[3]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+

@@ -1,0 +1,25 @@
+## CREATE POWER DOMAINS 
+#create_power_domain PD_IBUFF 
+
+## Change the scope to IBUFF_RAM ram instance
+set_scope instBuffer/ram_configurable
+load_upf RamConfigurable.upf
+set_scope ../..
+
+## SUPPLY NETWORK - PD_IBUFF 
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_IBUFF 
+#create_supply_net VSS -domain PD_IBUFF 
+
+#set_domain_supply_net PD_IBUFF -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope
+connect_supply_net VDD -ports {instBuf/instBuffer/ram_configurable/VDD}
+
+connect_supply_net VSS -ports {instBuf/instBuffer/ram_configurable/VSS} 
+

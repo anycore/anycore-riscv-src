@@ -1,0 +1,106 @@
+## Change the scope to BTB module
+set_scope RMT
+
+## CREATE POWER DOMAINS 
+#create_power_domain PD_RMT 
+
+## Change the scope to Lane0
+set_scope LANEGEN[0].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## Change the scope to Lane1
+set_scope LANEGEN[1].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## Change the scope to Lane2
+set_scope LANEGEN[2].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## Change the scope to Lane3
+set_scope LANEGEN[3].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## Change the scope to Lane4
+set_scope LANEGEN[4].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## Change the scope to Lane5
+set_scope LANEGEN[5].lane
+load_upf RenameLane.upf
+set_scope ..
+
+## SUPPLY NETWORK - TOP in scope RenameMapTable
+#create_supply_port VDD 
+#create_supply_port VSS 
+
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_RMT 
+#create_supply_net VSS -domain PD_RMT 
+
+#set_domain_supply_net PD_RMT -primary_power_net VDD -primary_ground_net VSS 
+
+## VDD and VSS networks in scope RenameMapTable
+set_scope
+connect_supply_net VDD -ports {rename/RMT/LANEGEN[0].lane/VDD \
+                               rename/RMT/LANEGEN[1].lane/VDD \
+                               rename/RMT/LANEGEN[2].lane/VDD \
+                               rename/RMT/LANEGEN[3].lane/VDD \
+                               rename/RMT/LANEGEN[4].lane/VDD \
+                               rename/RMT/LANEGEN[5].lane/VDD}
+
+connect_supply_net VSS -ports {rename/RMT/LANEGEN[0].lane/VSS \
+                               rename/RMT/LANEGEN[1].lane/VSS \
+                               rename/RMT/LANEGEN[2].lane/VSS \
+                               rename/RMT/LANEGEN[3].lane/VSS \
+                               rename/RMT/LANEGEN[4].lane/VSS \
+                               rename/RMT/LANEGEN[5].lane/VSS}
+
+
+
+## Change scope back to Rename from RenameMapTable
+set_scope ..
+
+## Not using partitioned RAM for FreeListRAM right now
+## This will be converted to partitioned RAM pretty soon
+### Change scope to SpecFreeList
+#set_scope specfreelist/freeList/ram_configurable
+#load_upf RamConfigurable.upf
+### Move back to scope Rename
+#set_scope ..
+#set_scope ..
+#set_scope ..
+
+## SUPPLY NETWORK - TOP in scope Rename
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_RENAME 
+#create_supply_net VSS -domain PD_RENAME
+
+#set_domain_supply_net PD_RENAME -primary_power_net VDD -primary_ground_net VSS 
+
+## VDD and VSS networks in scope Rename
+## Connect VDD and VSS to the ports in the two main components
+## of Rename, namely RMT and SpecFreeList
+#connect_supply_net VDD -ports {VDD  RMT/VDD  \
+#                                    specfreelist/freeList/ram_configurable/VDD} 
+#
+#connect_supply_net VSS -ports {VSS  RMT/VSS  \
+#                                    specfreelist/freeList/ram_configurable/VSS} 
+
+#set_scope
+#connect_supply_net VDD -ports {RMT/VDD}
+#
+#connect_supply_net VSS -ports {RMT/VSS}
+
+

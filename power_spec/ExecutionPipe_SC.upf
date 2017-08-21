@@ -1,0 +1,29 @@
+## CREATE POWER DOMAINS 
+create_power_domain PD_EX_SC 
+
+
+## SUPPLY NETWORK - PD_EX_SC
+create_supply_net VDD -domain PD_EX_SC 
+create_supply_net VSS -domain PD_EX_SC
+
+create_supply_port VDD -domain PD_EX_SC 
+create_supply_port VSS -domain PD_EX_SC
+
+
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net VSS -ports {VSS} 
+
+## Power Switch
+create_supply_net SWITCHED_VDD -domain PD_EX_SC 
+
+
+create_power_switch PD_EX_SC_SW  -domain PD_EX_SC -output_supply_port {vout SWITCHED_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl laneActive_i} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+## Set domain power and ground supplies
+set_domain_supply_net PD_EX_SC -primary_power_net SWITCHED_VDD -primary_ground_net VSS 
+
+
+

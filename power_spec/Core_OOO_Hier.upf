@@ -1,0 +1,124 @@
+## Check that the names are simple
+#set mv_input_enforce_simple_names true
+
+## CREATE POWER DOMAINS 
+create_power_domain TOP -include_scope
+ 
+## SUPPLY NETWORK - TOP 
+create_supply_port VDD -domain TOP 
+create_supply_port VSS -domain TOP
+
+create_supply_net VDD -domain TOP 
+create_supply_net VSS -domain TOP
+
+set_domain_supply_net TOP -primary_power_net VDD -primary_ground_net VSS 
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net VSS -ports {VSS}
+
+
+set_scope /fs1
+load_upf FetchStage1.upf
+set_scope
+
+set_scope /fs1fs2
+load_upf Fetch1Fetch2.upf
+set_scope
+
+set_scope /fs2
+load_upf FetchStage2.upf
+set_scope
+
+set_scope /fs2dec
+load_upf Fetch2Decode.upf
+set_scope
+
+set_scope /decode
+load_upf Decode.upf
+set_scope
+
+set_scope /instBuf
+load_upf InstructionBuffer.upf
+set_scope
+
+set_scope /instBufRen
+load_upf InstBufRename.upf
+set_scope
+
+set_scope /rename
+load_upf Rename.upf
+set_scope
+
+set_scope /renDis
+load_upf RenameDispatch.upf
+set_scope
+
+## No scope for per lane gating right now
+#set_scope /dispatch
+#load_upf Dispatch.upf
+#set_scope
+
+set_scope /issueq
+load_upf IssueQueue.upf
+set_scope
+
+set_scope /iq_regread
+load_upf IssueQRegRead.upf
+set_scope
+
+set_scope /registerfile
+load_upf PhyRegFile.upf
+set_scope
+
+set_scope /exePipe2
+load_upf ExecutionPipe_SC_Both.upf
+set_scope
+connect_supply_net VDD -ports {exePipe2/VDD}
+
+set_scope /exePipe3
+load_upf ExecutionPipe_SC_Both.upf
+set_scope
+connect_supply_net VDD -ports {exePipe3/VDD}
+
+set_scope /exePipe4
+load_upf ExecutionPipe_SC.upf
+set_scope
+connect_supply_net VDD -ports {exePipe4/VDD}
+
+set_scope /exePipe5
+load_upf ExecutionPipe_SC.upf
+set_scope
+connect_supply_net VDD -ports {exePipe5/VDD}
+
+set_scope /lsu
+load_upf LSU.upf
+set_scope
+
+set_scope /activeList
+load_upf ActiveList.upf
+set_scope
+
+
+
+
+
+## POWER STATE TABLE 
+### CREATE NET VOLTAGES 
+#set_voltage 0.99  -object_list [get_supply_nets -hierarchical *VDD]
+#set_voltage 0     -object_list [get_supply_nets -hierarchical *VSS]
+#
+### CREATE PORT STATES 
+#foreach_in_collection p1 [get_supply_ports -hierarchical *VDD] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0.99} -state {OFF off}
+#}
+#foreach_in_collection p1 [get_supply_ports -hierarchical *VSS] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0}
+#}
+#
+### OPERATING SCENARIOS
+#create_pst coretop_pst -supplies  {VDD VSS}
+#
+#add_pst_state s0 -pst ram_partition_pst -state {ACTIVE ACTIVE} 
+

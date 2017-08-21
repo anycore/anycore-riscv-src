@@ -1,0 +1,83 @@
+## CREATE POWER DOMAINS 
+#create_power_domain PD_IQREGREAD 
+
+## Change the scope to Lane0
+set_scope PIPEREG[0].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane1
+set_scope PIPEREG[1].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane2
+set_scope PIPEREG[2].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane3
+set_scope PIPEREG[3].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane4
+set_scope PIPEREG[4].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane5
+set_scope PIPEREG[5].iqRRReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## SUPPLY NETWORK - PD_IQREGREAD 
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_IQREGREAD 
+#create_supply_net VSS -domain PD_IQREGREAD 
+
+#set_domain_supply_net PD_IQREGREAD -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope
+connect_supply_net VDD -ports {iq_regread/PIPEREG[0].iqRRReg/VDD  \
+                               iq_regread/PIPEREG[1].iqRRReg/VDD  \
+                               iq_regread/PIPEREG[2].iqRRReg/VDD  \
+                               iq_regread/PIPEREG[3].iqRRReg/VDD  \
+                               iq_regread/PIPEREG[4].iqRRReg/VDD  \
+                               iq_regread/PIPEREG[5].iqRRReg/VDD} 
+
+connect_supply_net VSS -ports {iq_regread/PIPEREG[0].iqRRReg/VSS  \
+                               iq_regread/PIPEREG[1].iqRRReg/VSS  \
+                               iq_regread/PIPEREG[2].iqRRReg/VSS  \ 
+                               iq_regread/PIPEREG[3].iqRRReg/VSS  \
+                               iq_regread/PIPEREG[4].iqRRReg/VSS  \
+                               iq_regread/PIPEREG[5].iqRRReg/VSS} 
+
+
+
+## POWER STATE TABLE 
+### CREATE NET VOLTAGES 
+#set_voltage 0.99  -object_list [get_supply_nets VDD]
+#set_voltage 0     -object_list [get_supply_nets VSS]
+#
+### CREATE PORT STATES 
+#foreach_in_collection p1 [get_supply_ports VDD] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0.99} -state {OFF off}
+#}
+#foreach_in_collection p1 [get_supply_ports VSS] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0}
+#}
+#
+### OPERATING SCENARIOS
+#create_pst FS2DEC_pst -supplies  { VDD   VSS}
+#
+#add_pst_state s0 -pst btb_ram_pst -state {ACTIVE ACTIVE}
+
+

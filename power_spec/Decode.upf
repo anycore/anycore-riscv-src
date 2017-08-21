@@ -1,0 +1,83 @@
+## CREATE POWER DOMAINS 
+#create_power_domain PD_DECODE 
+
+## Change the scope to Lane0
+set_scope decode_PISA_gen[0].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## Change the scope to Lane1
+set_scope decode_PISA_gen[1].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## Change the scope to Lane2
+set_scope decode_PISA_gen[2].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## Change the scope to Lane3
+set_scope decode_PISA_gen[3].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## Change the scope to Lane4
+set_scope decode_PISA_gen[4].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## Change the scope to Lane5
+set_scope decode_PISA_gen[5].decode_PISA
+load_upf Decode_PISA.upf
+set_scope ..
+
+## SUPPLY NETWORK - PD_DECODE 
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_DECODE 
+#create_supply_net VSS -domain PD_DECODE 
+
+#set_domain_supply_net PD_DECODE -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope
+connect_supply_net VDD -ports {decode/decode_PISA_gen[0].decode_PISA/VDD  \
+                               decode/decode_PISA_gen[1].decode_PISA/VDD  \
+                               decode/decode_PISA_gen[2].decode_PISA/VDD  \
+                               decode/decode_PISA_gen[3].decode_PISA/VDD  \
+                               decode/decode_PISA_gen[4].decode_PISA/VDD  \
+                               decode/decode_PISA_gen[5].decode_PISA/VDD } 
+
+connect_supply_net VSS -ports {decode/decode_PISA_gen[0].decode_PISA/VSS  \
+                               decode/decode_PISA_gen[1].decode_PISA/VSS  \
+                               decode/decode_PISA_gen[2].decode_PISA/VSS  \ 
+                               decode/decode_PISA_gen[3].decode_PISA/VSS  \
+                               decode/decode_PISA_gen[4].decode_PISA/VSS  \
+                               decode/decode_PISA_gen[5].decode_PISA/VSS } 
+
+
+
+## POWER STATE TABLE 
+### CREATE NET VOLTAGES 
+#set_voltage 0.99  -object_list [get_supply_nets VDD]
+#set_voltage 0     -object_list [get_supply_nets VSS]
+#
+### CREATE PORT STATES 
+#foreach_in_collection p1 [get_supply_ports VDD] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0.99} -state {OFF off}
+#}
+#foreach_in_collection p1 [get_supply_ports VSS] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0}
+#}
+#
+### OPERATING SCENARIOS
+#create_pst DECODE_pst -supplies  { VDD   VSS}
+#
+#add_pst_state s0 -pst btb_ram_pst -state {ACTIVE ACTIVE}
+
+

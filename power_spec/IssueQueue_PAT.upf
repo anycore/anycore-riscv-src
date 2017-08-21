@@ -1,0 +1,136 @@
+# POWER DOMAIN CREATION - LIST OF ELEMENTS
+
+create_power_domain -include_scope TOP 
+
+create_power_domain PG_BE_Lane_1 -elements {
+ISSUE_LANE[2].lane_inst
+iq_regread/PIPEREG[2].iqRRReg
+}
+
+create_power_domain PG_BE_Lane_2 -elements {
+ISSUE_LANE[3].lane_inst
+iq_regread/PIPEREG[3].iqRRReg
+}
+
+create_power_domain PG_BE_Lane_3 -elements {
+ISSUE_LANE[4].lane_inst
+iq_regread/PIPEREG[4].iqRRReg
+}
+
+
+create_power_domain PG_Issue_Structure_1 -elements {
+payloadRAM/INST_LOOP[1].ram_inst
+issueQfreelist/iqfreelist/INST_LOOP[1].ram_inst
+ISSUE_PART[1].part_inst
+src1Cam/INST_LOOP[1].cam_inst
+src2Cam/INST_LOOP[1].cam_inst
+}
+
+create_power_domain PG_Issue_Structure_2 -elements {
+payloadRAM/INST_LOOP[2].ram_inst
+issueQfreelist/iqfreelist/INST_LOOP[2].ram_inst
+ISSUE_PART[2].part_inst
+src1Cam/INST_LOOP[2].cam_inst
+src2Cam/INST_LOOP[2].cam_inst
+}
+
+create_power_domain PG_Issue_Structure_3 -elements {
+payloadRAM/INST_LOOP[3].ram_inst
+issueQfreelist/iqfreelist/INST_LOOP[3].ram_inst
+ISSUE_PART[3].part_inst
+src1Cam/INST_LOOP[3].cam_inst
+src2Cam/INST_LOOP[3].cam_inst
+}
+
+# SUPPLY PORT CREATION
+create_supply_port VDD -direction in                   
+create_supply_port VSS -direction in                   
+
+# SUPPLY NET CREATION
+create_supply_net VDD_BE_Lane_1           -domain PG_BE_Lane_1            
+create_supply_net VDD_BE_Lane_2           -domain PG_BE_Lane_2 
+create_supply_net VDD_BE_Lane_3           -domain PG_BE_Lane_3 
+create_supply_net VDD_Issue_Structure_1   -domain PG_Issue_Structure_1 
+create_supply_net VDD_Issue_Structure_2   -domain PG_Issue_Structure_2 
+create_supply_net VDD_Issue_Structure_3   -domain PG_Issue_Structure_3 
+
+
+create_supply_net VDD  -domain TOP                     
+create_supply_net VDD  -domain PG_BE_Lane_1           -reuse 
+create_supply_net VDD  -domain PG_BE_Lane_2           -reuse
+create_supply_net VDD  -domain PG_BE_Lane_3           -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_1   -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_2   -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_3   -reuse
+
+
+create_supply_net VSS  -domain TOP 
+create_supply_net VSS  -domain PG_BE_Lane_1           -reuse 
+create_supply_net VSS  -domain PG_BE_Lane_2           -reuse
+create_supply_net VSS  -domain PG_BE_Lane_3           -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_1   -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_2   -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_3   -reuse
+
+#CONNECT SUPPLY NETS AND PORTS
+connect_supply_net VSS -ports VSS
+connect_supply_net VDD -ports VDD
+
+
+# SET PRIMARY POWER AND GND NETS FOR EACH DOMAIN
+set_domain_supply_net TOP                     -primary_power_net VDD                   -primary_ground_net VSS  
+set_domain_supply_net PG_BE_Lane_1            -primary_power_net VDD_BE_Lane_1         -primary_ground_net VSS
+set_domain_supply_net PG_BE_Lane_2            -primary_power_net VDD_BE_Lane_2         -primary_ground_net VSS
+set_domain_supply_net PG_BE_Lane_3            -primary_power_net VDD_BE_Lane_3         -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_1    -primary_power_net VDD_Issue_Structure_1 -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_2    -primary_power_net VDD_Issue_Structure_2 -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_3    -primary_power_net VDD_Issue_Structure_3 -primary_ground_net VSS
+
+# POWER SWITCH CREATION
+create_power_switch SW_PG_BE_Lane_1          -domain PG_BE_Lane_1         -output_supply_port {vout VDD_BE_Lane_1         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[2]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PG_BE_Lane_2          -domain PG_BE_Lane_2         -output_supply_port {vout VDD_BE_Lane_2         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[3]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_BE_Lane_3          -domain PG_BE_Lane_3         -output_supply_port {vout VDD_BE_Lane_3         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[4]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_Issue_Structure_1  -domain PG_Issue_Structure_1 -output_supply_port {vout VDD_Issue_Structure_1 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[1]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_Issue_Structure_2  -domain PG_Issue_Structure_2 -output_supply_port {vout VDD_Issue_Structure_2 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[2]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_Issue_Structure_3  -domain PG_Issue_Structure_3 -output_supply_port {vout VDD_Issue_Structure_3 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[3]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+
+# PORT STATE CREATION
+
+add_port_state VDD -state {ACTIVE 1.1} -state {OFF off}
+add_port_state VSS -state {ACTIVE 0.0}
+add_port_state SW_PG_BE_Lane_1/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_BE_Lane_2/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_BE_Lane_3/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_1/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_2/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_3/vout       -state {ACTIVE  1.1} -state {OFF off}
+
+# ISOLTATION POLICIES
+set_isolation ISO_PG_BE_Lane_1         -domain PG_BE_Lane_1          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_BE_Lane_2         -domain PG_BE_Lane_2          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_BE_Lane_3         -domain PG_BE_Lane_3          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_Issue_Structure_1 -domain PG_Issue_Structure_1  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_Issue_Structure_2 -domain PG_Issue_Structure_2  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_Issue_Structure_3 -domain PG_Issue_Structure_3  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE
+
+#ISOLATION CONTROL
+set_isolation_control ISO_PG_BE_Lane_1         -domain PG_BE_Lane_1          -isolation_signal   issueLaneActive_i[2]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_BE_Lane_2         -domain PG_BE_Lane_2          -isolation_signal   issueLaneActive_i[3]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_BE_Lane_3         -domain PG_BE_Lane_3          -isolation_signal   issueLaneActive_i[4]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_1 -domain PG_Issue_Structure_1  -isolation_signal   iqPartitionActive_i[1]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_2 -domain PG_Issue_Structure_2  -isolation_signal   iqPartitionActive_i[2]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_3 -domain PG_Issue_Structure_3  -isolation_signal   iqPartitionActive_i[3]         -isolation_sense low   -location parent 
+
+# Power State Table
+create_pst Core_OOO_PST -supplies { VDD VSS SW_PG_BE_Lane_1/vout SW_PG_BE_Lane_2/vout SW_PG_BE_Lane_3/vout SW_PG_Issue_Structure_1/vout SW_PG_Issue_Structure_2/vout SW_PG_Issue_Structure_3/vout }
+
+# Index                                                          VDD     VSS   BE1    BE2    BE2    IQ1    IQ2    IQ3    
+add_pst_state ALL_OFF                -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF     OFF    OFF    OFF    }
+add_pst_state ALL_ON                 -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE  ACTIVE ACTIVE ACTIVE }
+add_pst_state BE_LANE_1_ON           -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE OFF    OFF     OFF    OFF    OFF    }
+add_pst_state BE_LANE_2_ON           -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE ACTIVE OFF     OFF    OFF    OFF    }
+add_pst_state BE_LANE_3_ON           -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE  OFF    OFF    OFF    }
+add_pst_state ISSUE_STRUCTURE_1_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF     ACTIVE OFF    OFF    }
+add_pst_state ISSUE_STRUCTURE_2_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF     ACTIVE ACTIVE OFF    }
+add_pst_state ISSUE_STRUCTURE_3_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF     ACTIVE ACTIVE ACTIVE }
+

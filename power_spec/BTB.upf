@@ -1,0 +1,186 @@
+## CREATE POWER DOMAINS 
+create_power_domain BTB
+
+create_power_domain PD_BTB0 -elements {btbTag_gen[0].btbTag} -scope btbTag_gen[0].btbTag
+create_power_domain PD_BTB1 -elements {btbTag_gen[1].btbTag} -scope btbTag_gen[1].btbTag
+create_power_domain PD_BTB2 -elements {btbTag_gen[2].btbTag} -scope btbTag_gen[2].btbTag
+create_power_domain PD_BTB3 -elements {btbTag_gen[3].btbTag} -scope btbTag_gen[3].btbTag
+create_power_domain PD_BTB4 -elements {btbTag_gen[4].btbTag} -scope btbTag_gen[4].btbTag
+create_power_domain PD_BTB5 -elements {btbTag_gen[5].btbTag} -scope btbTag_gen[5].btbTag
+create_power_domain PD_BTB6 -elements {btbTag_gen[6].btbTag} -scope btbTag_gen[6].btbTag
+create_power_domain PD_BTB7 -elements {btbTag_gen[7].btbTag} -scope btbTag_gen[7].btbTag
+
+## SUPPLY NETWORK - PD_BTB0
+create_supply_net VDD -domain btbTag_gen[0].btbTag/PD_BTB0
+create_supply_net VSS -domain btbTag_gen[0].btbTag/PD_BTB0
+
+create_supply_port VDD -domain btbTag_gen[0].btbTag/PD_BTB0 
+create_supply_port VSS -domain btbTag_gen[0].btbTag/PD_BTB0
+
+connect_supply_net btbTag_gen[0].btbTag/VDD -ports {btbTag_gen[0].btbTag/VDD} 
+connect_supply_net btbTag_gen[0].btbTag/VSS -ports {btbTag_gen[0].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[0].btbTag/PD_BTB0 -primary_power_net btbTag_gen[0].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[0].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB1
+create_supply_net VDD -domain btbTag_gen[1].btbTag/PD_BTB1
+create_supply_net VSS -domain btbTag_gen[1].btbTag/PD_BTB1
+
+create_supply_port VDD -domain btbTag_gen[1].btbTag/PD_BTB1 
+create_supply_port VSS -domain btbTag_gen[1].btbTag/PD_BTB1
+
+connect_supply_net btbTag_gen[1].btbTag/VDD -ports {btbTag_gen[1].btbTag/VDD} 
+connect_supply_net btbTag_gen[1].btbTag/VSS -ports {btbTag_gen[1].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[1].btbTag/PD_BTB1 -primary_power_net btbTag_gen[1].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[1].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB2
+create_supply_net VDD -domain btbTag_gen[2].btbTag/PD_BTB2
+create_supply_net VSS -domain btbTag_gen[2].btbTag/PD_BTB2
+
+create_supply_port VDD -domain btbTag_gen[2].btbTag/PD_BTB2 
+create_supply_port VSS -domain btbTag_gen[2].btbTag/PD_BTB2
+
+connect_supply_net btbTag_gen[2].btbTag/VDD -ports {btbTag_gen[2].btbTag/VDD} 
+connect_supply_net btbTag_gen[2].btbTag/VSS -ports {btbTag_gen[2].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[2].btbTag/PD_BTB2 -primary_power_net btbTag_gen[2].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[2].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB3
+create_supply_net VDD -domain btbTag_gen[3].btbTag/PD_BTB3
+create_supply_net VSS -domain btbTag_gen[3].btbTag/PD_BTB3
+
+create_supply_port VDD -domain btbTag_gen[3].btbTag/PD_BTB3 
+create_supply_port VSS -domain btbTag_gen[3].btbTag/PD_BTB3
+
+connect_supply_net btbTag_gen[3].btbTag/VDD -ports {btbTag_gen[3].btbTag/VDD} 
+connect_supply_net btbTag_gen[3].btbTag/VSS -ports {btbTag_gen[3].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[3].btbTag/PD_BTB3 -primary_power_net btbTag_gen[3].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[3].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB4
+create_supply_net VDD -domain btbTag_gen[4].btbTag/PD_BTB4
+create_supply_net VSS -domain btbTag_gen[4].btbTag/PD_BTB4
+
+create_supply_port VDD -domain btbTag_gen[4].btbTag/PD_BTB4 
+create_supply_port VSS -domain btbTag_gen[4].btbTag/PD_BTB4
+
+connect_supply_net btbTag_gen[4].btbTag/VDD -ports {btbTag_gen[4].btbTag/VDD} 
+connect_supply_net btbTag_gen[4].btbTag/VSS -ports {btbTag_gen[4].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[4].btbTag/PD_BTB4 -primary_power_net btbTag_gen[4].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[4].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB5
+create_supply_net VDD -domain btbTag_gen[5].btbTag/PD_BTB5
+create_supply_net VSS -domain btbTag_gen[5].btbTag/PD_BTB5
+
+create_supply_port VDD -domain btbTag_gen[5].btbTag/PD_BTB5 
+create_supply_port VSS -domain btbTag_gen[5].btbTag/PD_BTB5
+
+connect_supply_net btbTag_gen[5].btbTag/VDD -ports {btbTag_gen[5].btbTag/VDD} 
+connect_supply_net btbTag_gen[5].btbTag/VSS -ports {btbTag_gen[5].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[5].btbTag/PD_BTB5 -primary_power_net btbTag_gen[5].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[5].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB6
+create_supply_net VDD -domain btbTag_gen[6].btbTag/PD_BTB6
+create_supply_net VSS -domain btbTag_gen[6].btbTag/PD_BTB6
+
+create_supply_port VDD -domain btbTag_gen[6].btbTag/PD_BTB6 
+create_supply_port VSS -domain btbTag_gen[6].btbTag/PD_BTB6
+
+connect_supply_net btbTag_gen[6].btbTag/VDD -ports {btbTag_gen[6].btbTag/VDD} 
+connect_supply_net btbTag_gen[6].btbTag/VSS -ports {btbTag_gen[6].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[6].btbTag/PD_BTB6 -primary_power_net btbTag_gen[6].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[6].btbTag/VSS 
+
+## SUPPLY NETWORK - PD_BTB7
+create_supply_net VDD -domain btbTag_gen[7].btbTag/PD_BTB7
+create_supply_net VSS -domain btbTag_gen[7].btbTag/PD_BTB7
+
+create_supply_port VDD -domain btbTag_gen[7].btbTag/PD_BTB7 
+create_supply_port VSS -domain btbTag_gen[7].btbTag/PD_BTB7
+
+connect_supply_net btbTag_gen[7].btbTag/VDD -ports {btbTag_gen[7].btbTag/VDD} 
+connect_supply_net btbTag_gen[7].btbTag/VSS -ports {btbTag_gen[7].btbTag/VSS} 
+
+set_domain_supply_net btbTag_gen[7].btbTag/PD_BTB7 -primary_power_net btbTag_gen[7].btbTag/VDD \
+                                                          -primary_ground_net btbTag_gen[7].btbTag/VSS 
+
+
+## SUPPLY NETWORK - BTB 
+create_supply_port VDD -domain BTB
+create_supply_port VSS -domain BTB
+
+create_supply_net VDD -domain BTB 
+create_supply_net VSS -domain BTB 
+
+create_supply_net BTB0_VDD -domain BTB 
+create_supply_net BTB1_VDD -domain BTB 
+create_supply_net BTB2_VDD -domain BTB 
+create_supply_net BTB3_VDD -domain BTB 
+create_supply_net BTB4_VDD -domain BTB 
+create_supply_net BTB5_VDD -domain BTB 
+create_supply_net BTB6_VDD -domain BTB 
+create_supply_net BTB7_VDD -domain BTB 
+
+## Power Switches
+create_power_switch PD_BTB0_SW  -domain BTB -output_supply_port {vout BTB0_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[0]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB1_SW  -domain BTB -output_supply_port {vout BTB1_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[0]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB2_SW  -domain BTB -output_supply_port {vout BTB2_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[2]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB3_SW  -domain BTB -output_supply_port {vout BTB3_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[2]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB4_SW  -domain BTB -output_supply_port {vout BTB4_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB5_SW  -domain BTB -output_supply_port {vout BTB5_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB6_SW  -domain BTB -output_supply_port {vout BTB6_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BTB7_SW  -domain BTB -output_supply_port {vout BTB7_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net BTB0_VDD -ports {btbTag_gen[0].btbTag/VDD} 
+connect_supply_net BTB1_VDD -ports {btbTag_gen[1].btbTag/VDD} 
+connect_supply_net BTB2_VDD -ports {btbTag_gen[2].btbTag/VDD} 
+connect_supply_net BTB3_VDD -ports {btbTag_gen[3].btbTag/VDD} 
+connect_supply_net BTB4_VDD -ports {btbTag_gen[4].btbTag/VDD} 
+connect_supply_net BTB5_VDD -ports {btbTag_gen[5].btbTag/VDD} 
+connect_supply_net BTB6_VDD -ports {btbTag_gen[6].btbTag/VDD} 
+connect_supply_net BTB7_VDD -ports {btbTag_gen[7].btbTag/VDD} 
+connect_supply_net VSS -ports {VSS  btbTag_gen[0].btbTag/VSS  \
+                                    btbTag_gen[1].btbTag/VSS  \
+                                    btbTag_gen[2].btbTag/VSS  \
+                                    btbTag_gen[3].btbTag/VSS  \
+                                    btbTag_gen[4].btbTag/VSS  \
+                                    btbTag_gen[5].btbTag/VSS  \
+                                    btbTag_gen[6].btbTag/VSS  \
+                                    btbTag_gen[7].btbTag/VSS} 
+
+set_domain_supply_net BTB -primary_power_net VDD -primary_ground_net VSS 
+

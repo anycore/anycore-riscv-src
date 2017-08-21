@@ -1,0 +1,86 @@
+## CREATE POWER DOMAINS 
+create_power_domain PD_EX_SC 
+
+
+## SUPPLY NETWORK - PD_EX_SC
+create_supply_net VDD -domain PD_EX_SC 
+create_supply_net VSS -domain PD_EX_SC
+
+create_supply_port VDD -domain PD_EX_SC 
+create_supply_port VSS -domain PD_EX_SC
+
+
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net VSS -ports {VSS} 
+
+
+set_scope execute/simple_complex.calu
+
+create_power_domain PD_CALU 
+
+## SUPPLY NETWORK - PD_CALU
+create_supply_net VDD -domain PD_CALU 
+create_supply_net VSS -domain PD_CALU
+
+create_supply_port VDD -domain PD_CALU 
+create_supply_port VSS -domain PD_CALU
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net VSS -ports {VSS} 
+
+## Set domain power and ground supplies
+set_domain_supply_net PD_CALU -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope ..
+set_scope ..
+
+
+set_scope execute/simple_complex.salu
+
+create_power_domain PD_SALU 
+
+## SUPPLY NETWORK - PD_SALU
+create_supply_net VDD -domain PD_SALU 
+create_supply_net VSS -domain PD_SALU
+
+create_supply_port VDD -domain PD_SALU 
+create_supply_port VSS -domain PD_SALU
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net VSS -ports {VSS} 
+
+## Set domain power and ground supplies
+set_domain_supply_net PD_SALU -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope ..
+set_scope ..
+
+
+## Power Switch
+create_supply_net SWITCHED_VDD -domain PD_EX_SC 
+create_supply_net CALU_SWITCHED_VDD -domain PD_EX_SC 
+create_supply_net SALU_SWITCHED_VDD -domain PD_EX_SC 
+
+
+create_power_switch PD_EX_SC_SW  -domain PD_EX_SC -output_supply_port {vout SWITCHED_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl laneActive_i} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_CALU  -domain PD_EX_SC -output_supply_port {vout CALU_SWITCHED_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl caluLaneActive_i} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_SALU  -domain PD_EX_SC -output_supply_port {vout SALU_SWITCHED_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl saluLaneActive_i} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+connect_supply_net CALU_SWITCHED_VDD -ports {execute/simple_complex.calu/VDD}
+connect_supply_net SALU_SWITCHED_VDD -ports {execute/simple_complex.salu/VDD}
+connect_supply_net VSS -ports {execute/simple_complex.calu/VSS execute/simple_complex.salu/VSS}
+
+## Set domain power and ground supplies
+set_domain_supply_net PD_EX_SC -primary_power_net SWITCHED_VDD -primary_ground_net VSS 
+
+
+

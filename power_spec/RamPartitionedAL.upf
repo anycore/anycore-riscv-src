@@ -1,0 +1,186 @@
+## CREATE POWER DOMAINS 
+create_power_domain PD_RAM 
+create_power_domain PD_PART0 -elements {INST_LOOP[0].ram_instance} -scope INST_LOOP[0].ram_instance 
+create_power_domain PD_PART1 -elements {INST_LOOP[1].ram_instance} -scope INST_LOOP[1].ram_instance 
+create_power_domain PD_PART2 -elements {INST_LOOP[2].ram_instance} -scope INST_LOOP[2].ram_instance 
+create_power_domain PD_PART3 -elements {INST_LOOP[3].ram_instance} -scope INST_LOOP[3].ram_instance 
+create_power_domain PD_PART4 -elements {INST_LOOP[4].ram_instance} -scope INST_LOOP[4].ram_instance 
+create_power_domain PD_PART5 -elements {INST_LOOP[5].ram_instance} -scope INST_LOOP[5].ram_instance 
+create_power_domain PD_PART6 -elements {INST_LOOP[6].ram_instance} -scope INST_LOOP[6].ram_instance 
+create_power_domain PD_PART7 -elements {INST_LOOP[7].ram_instance} -scope INST_LOOP[7].ram_instance 
+
+## SUPPLY NETWORK - PD_PART0
+create_supply_net VDD -domain INST_LOOP[0].ram_instance/PD_PART0
+create_supply_net VSS -domain INST_LOOP[0].ram_instance/PD_PART0 
+
+create_supply_port VDD -domain INST_LOOP[0].ram_instance/PD_PART0 
+create_supply_port VSS -domain INST_LOOP[0].ram_instance/PD_PART0
+
+connect_supply_net INST_LOOP[0].ram_instance/VDD -ports {INST_LOOP[0].ram_instance/VDD} 
+connect_supply_net INST_LOOP[0].ram_instance/VSS -ports {INST_LOOP[0].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[0].ram_instance/PD_PART0 -primary_power_net INST_LOOP[0].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[0].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART1
+create_supply_net VDD -domain INST_LOOP[1].ram_instance/PD_PART1
+create_supply_net VSS -domain INST_LOOP[1].ram_instance/PD_PART1 
+
+create_supply_port VDD -domain INST_LOOP[1].ram_instance/PD_PART1 
+create_supply_port VSS -domain INST_LOOP[1].ram_instance/PD_PART1
+
+connect_supply_net INST_LOOP[1].ram_instance/VDD -ports {INST_LOOP[1].ram_instance/VDD} 
+connect_supply_net INST_LOOP[1].ram_instance/VSS -ports {INST_LOOP[1].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[1].ram_instance/PD_PART1 -primary_power_net INST_LOOP[1].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[1].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART2
+create_supply_net VDD -domain INST_LOOP[2].ram_instance/PD_PART2
+create_supply_net VSS -domain INST_LOOP[2].ram_instance/PD_PART2 
+
+create_supply_port VDD -domain INST_LOOP[2].ram_instance/PD_PART2 
+create_supply_port VSS -domain INST_LOOP[2].ram_instance/PD_PART2
+
+connect_supply_net INST_LOOP[2].ram_instance/VDD -ports {INST_LOOP[2].ram_instance/VDD} 
+connect_supply_net INST_LOOP[2].ram_instance/VSS -ports {INST_LOOP[2].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[2].ram_instance/PD_PART2 -primary_power_net INST_LOOP[2].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[2].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART3
+create_supply_net VDD -domain INST_LOOP[3].ram_instance/PD_PART3
+create_supply_net VSS -domain INST_LOOP[3].ram_instance/PD_PART3 
+
+create_supply_port VDD -domain INST_LOOP[3].ram_instance/PD_PART3 
+create_supply_port VSS -domain INST_LOOP[3].ram_instance/PD_PART3
+
+connect_supply_net INST_LOOP[3].ram_instance/VDD -ports {INST_LOOP[3].ram_instance/VDD} 
+connect_supply_net INST_LOOP[3].ram_instance/VSS -ports {INST_LOOP[3].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[3].ram_instance/PD_PART3 -primary_power_net INST_LOOP[3].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[3].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART4
+create_supply_net VDD -domain INST_LOOP[4].ram_instance/PD_PART4
+create_supply_net VSS -domain INST_LOOP[4].ram_instance/PD_PART4 
+
+create_supply_port VDD -domain INST_LOOP[4].ram_instance/PD_PART4 
+create_supply_port VSS -domain INST_LOOP[4].ram_instance/PD_PART4
+
+connect_supply_net INST_LOOP[4].ram_instance/VDD -ports {INST_LOOP[4].ram_instance/VDD} 
+connect_supply_net INST_LOOP[4].ram_instance/VSS -ports {INST_LOOP[4].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[4].ram_instance/PD_PART4 -primary_power_net INST_LOOP[4].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[4].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART5
+create_supply_net VDD -domain INST_LOOP[5].ram_instance/PD_PART5
+create_supply_net VSS -domain INST_LOOP[5].ram_instance/PD_PART5 
+
+create_supply_port VDD -domain INST_LOOP[5].ram_instance/PD_PART5 
+create_supply_port VSS -domain INST_LOOP[5].ram_instance/PD_PART5
+
+connect_supply_net INST_LOOP[5].ram_instance/VDD -ports {INST_LOOP[5].ram_instance/VDD} 
+connect_supply_net INST_LOOP[5].ram_instance/VSS -ports {INST_LOOP[5].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[5].ram_instance/PD_PART5 -primary_power_net INST_LOOP[5].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[5].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART6
+create_supply_net VDD -domain INST_LOOP[6].ram_instance/PD_PART6
+create_supply_net VSS -domain INST_LOOP[6].ram_instance/PD_PART6 
+
+create_supply_port VDD -domain INST_LOOP[6].ram_instance/PD_PART6 
+create_supply_port VSS -domain INST_LOOP[6].ram_instance/PD_PART6
+
+connect_supply_net INST_LOOP[6].ram_instance/VDD -ports {INST_LOOP[6].ram_instance/VDD} 
+connect_supply_net INST_LOOP[6].ram_instance/VSS -ports {INST_LOOP[6].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[6].ram_instance/PD_PART6 -primary_power_net INST_LOOP[6].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[6].ram_instance/VSS 
+
+## SUPPLY NETWORK - PD_PART7
+create_supply_net VDD -domain INST_LOOP[7].ram_instance/PD_PART7
+create_supply_net VSS -domain INST_LOOP[7].ram_instance/PD_PART7 
+
+create_supply_port VDD -domain INST_LOOP[7].ram_instance/PD_PART7 
+create_supply_port VSS -domain INST_LOOP[7].ram_instance/PD_PART7
+
+connect_supply_net INST_LOOP[7].ram_instance/VDD -ports {INST_LOOP[7].ram_instance/VDD} 
+connect_supply_net INST_LOOP[7].ram_instance/VSS -ports {INST_LOOP[7].ram_instance/VSS} 
+
+set_domain_supply_net INST_LOOP[7].ram_instance/PD_PART7 -primary_power_net INST_LOOP[7].ram_instance/VDD \
+                                                          -primary_ground_net INST_LOOP[7].ram_instance/VSS 
+
+
+## SUPPLY NETWORK - PD_RAM 
+create_supply_port VDD 
+create_supply_port VSS 
+
+create_supply_net VDD -domain PD_RAM 
+create_supply_net VSS -domain PD_RAM 
+
+create_supply_net PART0_VDD -domain PD_RAM 
+create_supply_net PART1_VDD -domain PD_RAM 
+create_supply_net PART2_VDD -domain PD_RAM 
+create_supply_net PART3_VDD -domain PD_RAM 
+create_supply_net PART4_VDD -domain PD_RAM 
+create_supply_net PART5_VDD -domain PD_RAM 
+create_supply_net PART6_VDD -domain PD_RAM 
+create_supply_net PART7_VDD -domain PD_RAM 
+
+set_domain_supply_net PD_RAM -primary_power_net VDD -primary_ground_net VSS 
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net PART0_VDD -ports {INST_LOOP[0].ram_instance/VDD} 
+connect_supply_net PART1_VDD -ports {INST_LOOP[1].ram_instance/VDD} 
+connect_supply_net PART2_VDD -ports {INST_LOOP[2].ram_instance/VDD} 
+connect_supply_net PART3_VDD -ports {INST_LOOP[3].ram_instance/VDD} 
+connect_supply_net PART4_VDD -ports {INST_LOOP[4].ram_instance/VDD} 
+connect_supply_net PART5_VDD -ports {INST_LOOP[5].ram_instance/VDD} 
+connect_supply_net PART6_VDD -ports {INST_LOOP[6].ram_instance/VDD} 
+connect_supply_net PART7_VDD -ports {INST_LOOP[7].ram_instance/VDD} 
+connect_supply_net VSS -ports {VSS  INST_LOOP[0].ram_instance/VSS \
+                                    INST_LOOP[1].ram_instance/VSS \
+                                    INST_LOOP[2].ram_instance/VSS \
+                                    INST_LOOP[3].ram_instance/VSS \
+                                    INST_LOOP[4].ram_instance/VSS \
+                                    INST_LOOP[5].ram_instance/VSS \
+                                    INST_LOOP[6].ram_instance/VSS \
+                                    INST_LOOP[7].ram_instance/VSS} 
+
+## Power Switches
+create_power_switch PD_PART0_SW -domain PD_RAM -output_supply_port {vout PART0_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[0]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART1_SW -domain PD_RAM -output_supply_port {vout PART1_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[1]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART2_SW -domain PD_RAM -output_supply_port {vout PART2_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[2]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART3_SW -domain PD_RAM -output_supply_port {vout PART3_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[3]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART4_SW -domain PD_RAM -output_supply_port {vout PART4_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[4]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART5_SW -domain PD_RAM -output_supply_port {vout PART5_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[5]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART6_SW -domain PD_RAM -output_supply_port {vout PART6_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[6]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+create_power_switch PD_PART7_SW -domain PD_RAM -output_supply_port {vout PART7_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl partitionGated_i[7]} -on_state {on_s vin {!ctrl}} \
+                                -off_state {off_s {ctrl}}
+
+

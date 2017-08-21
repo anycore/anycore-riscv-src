@@ -1,0 +1,50 @@
+## CREATE POWER DOMAINS 
+#create_power_domain PD_PHYREG 
+
+## Change the scope to Byte0 ram instance
+set_scope PhyRegFile_byte0/ram_partitioned_no_decode
+load_upf RamPartitionedNoDecode.upf
+set_scope ..
+set_scope ..
+
+## Change the scope to Byte1 ram instance
+set_scope PhyRegFile_byte1/ram_partitioned_no_decode
+load_upf RamPartitionedNoDecode.upf
+set_scope ..
+set_scope ..
+
+## Change the scope to Byte2 ram instance
+set_scope PhyRegFile_byte2/ram_partitioned_no_decode
+load_upf RamPartitionedNoDecode.upf
+set_scope ..
+set_scope ..
+
+## Change the scope to Byte3 ram instance
+set_scope PhyRegFile_byte3/ram_partitioned_no_decode
+load_upf RamPartitionedNoDecode.upf
+set_scope ..
+set_scope ..
+
+## SUPPLY NETWORK - PD_PHYREG 
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_PHYREG 
+#create_supply_net VSS -domain PD_PHYREG 
+
+#set_domain_supply_net PD_PHYREG -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope
+connect_supply_net VDD -ports {registerfile/PhyRegFile_byte0/ram_partitioned_no_decode/VDD  \
+                               registerfile/PhyRegFile_byte1/ram_partitioned_no_decode/VDD  \
+                               registerfile/PhyRegFile_byte2/ram_partitioned_no_decode/VDD  \
+                               registerfile/PhyRegFile_byte3/ram_partitioned_no_decode/VDD}    
+
+connect_supply_net VSS -ports {registerfile/PhyRegFile_byte0/ram_partitioned_no_decode/VSS  \ 
+                               registerfile/PhyRegFile_byte1/ram_partitioned_no_decode/VSS  \
+                               registerfile/PhyRegFile_byte2/ram_partitioned_no_decode/VSS  \
+                               registerfile/PhyRegFile_byte3/ram_partitioned_no_decode/VSS}    
+

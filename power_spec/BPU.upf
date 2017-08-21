@@ -1,0 +1,186 @@
+## CREATE POWER DOMAINS 
+create_power_domain BPU
+
+create_power_domain PD_BPU0 -elements {counter_gen[0].counterTable} -scope counter_gen[0].counterTable
+create_power_domain PD_BPU1 -elements {counter_gen[1].counterTable} -scope counter_gen[1].counterTable
+create_power_domain PD_BPU2 -elements {counter_gen[2].counterTable} -scope counter_gen[2].counterTable
+create_power_domain PD_BPU3 -elements {counter_gen[3].counterTable} -scope counter_gen[3].counterTable
+create_power_domain PD_BPU4 -elements {counter_gen[4].counterTable} -scope counter_gen[4].counterTable
+create_power_domain PD_BPU5 -elements {counter_gen[5].counterTable} -scope counter_gen[5].counterTable
+create_power_domain PD_BPU6 -elements {counter_gen[6].counterTable} -scope counter_gen[6].counterTable
+create_power_domain PD_BPU7 -elements {counter_gen[7].counterTable} -scope counter_gen[7].counterTable
+
+## SUPPLY NETWORK - PD_BPU0
+create_supply_net VDD -domain counter_gen[0].counterTable/PD_BPU0
+create_supply_net VSS -domain counter_gen[0].counterTable/PD_BPU0
+
+create_supply_port VDD -domain counter_gen[0].counterTable/PD_BPU0 
+create_supply_port VSS -domain counter_gen[0].counterTable/PD_BPU0
+
+connect_supply_net counter_gen[0].counterTable/VDD -ports {counter_gen[0].counterTable/VDD} 
+connect_supply_net counter_gen[0].counterTable/VSS -ports {counter_gen[0].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[0].counterTable/PD_BPU0 -primary_power_net counter_gen[0].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[0].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU1
+create_supply_net VDD -domain counter_gen[1].counterTable/PD_BPU1
+create_supply_net VSS -domain counter_gen[1].counterTable/PD_BPU1
+
+create_supply_port VDD -domain counter_gen[1].counterTable/PD_BPU1 
+create_supply_port VSS -domain counter_gen[1].counterTable/PD_BPU1
+
+connect_supply_net counter_gen[1].counterTable/VDD -ports {counter_gen[1].counterTable/VDD} 
+connect_supply_net counter_gen[1].counterTable/VSS -ports {counter_gen[1].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[1].counterTable/PD_BPU1 -primary_power_net counter_gen[1].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[1].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU2
+create_supply_net VDD -domain counter_gen[2].counterTable/PD_BPU2
+create_supply_net VSS -domain counter_gen[2].counterTable/PD_BPU2
+
+create_supply_port VDD -domain counter_gen[2].counterTable/PD_BPU2 
+create_supply_port VSS -domain counter_gen[2].counterTable/PD_BPU2
+
+connect_supply_net counter_gen[2].counterTable/VDD -ports {counter_gen[2].counterTable/VDD} 
+connect_supply_net counter_gen[2].counterTable/VSS -ports {counter_gen[2].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[2].counterTable/PD_BPU2 -primary_power_net counter_gen[2].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[2].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU3
+create_supply_net VDD -domain counter_gen[3].counterTable/PD_BPU3
+create_supply_net VSS -domain counter_gen[3].counterTable/PD_BPU3
+
+create_supply_port VDD -domain counter_gen[3].counterTable/PD_BPU3 
+create_supply_port VSS -domain counter_gen[3].counterTable/PD_BPU3
+
+connect_supply_net counter_gen[3].counterTable/VDD -ports {counter_gen[3].counterTable/VDD} 
+connect_supply_net counter_gen[3].counterTable/VSS -ports {counter_gen[3].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[3].counterTable/PD_BPU3 -primary_power_net counter_gen[3].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[3].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU4
+create_supply_net VDD -domain counter_gen[4].counterTable/PD_BPU4
+create_supply_net VSS -domain counter_gen[4].counterTable/PD_BPU4
+
+create_supply_port VDD -domain counter_gen[4].counterTable/PD_BPU4 
+create_supply_port VSS -domain counter_gen[4].counterTable/PD_BPU4
+
+connect_supply_net counter_gen[4].counterTable/VDD -ports {counter_gen[4].counterTable/VDD} 
+connect_supply_net counter_gen[4].counterTable/VSS -ports {counter_gen[4].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[4].counterTable/PD_BPU4 -primary_power_net counter_gen[4].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[4].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU5
+create_supply_net VDD -domain counter_gen[5].counterTable/PD_BPU5
+create_supply_net VSS -domain counter_gen[5].counterTable/PD_BPU5
+
+create_supply_port VDD -domain counter_gen[5].counterTable/PD_BPU5 
+create_supply_port VSS -domain counter_gen[5].counterTable/PD_BPU5
+
+connect_supply_net counter_gen[5].counterTable/VDD -ports {counter_gen[5].counterTable/VDD} 
+connect_supply_net counter_gen[5].counterTable/VSS -ports {counter_gen[5].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[5].counterTable/PD_BPU5 -primary_power_net counter_gen[5].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[5].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU6
+create_supply_net VDD -domain counter_gen[6].counterTable/PD_BPU6
+create_supply_net VSS -domain counter_gen[6].counterTable/PD_BPU6
+
+create_supply_port VDD -domain counter_gen[6].counterTable/PD_BPU6 
+create_supply_port VSS -domain counter_gen[6].counterTable/PD_BPU6
+
+connect_supply_net counter_gen[6].counterTable/VDD -ports {counter_gen[6].counterTable/VDD} 
+connect_supply_net counter_gen[6].counterTable/VSS -ports {counter_gen[6].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[6].counterTable/PD_BPU6 -primary_power_net counter_gen[6].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[6].counterTable/VSS 
+
+## SUPPLY NETWORK - PD_BPU7
+create_supply_net VDD -domain counter_gen[7].counterTable/PD_BPU7
+create_supply_net VSS -domain counter_gen[7].counterTable/PD_BPU7
+
+create_supply_port VDD -domain counter_gen[7].counterTable/PD_BPU7 
+create_supply_port VSS -domain counter_gen[7].counterTable/PD_BPU7
+
+connect_supply_net counter_gen[7].counterTable/VDD -ports {counter_gen[7].counterTable/VDD} 
+connect_supply_net counter_gen[7].counterTable/VSS -ports {counter_gen[7].counterTable/VSS} 
+
+set_domain_supply_net counter_gen[7].counterTable/PD_BPU7 -primary_power_net counter_gen[7].counterTable/VDD \
+                                                          -primary_ground_net counter_gen[7].counterTable/VSS 
+
+
+## SUPPLY NETWORK - BPU 
+create_supply_port VDD -domain BPU
+create_supply_port VSS -domain BPU
+
+create_supply_net VDD -domain BPU 
+create_supply_net VSS -domain BPU 
+
+create_supply_net BPU0_VDD -domain BPU 
+create_supply_net BPU1_VDD -domain BPU 
+create_supply_net BPU2_VDD -domain BPU 
+create_supply_net BPU3_VDD -domain BPU 
+create_supply_net BPU4_VDD -domain BPU 
+create_supply_net BPU5_VDD -domain BPU 
+create_supply_net BPU6_VDD -domain BPU 
+create_supply_net BPU7_VDD -domain BPU 
+
+## Power Switches
+create_power_switch PD_BPU0_SW  -domain BPU -output_supply_port {vout BPU0_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[0]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU1_SW  -domain BPU -output_supply_port {vout BPU1_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[0]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU2_SW  -domain BPU -output_supply_port {vout BPU2_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[2]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU3_SW  -domain BPU -output_supply_port {vout BPU3_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[2]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU4_SW  -domain BPU -output_supply_port {vout BPU4_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU5_SW  -domain BPU -output_supply_port {vout BPU5_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU6_SW  -domain BPU -output_supply_port {vout BPU6_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+create_power_switch PD_BPU7_SW  -domain BPU -output_supply_port {vout BPU7_VDD} -input_supply_port {vin VDD} \
+                                -control_port {ctrl fetchLaneActive_i[4]} -on_state {on_s vin {ctrl}} \
+                                -off_state {off_s {!ctrl}}
+
+connect_supply_net VDD -ports {VDD} 
+connect_supply_net BPU0_VDD -ports {counter_gen[0].counterTable/VDD} 
+connect_supply_net BPU1_VDD -ports {counter_gen[1].counterTable/VDD} 
+connect_supply_net BPU2_VDD -ports {counter_gen[2].counterTable/VDD} 
+connect_supply_net BPU3_VDD -ports {counter_gen[3].counterTable/VDD} 
+connect_supply_net BPU4_VDD -ports {counter_gen[4].counterTable/VDD} 
+connect_supply_net BPU5_VDD -ports {counter_gen[5].counterTable/VDD} 
+connect_supply_net BPU6_VDD -ports {counter_gen[6].counterTable/VDD} 
+connect_supply_net BPU7_VDD -ports {counter_gen[7].counterTable/VDD} 
+connect_supply_net VSS -ports {VSS  counter_gen[0].counterTable/VSS  \
+                                    counter_gen[1].counterTable/VSS  \
+                                    counter_gen[2].counterTable/VSS  \
+                                    counter_gen[3].counterTable/VSS  \
+                                    counter_gen[4].counterTable/VSS  \
+                                    counter_gen[5].counterTable/VSS  \
+                                    counter_gen[6].counterTable/VSS  \
+                                    counter_gen[7].counterTable/VSS} 
+
+set_domain_supply_net BPU -primary_power_net VDD -primary_ground_net VSS 
+

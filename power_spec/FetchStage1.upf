@@ -1,0 +1,34 @@
+# This empty power domain seems to be necessary in order to create the power domains correctly
+# ** SOme bug maybe **
+#create_power_domain FS1
+
+## Change the scope to BTB module
+set CURRENT_SCOPE [set_scope btb]
+load_upf BTB.upf
+## Change the scope back to FetchStage1 module
+set_scope ${CURRENT_SCOPE}
+
+## Change the scope to BTB module
+set CURRENT_SCOPE [set_scope bp]
+load_upf BPU.upf
+## Change the scope back to FetchStage1 module
+set_scope ${CURRENT_SCOPE}
+
+#create_supply_port VDD -domain PD_FS1  
+#create_supply_port VSS -domain PD_FS1  
+#
+#create_supply_net VDD -domain PD_FS1 
+#create_supply_net VSS -domain PD_FS1
+#
+#set_domain_supply_net PD_FS1 -primary_power_net VDD -primary_ground_net VSS 
+#
+#connect_supply_net VDD -ports {VDD btb/VDD}
+#connect_supply_net VSS -ports {VSS btb/VSS}
+
+
+set_scope
+#connect_supply_net VDD -ports {fs1/VDD} 
+#connect_supply_net VSS -ports {fs1/VSS}
+connect_supply_net VDD -ports {fs1/btb/VDD fs1/bp/VDD} 
+connect_supply_net VSS -ports {fs1/btb/VSS fs1/bp/VSS}
+

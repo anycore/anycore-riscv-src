@@ -1,0 +1,83 @@
+## CREATE POWER DOMAINS 
+#create_power_domain PD_RENDIS 
+
+## Change the scope to Lane0
+set_scope PIPEREG[0].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane1
+set_scope PIPEREG[1].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane2
+set_scope PIPEREG[2].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane3
+set_scope PIPEREG[3].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane4
+set_scope PIPEREG[4].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## Change the scope to Lane5
+set_scope PIPEREG[5].renDisReg
+load_upf PipeLineReg.upf
+set_scope ..
+
+## SUPPLY NETWORK - PD_RENDIS 
+#create_supply_port VDD 
+#create_supply_port VSS 
+#
+#create_supply_net VDD
+#create_supply_net VSS
+
+#create_supply_net VDD -domain PD_RENDIS 
+#create_supply_net VSS -domain PD_RENDIS 
+
+#set_domain_supply_net PD_RENDIS -primary_power_net VDD -primary_ground_net VSS 
+
+set_scope
+connect_supply_net VDD -ports {renDis/PIPEREG[0].renDisReg/VDD  \
+                               renDis/PIPEREG[1].renDisReg/VDD  \
+                               renDis/PIPEREG[2].renDisReg/VDD  \
+                               renDis/PIPEREG[3].renDisReg/VDD  \
+                               renDis/PIPEREG[4].renDisReg/VDD  \
+                               renDis/PIPEREG[5].renDisReg/VDD} 
+
+connect_supply_net VSS -ports {renDis/PIPEREG[0].renDisReg/VSS  \
+                               renDis/PIPEREG[1].renDisReg/VSS  \
+                               renDis/PIPEREG[2].renDisReg/VSS  \ 
+                               renDis/PIPEREG[3].renDisReg/VSS  \
+                               renDis/PIPEREG[4].renDisReg/VSS  \
+                               renDis/PIPEREG[5].renDisReg/VSS} 
+
+
+
+## POWER STATE TABLE 
+### CREATE NET VOLTAGES 
+#set_voltage 0.99  -object_list [get_supply_nets VDD]
+#set_voltage 0     -object_list [get_supply_nets VSS]
+#
+### CREATE PORT STATES 
+#foreach_in_collection p1 [get_supply_ports VDD] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0.99} -state {OFF off}
+#}
+#foreach_in_collection p1 [get_supply_ports VSS] {
+#  echo "Adding Port state on [get_object_name $p1]"
+#  add_port_state [get_object_name $p1] -state {ACTIVE 0}
+#}
+#
+### OPERATING SCENARIOS
+#create_pst FS2DEC_pst -supplies  { VDD   VSS}
+#
+#add_pst_state s0 -pst btb_ram_pst -state {ACTIVE ACTIVE}
+
+

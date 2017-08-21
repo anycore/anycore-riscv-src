@@ -1,0 +1,393 @@
+# POWER DOMAIN CREATION - LIST OF ELEMENTS
+
+create_power_domain -include_scope TOP 
+
+create_power_domain PG_FE_Lane_1 -elements {
+fs1/btb/btbTag_gen[1].btbTag
+fs1/bp/counter_gen[1].counterTable
+fs1fs2/PIPEREG[1].fs1fs2Reg
+fs2/preDecode_gen[1].preDecode
+fs2dec/PIPEREG[1].fs2DecReg
+decode/decode_RISCV_gen[1].decode_RISCV
+instBufRen/PIPEREG[1].instBufRenReg
+rename/RMT/LANEGEN[1].lane
+renDis/PIPEREG[1].renDisReg
+}
+
+create_power_domain PG_FE_Lane_2 -elements {
+fs1/btb/btbTag_gen[2].btbTag
+fs1/bp/counter_gen[2].counterTable
+fs1fs2/PIPEREG[2].fs1fs2Reg
+fs2/preDecode_gen[2].preDecode
+fs2dec/PIPEREG[2].fs2DecReg
+decode/decode_RISCV_gen[2].decode_RISCV
+instBufRen/PIPEREG[2].instBufRenReg
+rename/RMT/LANEGEN[2].lane
+renDis/PIPEREG[2].renDisReg
+}
+
+create_power_domain PG_FE_Lane_3 -elements {
+fs1/btb/btbTag_gen[3].btbTag
+fs1/bp/counter_gen[3].counterTable
+fs1fs2/PIPEREG[3].fs1fs2Reg
+fs2/preDecode_gen[3].preDecode
+fs2dec/PIPEREG[3].fs2DecReg
+decode/decode_RISCV_gen[3].decode_RISCV
+instBufRen/PIPEREG[3].instBufRenReg
+rename/RMT/LANEGEN[3].lane
+renDis/PIPEREG[3].renDisReg
+}
+
+
+create_power_domain PG_BE_Lane_1 -elements {
+issueq/ISSUE_LANE[2].lane_inst
+iq_regread/PIPEREG[2].iqRRReg
+exePipe2
+}
+
+create_power_domain PG_BE_Lane_2 -elements {
+issueq/ISSUE_LANE[3].lane_inst
+iq_regread/PIPEREG[3].iqRRReg
+exePipe3
+}
+
+create_power_domain PG_BE_Lane_3 -elements {
+issueq/ISSUE_LANE[4].lane_inst
+iq_regread/PIPEREG[4].iqRRReg
+exePipe4
+}
+
+create_power_domain PG_PRF_Active_Free_1 -elements {
+activeList/activeList/INST_LOOP[1].ram_inst
+activeList/ctrlActiveList/INST_LOOP[1].ram_inst
+activeList/targetAddrActiveList/INST_LOOP[1].ram_inst
+rename/specfreelist/freeList/INST_LOOP[1].ram_inst
+registerfile/PhyRegFile_byte0/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte1/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte2/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte3/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte4/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte5/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte6/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte7/INST_LOOP[3].ram_inst
+}
+
+
+create_power_domain PG_PRF_Active_Free_2 -elements {
+activeList/activeList/INST_LOOP[2].ram_inst
+activeList/ctrlActiveList/INST_LOOP[2].ram_inst
+activeList/targetAddrActiveList/INST_LOOP[2].ram_inst
+rename/specfreelist/freeList/INST_LOOP[2].ram_inst
+registerfile/PhyRegFile_byte0/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte1/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte2/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte3/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte4/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte5/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte6/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte7/INST_LOOP[4].ram_inst
+}
+
+create_power_domain PG_PRF_Active_Free_3 -elements {
+activeList/activeList/INST_LOOP[3].ram_inst
+activeList/ctrlActiveList/INST_LOOP[3].ram_inst
+activeList/targetAddrActiveList/INST_LOOP[3].ram_inst
+rename/specfreelist/freeList/INST_LOOP[3].ram_inst
+registerfile/PhyRegFile_byte0/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte1/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte2/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte3/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte4/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte5/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte6/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte7/INST_LOOP[5].ram_inst
+}
+
+
+create_power_domain PG_PRF_Active_Free_4 -elements {
+activeList/activeList/INST_LOOP[4].ram_inst
+activeList/ctrlActiveList/INST_LOOP[4].ram_inst
+activeList/targetAddrActiveList/INST_LOOP[4].ram_inst
+rename/specfreelist/freeList/INST_LOOP[4].ram_inst
+registerfile/PhyRegFile_byte0/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte1/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte2/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte3/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte4/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte5/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte6/INST_LOOP[6].ram_inst
+registerfile/PhyRegFile_byte7/INST_LOOP[6].ram_inst
+}
+
+
+create_power_domain PG_PRF_Active_Free_5 -elements {
+activeList/activeList/INST_LOOP[5].ram_inst
+activeList/ctrlActiveList/INST_LOOP[5].ram_inst
+activeList/targetAddrActiveList/INST_LOOP[5].ram_inst
+rename/specfreelist/freeList/INST_LOOP[5].ram_inst
+registerfile/PhyRegFile_byte0/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte1/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte2/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte3/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte4/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte5/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte6/INST_LOOP[7].ram_inst
+registerfile/PhyRegFile_byte7/INST_LOOP[7].ram_inst
+}
+
+
+
+create_power_domain PG_Issue_Structure_1 -elements {
+issueq/payloadRAM/INST_LOOP[1].ram_inst
+issueq/issueQfreelist/iqfreelist/INST_LOOP[1].ram_inst
+issueq/ISSUE_PART[1].part_inst
+issueq/src1Cam/INST_LOOP[1].cam_inst
+issueq/src2Cam/INST_LOOP[1].cam_inst
+}
+
+create_power_domain PG_Issue_Structure_2 -elements {
+issueq/payloadRAM/INST_LOOP[2].ram_inst
+issueq/issueQfreelist/iqfreelist/INST_LOOP[2].ram_inst
+issueq/ISSUE_PART[2].part_inst
+issueq/src1Cam/INST_LOOP[2].cam_inst
+issueq/src2Cam/INST_LOOP[2].cam_inst
+}
+
+create_power_domain PG_Issue_Structure_3 -elements {
+issueq/payloadRAM/INST_LOOP[3].ram_inst
+issueq/issueQfreelist/iqfreelist/INST_LOOP[3].ram_inst
+issueq/ISSUE_PART[3].part_inst
+issueq/src1Cam/INST_LOOP[3].cam_inst
+issueq/src2Cam/INST_LOOP[3].cam_inst
+}
+
+create_power_domain PG_LSU_1 -elements {
+lsu/datapath/ldx_path/addr1Cam/INST_LOOP[1].cam_inst
+lsu/datapath/ldx_path/addr2Cam/INST_LOOP[1].cam_inst
+lsu/datapath/ldx_path/stqSizeCam/INST_LOOP[1].cam_inst
+lsu/datapath/ldx_path/dataRam/INST_LOOP[1].ram_inst
+lsu/datapath/stx_path/addr1Cam/INST_LOOP[1].cam_inst
+lsu/datapath/stx_path/addr2Cam_high/INST_LOOP[1].cam_inst
+lsu/datapath/stx_path/addr2Cam_low/INST_LOOP[1].cam_inst
+lsu/datapath/stx_path/dataRam/INST_LOOP[1].ram_inst
+lsu/datapath/stx_path/followingLdRam/INST_LOOP[1].ram_inst
+}
+
+create_power_domain PG_LSU_2 -elements {
+lsu/datapath/ldx_path/addr1Cam/INST_LOOP[2].cam_inst
+lsu/datapath/ldx_path/addr2Cam/INST_LOOP[2].cam_inst
+lsu/datapath/ldx_path/stqSizeCam/INST_LOOP[2].cam_inst
+lsu/datapath/ldx_path/dataRam/INST_LOOP[2].ram_inst
+lsu/datapath/stx_path/addr1Cam/INST_LOOP[2].cam_inst
+lsu/datapath/stx_path/addr2Cam_high/INST_LOOP[2].cam_inst
+lsu/datapath/stx_path/addr2Cam_low/INST_LOOP[2].cam_inst
+lsu/datapath/stx_path/dataRam/INST_LOOP[2].ram_inst
+lsu/datapath/stx_path/followingLdRam/INST_LOOP[2].ram_inst
+}
+
+create_power_domain PG_LSU_3 -elements {
+lsu/datapath/ldx_path/addr1Cam/INST_LOOP[3].cam_inst
+lsu/datapath/ldx_path/addr2Cam/INST_LOOP[3].cam_inst
+lsu/datapath/ldx_path/stqSizeCam/INST_LOOP[3].cam_inst
+lsu/datapath/ldx_path/dataRam/INST_LOOP[3].ram_inst
+lsu/datapath/stx_path/addr1Cam/INST_LOOP[3].cam_inst
+lsu/datapath/stx_path/addr2Cam_high/INST_LOOP[3].cam_inst
+lsu/datapath/stx_path/addr2Cam_low/INST_LOOP[3].cam_inst
+lsu/datapath/stx_path/dataRam/INST_LOOP[3].ram_inst
+lsu/datapath/stx_path/followingLdRam/INST_LOOP[3].ram_inst
+}
+
+
+create_power_domain PG_RC -elements {
+rc
+}
+
+# SUPPLY PORT CREATION
+create_supply_port VDD -direction in                   
+create_supply_port VSS -direction in                   
+
+# SUPPLY NET CREATION
+create_supply_net VDD_FE_Lane_1           -domain PG_FE_Lane_1            
+create_supply_net VDD_FE_Lane_2           -domain PG_FE_Lane_2 
+create_supply_net VDD_FE_Lane_3           -domain PG_FE_Lane_3 
+create_supply_net VDD_BE_Lane_1           -domain PG_BE_Lane_1            
+create_supply_net VDD_BE_Lane_2           -domain PG_BE_Lane_2 
+create_supply_net VDD_BE_Lane_3           -domain PG_BE_Lane_3 
+create_supply_net VDD_PRF_Active_Free_1   -domain PG_PRF_Active_Free_1 
+create_supply_net VDD_PRF_Active_Free_2   -domain PG_PRF_Active_Free_2 
+create_supply_net VDD_PRF_Active_Free_3   -domain PG_PRF_Active_Free_3 
+create_supply_net VDD_PRF_Active_Free_4   -domain PG_PRF_Active_Free_4 
+create_supply_net VDD_PRF_Active_Free_5   -domain PG_PRF_Active_Free_5 
+create_supply_net VDD_Issue_Structure_1   -domain PG_Issue_Structure_1 
+create_supply_net VDD_Issue_Structure_2   -domain PG_Issue_Structure_2 
+create_supply_net VDD_Issue_Structure_3   -domain PG_Issue_Structure_3 
+create_supply_net VDD_LSU_1               -domain PG_LSU_1 
+create_supply_net VDD_LSU_2               -domain PG_LSU_2 
+create_supply_net VDD_LSU_3               -domain PG_LSU_3 
+create_supply_net VDD_RC                  -domain PG_RC
+
+
+create_supply_net VDD  -domain TOP                     
+create_supply_net VDD  -domain PG_FE_Lane_1           -reuse 
+create_supply_net VDD  -domain PG_FE_Lane_2           -reuse
+create_supply_net VDD  -domain PG_FE_Lane_3           -reuse
+create_supply_net VDD  -domain PG_BE_Lane_1           -reuse 
+create_supply_net VDD  -domain PG_BE_Lane_2           -reuse
+create_supply_net VDD  -domain PG_BE_Lane_3           -reuse
+create_supply_net VDD  -domain PG_PRF_Active_Free_1   -reuse
+create_supply_net VDD  -domain PG_PRF_Active_Free_2   -reuse
+create_supply_net VDD  -domain PG_PRF_Active_Free_3   -reuse
+create_supply_net VDD  -domain PG_PRF_Active_Free_4   -reuse
+create_supply_net VDD  -domain PG_PRF_Active_Free_5   -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_1   -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_2   -reuse
+create_supply_net VDD  -domain PG_Issue_Structure_3   -reuse
+create_supply_net VDD  -domain PG_LSU_1		            -reuse
+create_supply_net VDD  -domain PG_LSU_2		            -reuse
+create_supply_net VDD  -domain PG_LSU_3		            -reuse
+create_supply_net VDD  -domain PG_RC		              -reuse
+
+
+create_supply_net VSS  -domain TOP 
+create_supply_net VSS  -domain PG_FE_Lane_1           -reuse 
+create_supply_net VSS  -domain PG_FE_Lane_2           -reuse
+create_supply_net VSS  -domain PG_FE_Lane_3           -reuse
+create_supply_net VSS  -domain PG_BE_Lane_1           -reuse 
+create_supply_net VSS  -domain PG_BE_Lane_2           -reuse
+create_supply_net VSS  -domain PG_BE_Lane_3           -reuse
+create_supply_net VSS  -domain PG_PRF_Active_Free_1   -reuse
+create_supply_net VSS  -domain PG_PRF_Active_Free_2   -reuse
+create_supply_net VSS  -domain PG_PRF_Active_Free_3   -reuse
+create_supply_net VSS  -domain PG_PRF_Active_Free_4   -reuse
+create_supply_net VSS  -domain PG_PRF_Active_Free_5   -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_1   -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_2   -reuse
+create_supply_net VSS  -domain PG_Issue_Structure_3   -reuse
+create_supply_net VSS  -domain PG_LSU_1		            -reuse
+create_supply_net VSS  -domain PG_LSU_2		            -reuse
+create_supply_net VSS  -domain PG_LSU_3		            -reuse
+create_supply_net VSS  -domain PG_RC		              -reuse
+
+#CONNECT SUPPLY NETS AND PORTS
+connect_supply_net VSS -ports VSS
+connect_supply_net VDD -ports VDD
+
+
+# SET PRIMARY POWER AND GND NETS FOR EACH DOMAIN
+set_domain_supply_net TOP                     -primary_power_net VDD                   -primary_ground_net VSS  
+set_domain_supply_net PG_FE_Lane_1            -primary_power_net VDD_FE_Lane_1         -primary_ground_net VSS
+set_domain_supply_net PG_FE_Lane_2            -primary_power_net VDD_FE_Lane_2         -primary_ground_net VSS
+set_domain_supply_net PG_FE_Lane_3            -primary_power_net VDD_FE_Lane_3         -primary_ground_net VSS
+set_domain_supply_net PG_BE_Lane_1            -primary_power_net VDD_BE_Lane_1         -primary_ground_net VSS
+set_domain_supply_net PG_BE_Lane_2            -primary_power_net VDD_BE_Lane_2         -primary_ground_net VSS
+set_domain_supply_net PG_BE_Lane_3            -primary_power_net VDD_BE_Lane_3         -primary_ground_net VSS
+set_domain_supply_net PG_PRF_Active_Free_1    -primary_power_net VDD_PRF_Active_Free_1 -primary_ground_net VSS
+set_domain_supply_net PG_PRF_Active_Free_2    -primary_power_net VDD_PRF_Active_Free_2 -primary_ground_net VSS
+set_domain_supply_net PG_PRF_Active_Free_3    -primary_power_net VDD_PRF_Active_Free_3 -primary_ground_net VSS
+set_domain_supply_net PG_PRF_Active_Free_4    -primary_power_net VDD_PRF_Active_Free_4 -primary_ground_net VSS
+set_domain_supply_net PG_PRF_Active_Free_5    -primary_power_net VDD_PRF_Active_Free_5 -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_1    -primary_power_net VDD_Issue_Structure_1 -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_2    -primary_power_net VDD_Issue_Structure_2 -primary_ground_net VSS
+set_domain_supply_net PG_Issue_Structure_3    -primary_power_net VDD_Issue_Structure_3 -primary_ground_net VSS
+set_domain_supply_net PG_LSU_1                -primary_power_net VDD_LSU_1             -primary_ground_net VSS
+set_domain_supply_net PG_LSU_2                -primary_power_net VDD_LSU_2             -primary_ground_net VSS
+set_domain_supply_net PG_LSU_3                -primary_power_net VDD_LSU_3             -primary_ground_net VSS
+set_domain_supply_net PG_RC                   -primary_power_net VDD_RC                -primary_ground_net VSS
+
+# POWER SWITCH CREATION
+create_power_switch SW_PG_FE_Lane_1          -domain PG_FE_Lane_1         -output_supply_port {vout VDD_FE_Lane_1         } -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive_i[1]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PG_FE_Lane_2          -domain PG_FE_Lane_2         -output_supply_port {vout VDD_FE_Lane_2         } -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive_i[2]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_FE_Lane_3          -domain PG_FE_Lane_3         -output_supply_port {vout VDD_FE_Lane_3         } -input_supply_port {vin VDD} -control_port {ctrl fetchLaneActive_i[3]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_BE_Lane_1          -domain PG_BE_Lane_1         -output_supply_port {vout VDD_BE_Lane_1         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[2]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}  
+create_power_switch SW_PG_BE_Lane_2          -domain PG_BE_Lane_2         -output_supply_port {vout VDD_BE_Lane_2         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[3]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_BE_Lane_3          -domain PG_BE_Lane_3         -output_supply_port {vout VDD_BE_Lane_3         } -input_supply_port {vin VDD} -control_port {ctrl issueLaneActive_i[4]        } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}} 
+create_power_switch SW_PG_PRF_Active_Free_1  -domain PG_PRF_Active_Free_1 -output_supply_port {vout VDD_PRF_Active_Free_1 } -input_supply_port {vin VDD} -control_port {ctrl alPartitionActive_i[1]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_PRF_Active_Free_2  -domain PG_PRF_Active_Free_2 -output_supply_port {vout VDD_PRF_Active_Free_2 } -input_supply_port {vin VDD} -control_port {ctrl alPartitionActive_i[2]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_PRF_Active_Free_3  -domain PG_PRF_Active_Free_3 -output_supply_port {vout VDD_PRF_Active_Free_3 } -input_supply_port {vin VDD} -control_port {ctrl alPartitionActive_i[3]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_PRF_Active_Free_4  -domain PG_PRF_Active_Free_4 -output_supply_port {vout VDD_PRF_Active_Free_4 } -input_supply_port {vin VDD} -control_port {ctrl alPartitionActive_i[4]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_PRF_Active_Free_5  -domain PG_PRF_Active_Free_5 -output_supply_port {vout VDD_PRF_Active_Free_5 } -input_supply_port {vin VDD} -control_port {ctrl alPartitionActive_i[5]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_Issue_Structure_1  -domain PG_Issue_Structure_1 -output_supply_port {vout VDD_Issue_Structure_1 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[1]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_Issue_Structure_2  -domain PG_Issue_Structure_2 -output_supply_port {vout VDD_Issue_Structure_2 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[2]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_Issue_Structure_3  -domain PG_Issue_Structure_3 -output_supply_port {vout VDD_Issue_Structure_3 } -input_supply_port {vin VDD} -control_port {ctrl iqPartitionActive_i[3]      } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_LSU_1              -domain PG_LSU_1             -output_supply_port {vout VDD_LSU_1 }             -input_supply_port {vin VDD} -control_port {ctrl lsqPartitionActive_i[1]     } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_LSU_2              -domain PG_LSU_2             -output_supply_port {vout VDD_LSU_2 }             -input_supply_port {vin VDD} -control_port {ctrl lsqPartitionActive_i[2]     } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_LSU_3              -domain PG_LSU_3             -output_supply_port {vout VDD_LSU_3 }             -input_supply_port {vin VDD} -control_port {ctrl lsqPartitionActive_i[3]     } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+create_power_switch SW_PG_RC                 -domain PG_RC                -output_supply_port {vout VDD_RC    }             -input_supply_port {vin VDD} -control_port {ctrl reconfigureCore_i         } -on_state {on_s vin {ctrl}} -off_state {off_s {!ctrl}}
+
+# PORT STATE CREATION
+
+add_port_state VDD -state {ACTIVE 1.1} -state {OFF off}
+add_port_state VSS -state {ACTIVE 0.0}
+add_port_state SW_PG_FE_Lane_1/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_FE_Lane_2/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_FE_Lane_3/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_BE_Lane_1/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_BE_Lane_2/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_BE_Lane_3/vout               -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_PRF_Active_Free_1/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_PRF_Active_Free_2/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_PRF_Active_Free_3/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_PRF_Active_Free_4/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_PRF_Active_Free_5/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_1/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_2/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_Issue_Structure_3/vout       -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_LSU_1/vout                   -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_LSU_2/vout                   -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_LSU_3/vout                   -state {ACTIVE  1.1} -state {OFF off}
+add_port_state SW_PG_RC/vout                      -state {ACTIVE  1.1} -state {OFF off}
+
+# ISOLTATION POLICIES
+set_isolation ISO_PG_FE_Lane_1         -domain PG_FE_Lane_1          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_FE_Lane_2         -domain PG_FE_Lane_2          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_FE_Lane_3         -domain PG_FE_Lane_3          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_BE_Lane_1         -domain PG_BE_Lane_1          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_BE_Lane_2         -domain PG_BE_Lane_2          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_BE_Lane_3         -domain PG_BE_Lane_3          -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_PRF_Active_Free_1 -domain PG_PRF_Active_Free_1  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_PRF_Active_Free_2 -domain PG_PRF_Active_Free_2  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_PRF_Active_Free_3 -domain PG_PRF_Active_Free_3  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_PRF_Active_Free_4 -domain PG_PRF_Active_Free_4  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_PRF_Active_Free_5 -domain PG_PRF_Active_Free_5  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE  
+set_isolation ISO_PG_Issue_Structure_1 -domain PG_Issue_Structure_1  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_Issue_Structure_2 -domain PG_Issue_Structure_2  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_Issue_Structure_3 -domain PG_Issue_Structure_3  -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE
+set_isolation ISO_PG_LSU_1             -domain PG_LSU_1              -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_LSU_2             -domain PG_LSU_2              -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+set_isolation ISO_PG_LSU_3             -domain PG_LSU_3              -isolation_power_net VDD -isolation_ground_net VSS -applies_to outputs -clamp_value 0  -diff_supply_only TRUE 
+
+#ISOLATION CONTROL
+set_isolation_control ISO_PG_FE_Lane_1         -domain PG_FE_Lane_1          -isolation_signal   fetchLaneActive_i[1]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_FE_Lane_2         -domain PG_FE_Lane_2          -isolation_signal   fetchLaneActive_i[2]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_FE_Lane_3         -domain PG_FE_Lane_3          -isolation_signal   fetchLaneActive_i[3]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_BE_Lane_1         -domain PG_BE_Lane_1          -isolation_signal   issueLaneActive_i[1]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_BE_Lane_2         -domain PG_BE_Lane_2          -isolation_signal   issueLaneActive_i[2]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_BE_Lane_3         -domain PG_BE_Lane_3          -isolation_signal   issueLaneActive_i[3]           -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_PRF_Active_Free_1 -domain PG_PRF_Active_Free_1  -isolation_signal   alPartitionActive_i[1]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_PRF_Active_Free_2 -domain PG_PRF_Active_Free_2  -isolation_signal   alPartitionActive_i[2]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_PRF_Active_Free_3 -domain PG_PRF_Active_Free_3  -isolation_signal   alPartitionActive_i[3]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_PRF_Active_Free_4 -domain PG_PRF_Active_Free_4  -isolation_signal   alPartitionActive_i[4]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_PRF_Active_Free_5 -domain PG_PRF_Active_Free_5  -isolation_signal   alPartitionActive_i[5]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_1 -domain PG_Issue_Structure_1  -isolation_signal   iqPartitionActive_i[1]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_2 -domain PG_Issue_Structure_2  -isolation_signal   iqPartitionActive_i[2]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_Issue_Structure_3 -domain PG_Issue_Structure_3  -isolation_signal   iqPartitionActive_i[3]         -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_LSU_1             -domain PG_LSU_1              -isolation_signal   lsqPartitionActive_i[1]        -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_LSU_2             -domain PG_LSU_2              -isolation_signal   lsqPartitionActive_i[2]        -isolation_sense low   -location parent 
+set_isolation_control ISO_PG_LSU_3             -domain PG_LSU_3              -isolation_signal   lsqPartitionActive_i[3]        -isolation_sense low   -location parent 
+
+## Power State Table
+#create_pst Core_OOO_PST -supplies { VDD VSS SW_PG_FE_Lane_1/vout SW_PG_FE_Lane_2/vout SW_PG_PRF_Active_Free_2/vout SW_PG_PRF_Active_Free_3/vout SW_PG_Issue_Structure_1/vout SW_PG_Issue_Structure_2/vout SW_PG_Issue_Structure_3/vout SW_PG_LSU_1/vout SW_PG_RC/vout}
+#
+## Index                                                          VDD     VSS   FE1    FE2  RF/AL2 RF/AL3  IQ1    IQ2    IQ3    LSU1   RC
+#add_pst_state ALL_OFF                -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    OFF    OFF    OFF    OFF    ACTIVE}
+#add_pst_state ALL_ON                 -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE ACTIVE}
+#add_pst_state FE_LANE_1_ON           -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE OFF    OFF    OFF    OFF    OFF    OFF    OFF    ACTIVE}
+#add_pst_state FE_LANE_2_ON           -pst Core_OOO_PST -state {ACTIVE ACTIVE ACTIVE ACTIVE OFF    OFF    OFF    OFF    OFF    OFF    ACTIVE}
+#add_pst_state PRF_ACTIVE_FREE_2_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    ACTIVE OFF    OFF    OFF    OFF    OFF    ACTIVE}
+#add_pst_state PRF_ACTIVE_FREE_3_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    ACTIVE ACTIVE OFF    OFF    OFF    OFF    ACTIVE}
+#add_pst_state ISSUE_STRUCTURE_1_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    ACTIVE OFF    OFF    OFF    ACTIVE}
+#add_pst_state ISSUE_STRUCTURE_2_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    ACTIVE ACTIVE OFF    OFF    ACTIVE}
+#add_pst_state ISSUE_STRUCTURE_3_ON   -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    ACTIVE ACTIVE ACTIVE OFF    ACTIVE}
+#add_pst_state LSU_1_ON               -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    OFF    OFF    OFF    ACTIVE ACTIVE}
+#add_pst_state RC_ON                  -pst Core_OOO_PST -state {ACTIVE ACTIVE OFF    OFF    OFF    OFF    OFF    OFF    OFF    OFF    ACTIVE}
+
