@@ -1,0 +1,7 @@
+Decode.sv
+Decode_RISCV.sv
+InstBufRename.sv
+InstructionBuffer.sv
+InstructionBuffer_Lane.sv
+PreDecode_RISCV.sv
+ppa_decode.sv

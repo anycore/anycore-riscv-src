@@ -1,0 +1,6 @@
+DebugConfig.sv
+PerfMon.sv
+PowerManager.sv
+RegisterConsolidate.sv
+Core_OOO.sv
+ResetControl.sv

@@ -1,0 +1,13 @@
+BTB.sv
+BranchPrediction_2-bit.sv
+CtrlQueue.sv
+Fetch1Fetch2.sv
+Fetch2Decode.sv
+FetchStage1.sv
+FetchStage2.sv
+L1ICache.sv
+RAS.sv
+SelectInst.sv
+ppa_fetch1.sv
+ppa_fetch2.sv
+BranchPredictionGshare.sv
