@@ -146,7 +146,7 @@ module IBUFF_RAM #(
 `endif
 
 
-	//input                             reset,
+	input                             reset,
 	input                             clk
 );
 
