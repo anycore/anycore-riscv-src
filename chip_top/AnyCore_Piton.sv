@@ -420,75 +420,75 @@ Core_OOO coreTop(
   
 `endif //ifdef INST_CACHE
 
-`ifdef DATA_CACHE
-  logic [32-`DCACHE_BLOCK_ADDR_BITS-1:0] ldPktDummy;
-  assign ldPktDummy = {(32-`DCACHE_BLOCK_ADDR_BITS){1'b0}};
-  
-  Packetizer_Piton #(
-      .PAYLOAD_WIDTH          (32),
-      .PACKET_WIDTH           (`DCACHE_LD_ADDR_PKT_BITS),
-      .ID                     (0),  // This should macth the ID of depacketizer in the TB
-      .DEPTH                  (4),  // Only one outstanding load miss at a time
-      .DEPTH_LOG              (2),
-      .N_PKTS_BITS            (2),
-      .THROTTLE               (0) // Throttling is disabled
-  )
-      pcx_packetizer (
-  
-      .reset                  (reset),
-  
-      .clk_payload            (coreClk),
-      .ic_req_i               (ic2memReqValid_o),
-      .ic_payload_i           ({instPktDummy,ic2memReqAddr_o}),
-      .dc_ld_req_i            (dc2memLdValid_o),
-      .dc_st_req_i            (dc2memStValid_o),
-      .dc_payload_i           ({dc2memLdAddr_o,dc2memStAddr_o,dc2memStData_o,dc2memStByteEn_o}),
-      .payload_grant_o        (),
-      .push_af_o              (pcx_packet_af),
-  
-      .clk_packet             (ioClk),
-      .packet_req_o           (spc0_pcx_req_pq),
-      .lock_o                 (),
-      .packet_o               (spc0_pcx_data_pa),
-      .packet_grant_i         (ldAddr_packet_req), // Request is looped back in
-      .packet_received_i      (pcx_spc0_grant_px)
-  );
-  
-  
-  
-  
-  logic [32-`DCACHE_BLOCK_ADDR_BITS-1:0] ldDePktDummy;
-  
-  Depacketizer_Piton #(
-      .PAYLOAD_WIDTH      (32+`DCACHE_BITS_IN_LINE),
-      .PACKET_WIDTH       (`DCACHE_LD_DATA_PKT_BITS),
-      .ID                 (1), // This should macth the ID of packetizer in the TB
-      .DEPTH              (4), // Only one outstanding load miss at a time
-      .DEPTH_LOG          (2),
-      .N_PKTS_BITS        (2),
-      .INST_NAME          ("cpx_depkt")
-  )
-      cpx_depacketizer (
-  
-      .reset              (reset),
-  
-      .clk_packet         (ioClk),
-      .cpx_packet_i       (cpx_spc0_data_cx2),
-      .cpx_packet_af_o    (cpx_depacket_af),
-  
-      .clk_payload        (coreClk),
-      .ic_payload_o       ({mem2icTag_i,mem2icIndex_i,mem2icData_i}),
-      .ic_payload_valid_o (mem2icRespValid_i),
-      .dc_payload_o       ({mem2dcLdTag_i,mem2dcLdIndex_i,mem2dcLdData_i}),
-      .dc_payload_valid_o (mem2dcLdValid_i),
-      .cpx_packet_received_o  ()
-  );
-  
-`endif
+//`ifdef DATA_CACHE
+//  logic [32-`DCACHE_BLOCK_ADDR_BITS-1:0] ldPktDummy;
+//  assign ldPktDummy = {(32-`DCACHE_BLOCK_ADDR_BITS){1'b0}};
+//  
+//  Packetizer_Piton #(
+//      .PAYLOAD_WIDTH          (32),
+//      .PACKET_WIDTH           (`DCACHE_LD_ADDR_PKT_BITS),
+//      .ID                     (0),  // This should macth the ID of depacketizer in the TB
+//      .DEPTH                  (4),  // Only one outstanding load miss at a time
+//      .DEPTH_LOG              (2),
+//      .N_PKTS_BITS            (2),
+//      .THROTTLE               (0) // Throttling is disabled
+//  )
+//      pcx_packetizer (
+//  
+//      .reset                  (reset),
+//  
+//      .clk_payload            (coreClk),
+//      .ic_req_i               (ic2memReqValid_o),
+//      .ic_payload_i           ({instPktDummy,ic2memReqAddr_o}),
+//      .dc_ld_req_i            (dc2memLdValid_o),
+//      .dc_st_req_i            (dc2memStValid_o),
+//      .dc_payload_i           ({dc2memLdAddr_o,dc2memStAddr_o,dc2memStData_o,dc2memStByteEn_o}),
+//      .payload_grant_o        (),
+//      .push_af_o              (pcx_packet_af),
+//  
+//      .clk_packet             (ioClk),
+//      .packet_req_o           (spc0_pcx_req_pq),
+//      .lock_o                 (),
+//      .packet_o               (spc0_pcx_data_pa),
+//      .packet_grant_i         (ldAddr_packet_req), // Request is looped back in
+//      .packet_received_i      (pcx_spc0_grant_px)
+//  );
+//  
+//  
+//  
+//  
+//  logic [32-`DCACHE_BLOCK_ADDR_BITS-1:0] ldDePktDummy;
+//  
+//  Depacketizer_Piton #(
+//      .PAYLOAD_WIDTH      (32+`DCACHE_BITS_IN_LINE),
+//      .PACKET_WIDTH       (`DCACHE_LD_DATA_PKT_BITS),
+//      .ID                 (1), // This should macth the ID of packetizer in the TB
+//      .DEPTH              (4), // Only one outstanding load miss at a time
+//      .DEPTH_LOG          (2),
+//      .N_PKTS_BITS        (2),
+//      .INST_NAME          ("cpx_depkt")
+//  )
+//      cpx_depacketizer (
+//  
+//      .reset              (reset),
+//  
+//      .clk_packet         (ioClk),
+//      .cpx_packet_i       (cpx_spc0_data_cx2),
+//      .cpx_packet_af_o    (cpx_depacket_af),
+//  
+//      .clk_payload        (coreClk),
+//      .ic_payload_o       ({mem2icTag_i,mem2icIndex_i,mem2icData_i}),
+//      .ic_payload_valid_o (mem2icRespValid_i),
+//      .dc_payload_o       ({mem2dcLdTag_i,mem2dcLdIndex_i,mem2dcLdData_i}),
+//      .dc_payload_valid_o (mem2dcLdValid_i),
+//      .cpx_packet_received_o  ()
+//  );
+//  
+//`endif
 
 
-ccx_to_cache_bridge
-
-cache_to_ccx_bridge
+//ccx_to_cache_bridge
+//
+//cache_to_ccx_bridge
 
 endmodule

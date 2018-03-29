@@ -15,6 +15,7 @@
 # 
 # AnyCore is distributed under the BSD license.
 *******************************************************************************/
+`include "CommonConfig.svh"
 
 `timescale 1ns/100ps
 
