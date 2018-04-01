@@ -182,7 +182,7 @@ begin
 		begin
 			if (match_l1[i])
 			begin
-				dataHi_l1   = bypassPacket_i[i].data[`SIZE_DATA-1:2*`SIZE_DATA];
+				dataHi_l1   = bypassPacket_i[i].data[(2*`SIZE_DATA)-1:`SIZE_DATA];
 			end
 		end
 	end

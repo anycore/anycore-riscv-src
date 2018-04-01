@@ -61,14 +61,14 @@ module RAM_STATIC_CONFIG_NO_DECODE #(
   /* The RAM reg */
   reg  [WIDTH-1:0]                        ram [DEPTH-1:0];
   
-  initial
-  begin
-      int i;
-      for (i = 0; i < DEPTH; i++)
-      begin
-          ram[i]                      = 0;
-      end
-  end
+  //initial
+  //begin
+  //    int i;
+  //    for (i = 0; i < DEPTH; i++)
+  //    begin
+  //        ram[i]                      = 0;
+  //    end
+  //end
   
   /* Read operation */
   always_comb

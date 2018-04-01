@@ -106,7 +106,7 @@ logic [BIST_SIZE_ADDR-1:0]  bistAddrWr;
 logic [BIST_SIZE_ADDR-1:0]  bistNextAddrWr;
 logic [BIST_SIZE_DATA-1:0]  bistDataWr;
 
-assign bistDataWr = (BIST_RESET_MODE == 0) ? BIST_RESET_VALUE : {{(BIST_SIZE_DATA-BIST_SIZE_ADDR){1'b0}},bistAddrWr};
+//assign bistDataWr = (BIST_RESET_MODE == 0) ? BIST_RESET_VALUE : {{(BIST_SIZE_DATA-BIST_SIZE_ADDR){1'b0}},bistAddrWr};
 assign bpRamReady_o = ~bistEn;
 
 always_ff @(posedge clk or posedge resetRams_i)
@@ -189,11 +189,11 @@ end
 endgenerate
 
 
-initial
-begin
-  if(simulate.loggingOn)
-    $display("\n***** USING BIMODAL BRANCH PREDICTOR*****\n");
-end
+//initial
+//begin
+//  if(simulate.loggingOn)
+//    $display("\n***** USING BIMODAL BRANCH PREDICTOR*****\n");
+//end
 
 reg  [INDEX-1:0]                                    instIndex     [0:BP_WIDTH-1];
 reg  [`FETCH_WIDTH_LOG-1:0]                         instOffset    [0:BP_WIDTH-1];

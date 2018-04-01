@@ -23,5 +23,8 @@ module clk_gater_fg(clk_i,clkGated_o,clkEn_i);
   input       clkEn_i;
   output      clkGated_o;
 
-  `CLK_GATE_CELL_FG latch ( .E(clkEn_i), .CK(clk_i), .ECK(clkGated_o) );
+  //`CLK_GATE_CELL_FG latch ( .E(clkEn_i), .CK(clk_i), .ECK(clkGated_o) );
+
+  // jbalkind: don't have library for the above
+  assign clkGated_o = clk_i & clkEn_i;
 endmodule

@@ -21,7 +21,7 @@
 module AnyCore_Piton(
 
 	input                            clk,
-	input                            reset,
+	input                            reset_l,
 	//input                            resetFetch_i,
 	//input                            cacheModeOverride_i,
 
@@ -73,6 +73,10 @@ module AnyCore_Piton(
 
 /*****************************Wire Declaration**********************************/
 
+logic reset;
+
+assign spc_grst_l = reset_l;
+assign reset = ~reset_l;
 
 
 wire [`SIZE_PC-1:0]                ldAddr;
@@ -205,92 +209,92 @@ logic   reset_sync;
 assign ioClk    = clk;
 assign coreClk  = clk;
 
-DebugConfig debCon(
-    .ioClk                    (ioClk                  ),
-    .coreClk                  (coreClk                ),
-    .reset                    (reset                  ),
-    .resetFetch_i             (1'b0),//resetFetch_i           ),
-    .cacheModeOverride_i      (1'b0),//cacheModeOverride_i    ),
-                                                      
-    .reset_sync_o             (reset_sync             ),
-    .resetFetch_sync_o        (resetFetch_sync        ),
-                                                      
-    .regAddr_i                (regAddr_i              ), 
-    .regWrData_i              (regWrData_i            ),
-    .regWrEn_i                (regWrEn_i              ),
-    .regRdData_o              (regRdData_o            ),
-
-    .currentInstPC_i          (currentInstPC          ),
-                                                        
-`ifdef DYNAMIC_CONFIG          
-    .stallFetch_i             (stallFetch_i           ), 
-    .reconfigureCore_i        (reconfigureCore_i      ),
-    .stallFetch_sync_o        (stallFetch_sync        ), 
-    .reconfigureCore_sync_o   (reconfigureCore_sync   ),
-    .fetchLaneActive_o        (fetchLaneActive        ),
-    .dispatchLaneActive_o     (dispatchLaneActive     ),
-    .issueLaneActive_o        (issueLaneActive        ),         
-    .execLaneActive_o         (execLaneActive         ),
-    .saluLaneActive_o         (saluLaneActive         ),
-    .caluLaneActive_o         (caluLaneActive         ),
-    .commitLaneActive_o       (commitLaneActive       ),
-    .rfPartitionActive_o      (rfPartitionActive      ),
-    .alPartitionActive_o      (alPartitionActive      ),
-    .lsqPartitionActive_o     (lsqPartitionActive     ),
-    .iqPartitionActive_o      (iqPartitionActive      ),
-    .ibuffPartitionActive_o   (ibuffPartitionActive   ),
-    .reconfigDone_i           (reconfigDone           ),
-    .pipeDrained_i            (pipeDrained            ),
-`endif                         
-                                                        
-`ifdef SCRATCH_PAD            
-    .instScratchAddr_o        (instScratchAddr        ),
-    .instScratchWrData_o      (instScratchWrData      ),    
-    .instScratchWrEn_o        (instScratchWrEn        ),  
-    .instScratchRdData_i      (instScratchRdData      ),  
-    .dataScratchAddr_o        (dataScratchAddr        ),
-    .dataScratchWrData_o      (dataScratchWrData      ),
-    .dataScratchWrEn_o        (dataScratchWrEn        ),  
-    .dataScratchRdData_i      (dataScratchRdData      ), 
-    .scratchPadEn_o           (scratchPadEn           ),
-`endif                       
-                                                        
-`ifdef INST_CACHE           
-    .instCacheBypass_o        (instCacheBypass        ),
-    .icScratchModeEn_o        (icScratchModeEn        ),
-    .icScratchWrAddr_o        (icScratchWrAddr        ),
-    .icScratchWrEn_o          (icScratchWrEn          ),
-    .icScratchWrData_o        (icScratchWrData        ),
-    .icScratchRdData_i        (icScratchRdData        ),
-`endif                     
-                                                        
-`ifdef DATA_CACHE         
-    .dataCacheBypass_o        (dataCacheBypass        ),
-    .dcScratchModeEn_o        (dcScratchModeEn        ),
-    .dcScratchWrAddr_o        (dcScratchWrAddr        ),
-    .dcScratchWrEn_o          (dcScratchWrEn          ),
-    .dcScratchWrData_o        (dcScratchWrData        ),
-    .dcScratchRdData_i        (dcScratchRdData        ),
-`endif                   
-                                                        
-                                                       
-`ifdef PERF_MON         
-    .perfMonRegData_i         (perfMonRegData         ),
-    .perfMonRegAddr_o         (perfMonRegAddr         ),
-    .perfMonRegGlobalClr_o    (perfMonRegGlobalClr    ),
-    .perfMonRegClr_o          (perfMonRegClr          ),
-    .perfMonRegRun_o          (perfMonRegRun          ),
-`endif
-
-    .debugPRFAddr_o           (debugPRFAddr           ), 
-    .debugPRFRdData_i         (debugPRFRdData         ),    
-    .debugPRFWrData_o         (debugPRFWrData         ),
-    .debugPRFWrEn_o           (debugPRFWrEn           ),
-
-	  .debugAMTAddr_o           (debugAMTAddr           ),
-	  .debugAMTRdData_i         (debugAMTRdData         )
-
-  );
+//DebugConfig debCon(
+//    .ioClk                    (ioClk                  ),
+//    .coreClk                  (coreClk                ),
+//    .reset                    (reset                  ),
+//    .resetFetch_i             (1'b0),//resetFetch_i           ),
+//    .cacheModeOverride_i      (1'b0),//cacheModeOverride_i    ),
+//                                                      
+//    .reset_sync_o             (reset_sync             ),
+//    .resetFetch_sync_o        (resetFetch_sync        ),
+//                                                      
+//    .regAddr_i                (regAddr_i              ), 
+//    .regWrData_i              (regWrData_i            ),
+//    .regWrEn_i                (regWrEn_i              ),
+//    .regRdData_o              (regRdData_o            ),
+//
+//    .currentInstPC_i          (currentInstPC          ),
+//                                                        
+//`ifdef DYNAMIC_CONFIG          
+//    .stallFetch_i             (stallFetch_i           ), 
+//    .reconfigureCore_i        (reconfigureCore_i      ),
+//    .stallFetch_sync_o        (stallFetch_sync        ), 
+//    .reconfigureCore_sync_o   (reconfigureCore_sync   ),
+//    .fetchLaneActive_o        (fetchLaneActive        ),
+//    .dispatchLaneActive_o     (dispatchLaneActive     ),
+//    .issueLaneActive_o        (issueLaneActive        ),         
+//    .execLaneActive_o         (execLaneActive         ),
+//    .saluLaneActive_o         (saluLaneActive         ),
+//    .caluLaneActive_o         (caluLaneActive         ),
+//    .commitLaneActive_o       (commitLaneActive       ),
+//    .rfPartitionActive_o      (rfPartitionActive      ),
+//    .alPartitionActive_o      (alPartitionActive      ),
+//    .lsqPartitionActive_o     (lsqPartitionActive     ),
+//    .iqPartitionActive_o      (iqPartitionActive      ),
+//    .ibuffPartitionActive_o   (ibuffPartitionActive   ),
+//    .reconfigDone_i           (reconfigDone           ),
+//    .pipeDrained_i            (pipeDrained            ),
+//`endif                         
+//                                                        
+//`ifdef SCRATCH_PAD            
+//    .instScratchAddr_o        (instScratchAddr        ),
+//    .instScratchWrData_o      (instScratchWrData      ),    
+//    .instScratchWrEn_o        (instScratchWrEn        ),  
+//    .instScratchRdData_i      (instScratchRdData      ),  
+//    .dataScratchAddr_o        (dataScratchAddr        ),
+//    .dataScratchWrData_o      (dataScratchWrData      ),
+//    .dataScratchWrEn_o        (dataScratchWrEn        ),  
+//    .dataScratchRdData_i      (dataScratchRdData      ), 
+//    .scratchPadEn_o           (scratchPadEn           ),
+//`endif                       
+//                                                        
+//`ifdef INST_CACHE           
+//    .instCacheBypass_o        (instCacheBypass        ),
+//    .icScratchModeEn_o        (icScratchModeEn        ),
+//    .icScratchWrAddr_o        (icScratchWrAddr        ),
+//    .icScratchWrEn_o          (icScratchWrEn          ),
+//    .icScratchWrData_o        (icScratchWrData        ),
+//    .icScratchRdData_i        (icScratchRdData        ),
+//`endif                     
+//                                                        
+//`ifdef DATA_CACHE         
+//    .dataCacheBypass_o        (dataCacheBypass        ),
+//    .dcScratchModeEn_o        (dcScratchModeEn        ),
+//    .dcScratchWrAddr_o        (dcScratchWrAddr        ),
+//    .dcScratchWrEn_o          (dcScratchWrEn          ),
+//    .dcScratchWrData_o        (dcScratchWrData        ),
+//    .dcScratchRdData_i        (dcScratchRdData        ),
+//`endif                   
+//                                                        
+//                                                       
+//`ifdef PERF_MON         
+//    .perfMonRegData_i         (perfMonRegData         ),
+//    .perfMonRegAddr_o         (perfMonRegAddr         ),
+//    .perfMonRegGlobalClr_o    (perfMonRegGlobalClr    ),
+//    .perfMonRegClr_o          (perfMonRegClr          ),
+//    .perfMonRegRun_o          (perfMonRegRun          ),
+//`endif
+//
+//    .debugPRFAddr_o           (debugPRFAddr           ), 
+//    .debugPRFRdData_i         (debugPRFRdData         ),    
+//    .debugPRFWrData_o         (debugPRFWrData         ),
+//    .debugPRFWrEn_o           (debugPRFWrEn           ),
+//
+//	  .debugAMTAddr_o           (debugAMTAddr           ),
+//	  .debugAMTRdData_i         (debugAMTRdData         )
+//
+//  );
 
 
 

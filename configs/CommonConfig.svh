@@ -291,7 +291,7 @@
 
 //`define PERF_MON
 
-`define PROCESS_45_NM
+//`define PROCESS_45_NM
 `define CLK_GATE_CELL_FG TLATNCAX2TF
 `define CLK_GATE_CELL_UL TLATNCAX8TF
 
