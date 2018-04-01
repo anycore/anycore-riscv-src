@@ -75,7 +75,7 @@
 //`define COMMIT_FOUR_WIDE
 
 // By default, synthesize with Designware components
-`define USE_DESIGNWARE
+//`define USE_DESIGNWARE
 
 
 /* Default configuration for ExecutionPipe_SC.

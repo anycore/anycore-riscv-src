@@ -24,7 +24,7 @@
 ./dispatch/Dispatch.sv
 ./dispatch/ExePipeScheduler.sv
 ./dispatch/ldViolationPred.sv
-./dispatch/ppa_dispatch.sv
+/*./dispatch/ppa_dispatch.sv*/
 ./execute/AGEN_ALU.sv
 ./execute/AgenLsu.sv
 ./execute/Complex_ALU.sv
@@ -40,9 +40,9 @@
 ./execute/ForwardCheck.sv
 ./execute/Mux.sv
 ./execute/Simple_ALU.sv
-./execute/ppa_execute_ctrl.sv
+/*./execute/ppa_execute_ctrl.sv
 ./execute/ppa_execute_m.sv
-./execute/ppa_execute_sc.sv
+./execute/ppa_execute_sc.sv*/
 ./fetch/BTB.sv
 ./fetch/BranchPrediction_2-bit.sv
 ./fetch/CtrlQueue.sv
@@ -53,7 +53,9 @@
 ./fetch/L1ICache.sv
 ./fetch/RAS.sv
 ./fetch/SelectInst.sv
+/*
 ./fetch/ppa_fetch1.sv
+*/
 ./fetch/ppa_fetch2.sv
 ./fetch/BranchPredictionGshare.sv
 ./icache/ICache_controller.sv
@@ -73,7 +75,9 @@
 ./issue/SelectBetweenBlocks.sv
 ./issue/SelectBlock.sv
 ./issue/SelectFromBlock.sv
+/*
 ./issue/IssueQueuePartitioned.sv
+*/
 ./lib/PGIsolationCell.sv
 ./lib/PipeLineReg.sv
 ./lib/clk_gater_fg.sv
@@ -149,7 +153,9 @@
 ./rename/RenameLane.sv
 ./rename/RenameMapTable.sv
 ./rename/SpecFreeList.sv
+/*
 ./rename/ppa_rename.sv
+*/
 ./retire/ActiveList.sv
 ./retire/ArchMapTable.sv
 /*./testbenches/RAM_CONFIGURABLE_tb.sv
@@ -173,6 +179,7 @@
 ./writeback/Writeback_Ctrl.sv
 ./writeback/Writeback_M.sv
 ./writeback/Writeback_SC.sv
+/*
 ./rams_partitioned/ALCTRL_RAM_PARTITIONED.sv
 ./rams_partitioned/ALDATA_RAM_PARTITIONED.sv
 ./rams_partitioned/ALNPC_RAM_PARTITIONED.sv
@@ -186,6 +193,7 @@
 ./rams_partitioned/STQ_FOLLOWINGLD_RAM_PARTITIONED.sv
 ./rams_partitioned/STQ_RAM_PARTITIONED.sv
 ./rams_partitioned/WAKEUP_CAM_PARTITIONED.sv
+*/
 /*./configs/Config1.v
 ./configs/DynamicConfig.v
 ./configs/DynamicConfig_ANY1.v

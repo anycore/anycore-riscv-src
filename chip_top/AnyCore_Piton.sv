@@ -364,7 +364,7 @@ Core_OOO coreTop(
     .mem2icIndex_i                       (mem2icIndex_i    ),        // index of the incoming data
     .mem2icData_i                        (mem2icData_i     ),         // requested data
     .mem2icRespValid_i                   (mem2icRespValid_i),    // requested data is ready
-    .instCacheBypass_i                   (instCacheBypass  ),
+    //.instCacheBypass_i                   (instCacheBypass  ),
     .icScratchModeEn_i                   (icScratchModeEn  ),
 
     .icScratchWrAddr_i                   (icScratchWrAddr  ),
