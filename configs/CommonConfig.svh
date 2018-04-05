@@ -250,8 +250,8 @@
 
 `ifdef INST_CACHE
   `define ICACHE_INST_BYTE_OFFSET_LOG 2 // Byte offsets in individual instructions which are 4 byte long in RISCV
-  `define ICACHE_INSTS_IN_LINE 4*(2**`FETCH_WIDTH_LOG)  // At least 4 times the number of fetch lanes
-  `define ICACHE_INSTS_IN_LINE_LOG (`FETCH_WIDTH_LOG+2)  // log2(ICACHE_INSTS_IN_LINE)
+  `define ICACHE_INSTS_IN_LINE 8*(2**`FETCH_WIDTH_LOG)  // At least 4 times the number of fetch lanes
+  `define ICACHE_INSTS_IN_LINE_LOG (`FETCH_WIDTH_LOG+3)  // log2(ICACHE_INSTS_IN_LINE)
   `define ICACHE_BITS_IN_LINE (`ICACHE_INSTS_IN_LINE*`SIZE_INSTRUCTION)  //In bits
   `define ICACHE_BYTES_IN_LINE (`ICACHE_BITS_IN_LINE/8) 
   `define ICACHE_BYTES_IN_LINE_LOG (`ICACHE_INSTS_IN_LINE_LOG + `ICACHE_INST_BYTE_OFFSET_LOG) //log2(ICACHE_BYTES_IN_LINE)

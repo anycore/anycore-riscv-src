@@ -268,16 +268,19 @@ end
 // excepts. This is even more critical for stores
 // as we must figure out before exposing the store to the
 // cache hierarchy.
-MMU mmu
-(
-  .clk            (clk),
-  .virtAddress_i  (memPacket.address),
-  .numBytes_i     (memAccessBytes),
-  .ldAccess_i     (ldPacket_i.valid),
-  .stAccess_i     (stPacket_i.valid),
-  .instAccess_i   (1'b0),
-  .exception_o    (exception)
-);
+//MMU mmu
+//(
+//  .clk            (clk),
+//  .virtAddress_i  (memPacket.address),
+//  .numBytes_i     (memAccessBytes),
+//  .ldAccess_i     (ldPacket_i.valid),
+//  .stAccess_i     (stPacket_i.valid),
+//  .instAccess_i   (1'b0),
+//  .exception_o    (exception)
+//);
+
+// jbalkind: Not doing this check just now
+assign exception = 8'b0;
 
 always_comb
 begin

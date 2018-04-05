@@ -13,8 +13,10 @@ core_top/PowerManager.sv
 core_top/RegisterConsolidate.sv
 core_top/Core_OOO.sv
 core_top/ResetControl.sv
+/*
 bist/LogicBist.sv
 bist/MemBist.sv
+*/
 dcache/DCache_controller.sv
 decode/Decode.sv
 decode/Decode_RISCV.sv
@@ -86,7 +88,9 @@ lib/PGIsolationCell.sv
 lib/PipeLineReg.sv
 lib/clk_gater_fg.sv
 lib/clk_gater_ul.sv
+/*
 lsu/MMU.sv
+*/
 lsu/CommitLoad.sv
 lsu/CommitStore.sv
 lsu/DispatchedLoad.sv

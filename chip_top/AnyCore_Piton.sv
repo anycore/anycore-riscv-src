@@ -296,7 +296,19 @@ assign coreClk  = clk;
 //
 //  );
 
+assign icScratchModeEn = 1'b0;
+assign icScratchWrEn = 1'b0;
+assign icScratchWrAddr = {(`ICACHE_INDEX_BITS+`ICACHE_BYTES_IN_LINE_LOG){1'b0}};
+assign icScratchWrData = 8'b0;
 
+assign dcScratchModeEn = 1'b0;
+assign dcScratchWrEn = 1'b0;
+assign dcScratchWrAddr = {(`DCACHE_INDEX_BITS+`DCACHE_BYTES_IN_LINE_LOG){1'b0}};
+assign dcScratchWrData = 8'b0;
+
+assign debugPRFWrEn = 1'b0;
+assign debugPRFAddr = {(`SIZE_PHYSICAL_LOG+`SIZE_DATA_BYTE_OFFSET){1'b0}};
+assign debugPRFWrData = {`SRAM_DATA_WIDTH{1'b0}};
 
 Core_OOO coreTop(
 
@@ -344,7 +356,7 @@ Core_OOO coreTop(
     .perfMonRegGlobalClr_i               (perfMonRegGlobalClr),                    
 `endif
 
-    .startPC_i                           (32'b0),
+    .startPC_i                           (64'hfffffffff0000020),
 
     .instPC_o                            (instPC),
     .fetchReq_o                          (fetchReq),
