@@ -21,7 +21,9 @@
 module AnyCore_Piton(
 
 	input                            clk,
-	input                            reset_l,
+	input                            rst_n,
+    output                           spc_grst_l,
+
 	//input                            resetFetch_i,
 	//input                            cacheModeOverride_i,
 
@@ -32,15 +34,6 @@ module AnyCore_Piton(
   input  [`REG_DATA_WIDTH-1:0]     regWrData_i,
   input                            regWrEn_i,
   output logic [`REG_DATA_WIDTH-1:0] regRdData_o,
-
-  // Signlas for OpenPiton integration
-  input wire pcx_spc0_grant_px,
-  input wire [144:0] cpx_spc0_data_cx2,
-
-  output wire spc_grst_l,
-  output wire [4:0] spc0_pcx_req_pq,
-  output wire spc0_pcx_atom_pq,
-  output wire [123:0] spc0_pcx_data_pa
 
 `ifdef DYNAMIC_CONFIG
   input                            stallFetch_i,
@@ -67,17 +60,34 @@ module AnyCore_Piton(
 
   //output                           toggleFlag_o
 
+  output [`ICACHE_BLOCK_ADDR_BITS-1:0] ic2memReqAddr_o, // memory read address
+  output                             ic2memReqValid_o,  // memory read enable
+  input [`ICACHE_TAG_BITS-1:0]      mem2icTag_i,        // tag of the incoming data
+  input [`ICACHE_INDEX_BITS-1:0]    mem2icIndex_i,      // index of the incoming data
+  input [`ICACHE_BITS_IN_LINE-1:0]  mem2icData_i,       // requested data
+  input                             mem2icRespValid_i,  // requested data is ready
+
+  input                             anycore_int
 
 	);
 
 
 /*****************************Wire Declaration**********************************/
 
-logic reset;
+wire reset;
+reg reset_l;
 
-assign spc_grst_l = reset_l;
+assign spc_grst_l = rst_n;
 assign reset = ~reset_l;
 
+always @ (posedge clk) begin
+    if(!rst_n) begin
+        reset_l <= 1'b0;
+    end
+    else if (anycore_int) begin
+        reset_l <= 1'b1;
+    end
+end
 
 wire [`SIZE_PC-1:0]                ldAddr;
 wire [`SIZE_DATA-1:0]              ldData;
@@ -133,12 +143,12 @@ assign cancelCurrentFetch = 3'h0;
 
 `ifdef INST_CACHE
     logic                             instCacheBypass;
-    logic [`ICACHE_BLOCK_ADDR_BITS-1:0] ic2memReqAddr_o;      // memory read address
-    logic                             ic2memReqValid_o;     // memory read enable
-    logic [`ICACHE_TAG_BITS-1:0]      mem2icTag_i;          // tag of the incoming data
-    logic [`ICACHE_INDEX_BITS-1:0]    mem2icIndex_i;        // index of the incoming data
-    logic [`ICACHE_BITS_IN_LINE-1:0]  mem2icData_i;         // requested data
-    logic                             mem2icRespValid_i;    // requested data is ready
+//    logic [`ICACHE_BLOCK_ADDR_BITS-1:0] ic2memReqAddr_o;      // memory read address
+//    logic                             ic2memReqValid_o;     // memory read enable
+//    logic [`ICACHE_TAG_BITS-1:0]      mem2icTag_i;          // tag of the incoming data
+//    logic [`ICACHE_INDEX_BITS-1:0]    mem2icIndex_i;        // index of the incoming data
+//    logic [`ICACHE_BITS_IN_LINE-1:0]  mem2icData_i;         // requested data
+//    logic                             mem2icRespValid_i;    // requested data is ready
     logic                             icScratchModeEn;
     logic [`ICACHE_INDEX_BITS+`ICACHE_BYTES_IN_LINE_LOG-1:0]  icScratchWrAddr;
     logic                                                     icScratchWrEn;
@@ -208,6 +218,7 @@ logic   reset_sync;
 
 assign ioClk    = clk;
 assign coreClk  = clk;
+assign reset_sync = reset;
 
 //DebugConfig debCon(
 //    .ioClk                    (ioClk                  ),
