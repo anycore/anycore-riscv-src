@@ -40,32 +40,31 @@ module AnyCore_Piton(
   input                            reconfigureCore_i,
 `endif
 
-//`ifdef DATA_CACHE
-//  input                            mem2dcStComplete_i,
-//`endif
-
-  /* Packet interface for fabrication */
-  // Operates at ioClk
-//`ifdef INST_CACHE
-//	output  [`ICACHE_PC_PKT_BITS-1:0]         instPC_packet_o,
-//	input   [`ICACHE_INST_PKT_BITS-1:0]       inst_packet_i,
-//`endif  
-//
-//`ifdef DATA_CACHE
-//	output  [`DCACHE_LD_ADDR_PKT_BITS-1:0]    ldAddr_packet_o,
-//	input   [`DCACHE_LD_DATA_PKT_BITS-1:0]    ldData_packet_i,
-//	output  [`DCACHE_ST_PKT_BITS-1:0]         st_packet_o,      // Carries address, data and En
-//`endif  
-  /* Packet interface ends */
-
-  //output                           toggleFlag_o
-
   output [`ICACHE_BLOCK_ADDR_BITS-1:0] ic2memReqAddr_o, // memory read address
   output                             ic2memReqValid_o,  // memory read enable
   input [`ICACHE_TAG_BITS-1:0]      mem2icTag_i,        // tag of the incoming data
   input [`ICACHE_INDEX_BITS-1:0]    mem2icIndex_i,      // index of the incoming data
   input [`ICACHE_BITS_IN_LINE-1:0]  mem2icData_i,       // requested data
   input                             mem2icRespValid_i,  // requested data is ready
+
+  // cache-to-memory interface for Loads
+  output [`DCACHE_BLOCK_ADDR_BITS-1:0] dc2memLdAddr_o,  // memory read address
+  output                             dc2memLdValid_o, // memory read enable
+
+  // memory-to-cache interface for Loads
+  input [`DCACHE_TAG_BITS-1:0]     mem2dcLdTag_i,       // tag of the incoming datadetermine
+  input [`DCACHE_INDEX_BITS-1:0]   mem2dcLdIndex_i,     // index of the incoming data
+  input [`DCACHE_BITS_IN_LINE-1:0] mem2dcLdData_i,      // requested data
+  input                            mem2dcLdValid_i,     // indicates the requested data is ready
+
+  // cache-to-memory interface for stores
+  output [`DCACHE_ST_ADDR_BITS-1:0]  dc2memStAddr_o,  
+  output [`SIZE_DATA-1:0]            dc2memStData_o,
+  output [3:0]                       dc2memStByteEn_o,
+  output                             dc2memStValid_o,
+
+  input                            mem2dcStComplete_i,
+  input                            mem2dcStStall_i,
 
   input                             anycore_int
 
@@ -202,7 +201,6 @@ assign cancelCurrentFetch = 3'h0;
     logic                             pipeDrained;
     logic                             fetchReq;
     logic                             fetchRecoverFlag;
-    logic                             st_push_af;
     logic                             instPC_push_af;
     logic                             instPC_packet_req;
     logic                             cpx_depacket_af;
@@ -418,7 +416,7 @@ Core_OOO coreTop(
     .dc2memStValid_o                     (dc2memStValid_o    ), // memory read enable
                                                             
     .mem2dcStComplete_i                  (mem2dcStComplete_i ),
-    .mem2dcStStall_i                     (st_push_af         ),
+    .mem2dcStStall_i                     (mem2dcStStall_i    ),
 
     .dcScratchWrAddr_i                   (dcScratchWrAddr    ),
     .dcScratchWrEn_i                     (dcScratchWrEn      ),
