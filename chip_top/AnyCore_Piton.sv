@@ -60,7 +60,7 @@ module AnyCore_Piton(
   // cache-to-memory interface for stores
   output [`DCACHE_ST_ADDR_BITS-1:0]  dc2memStAddr_o,  
   output [`SIZE_DATA-1:0]            dc2memStData_o,
-  output [3:0]                       dc2memStByteEn_o,
+  output [2:0]                       dc2memStSize_o,
   output                             dc2memStValid_o,
 
   input                            mem2dcStComplete_i,
@@ -172,7 +172,7 @@ assign cancelCurrentFetch = 3'h0;
     // cache-to-memory interface for stores
     logic [`DCACHE_ST_ADDR_BITS-1:0]  dc2memStAddr_o;  // memory read address
     logic [`SIZE_DATA-1:0]            dc2memStData_o;  // memory read address
-    logic [3:0]                       dc2memStByteEn_o;  // memory read address
+    logic [2:0]                       dc2memStSize_o;  // memory read address
     logic                             dc2memStValid_o; // memory read enable
 
     logic [`DCACHE_INDEX_BITS+`DCACHE_BYTES_IN_LINE_LOG-1:0]  dcScratchWrAddr;
@@ -365,7 +365,7 @@ Core_OOO coreTop(
     .perfMonRegGlobalClr_i               (perfMonRegGlobalClr),                    
 `endif
 
-    .startPC_i                           (64'hfffffffff0000020),
+    .startPC_i                           (64'hfffffffff0000000),
 
     .instPC_o                            (instPC),
     .fetchReq_o                          (fetchReq),
@@ -412,7 +412,7 @@ Core_OOO coreTop(
                                                             
     .dc2memStAddr_o                      (dc2memStAddr_o     ), // memory read address
     .dc2memStData_o                      (dc2memStData_o     ), // memory read address
-    .dc2memStByteEn_o                    (dc2memStByteEn_o   ), // memory read address
+    .dc2memStSize_o                      (dc2memStSize_o     ), // memory read address
     .dc2memStValid_o                     (dc2memStValid_o    ), // memory read enable
                                                             
     .mem2dcStComplete_i                  (mem2dcStComplete_i ),

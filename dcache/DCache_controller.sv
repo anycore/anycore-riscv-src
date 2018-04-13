@@ -56,7 +56,7 @@ module DCache_controller(
     // cache-to-memory interface for stores
     output [`DCACHE_ST_ADDR_BITS-1:0]   dc2memStAddr_o,  // memory read address
     output [`SIZE_DATA-1:0]             dc2memStData_o,  // memory read address
-    output [`SIZE_DATA_BYTE-1:0]        dc2memStByteEn_o,// memory read address
+    output [2:0]                        dc2memStSize_o,  // memory read address
     output reg                          dc2memStValid_o, // memory read enable
 
     output                              stbEmpty_o,      // Signals that there are no pending stores to be written to next level
@@ -150,6 +150,10 @@ module DCache_controller(
   logic [`SIZE_DATA_BYTE-1:0]        stByteEn_reg;
   logic [`SIZE_DATA-1:0]             stData;
   logic [`SIZE_DATA-1:0]             stData_reg;
+  logic [`SIZE_DATA-1:0]             piton_stData;
+  logic [`SIZE_DATA-1:0]             piton_stData_reg;
+  logic [2:0]                        piton_stSize;
+  logic [2:0]                        piton_stSize_reg;
   logic [`DCACHE_OFFSET_BITS-1:0]    stbHeadOffset;
   logic [`DCACHE_INDEX_BITS-1:0]     stbHeadIndex;
   logic [`DCACHE_TAG_BITS-1:0]       stbHeadTag;
@@ -435,6 +439,8 @@ module DCache_controller(
   
     stData = 64'hbaddbeefdeadbeef;
     stByteEn   = 8'h0;
+    piton_stData = 64'hbaddbeefdeadbeef;
+    piton_stSize = 8'h0;
   
   	case (stSize_i)
   		`LDST_BYTE:
@@ -442,24 +448,36 @@ module DCache_controller(
   			/* Shift the least-significant byte to the correct byte offset */
   			stData = stData_i << {stAddr_i[2:0], 3'h0};
   			stByteEn   = 8'h1 << stAddr_i[2:0];
+
+  			piton_stData = {8{stData_i[7:0]}};
+            piton_stSize = {1'b0, `LDST_BYTE};
   		end
   
   		`LDST_HALF_WORD:
   		begin
   			stData = stData_i << {stAddr_i[2:1], 4'h0};
   			stByteEn   = 8'h3 << {stAddr_i[2:1], 1'h0};
+
+  			piton_stData = {4{stData_i[15:0]}};
+            piton_stSize = {1'b0, `LDST_HALF_WORD};
   		end
   
   		`LDST_WORD:
   		begin
   			stData = stAddr_i[2] ? {stData_i[31:0],32'b0} : {32'b0,stData_i[31:0]};
   			stByteEn   = stAddr_i[2] ? 8'hF0 : 8'h0F;
+
+  			piton_stData = {2{stData_i[31:0]}};
+            piton_stSize = {1'b0, `LDST_WORD};
   		end
   		
   		`LDST_DOUBLE_WORD:
 		  begin
 		  	stData = stData_i;
 		  	stByteEn   = 8'hFF;
+
+  			piton_stData = stData_i;
+            piton_stSize = {1'b0, `LDST_DOUBLE_WORD};
 		  end
   	endcase
   end
@@ -474,6 +492,8 @@ module DCache_controller(
     stEn_reg                <= stEn_i;
     stEn_reg_d1             <= stEn_i;
     stByteEn_reg            <= stByteEn;
+    piton_stData_reg        <= piton_stData;
+    piton_stSize_reg        <= piton_stSize;
   end
   
   // 1) Stores update the cache once the write through to memory is complete
@@ -489,8 +509,8 @@ module DCache_controller(
   assign  stMiss_o = ~stHit & mem2dcStComplete_d1;
   
   assign dc2memStAddr_o        = {st_tag_reg, st_index_reg, st_offset_reg};
-  assign dc2memStData_o        = stData_reg;
-  assign dc2memStByteEn_o      = stByteEn_reg;
+  assign dc2memStData_o        = piton_stData_reg;
+  assign dc2memStSize_o        = piton_stSize_reg;
   assign dc2memStValid_o       = stEn_reg & (~dcScratchModeEn_d1);
   
   logic [`SIZE_DATA-1:0]           stbData[`DCACHE_SIZE_STB-1:0];

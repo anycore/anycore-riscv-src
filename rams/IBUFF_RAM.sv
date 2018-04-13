@@ -196,16 +196,16 @@ module IBUFF_RAM #(
   begin
   	int i;
   
-  	//if (reset)
-  	//begin
-  	//	for (i = 0; i < DEPTH; i++)
-  	//	begin
-  	//		ram[i]         <= {WIDTH{1'b0}};
-  	//	end
-  	//end
-    // 
-  	//else
-  	//begin
+  	if (reset)
+  	begin
+  		for (i = 0; i < DEPTH; i++)
+  		begin
+  			ram[i]         <= {WIDTH{1'b0}};
+  		end
+  	end
+     
+  	else
+  	begin
   		if (we0_i)
   		begin
   			ram[addr0wr_i] <= data0wr_i;
@@ -299,7 +299,7 @@ module IBUFF_RAM #(
   			ram[addr15wr_i] <= data15wr_i;
   		end
   `endif
-  	//end
+  	end
   end
 
 `ifdef IBUFF_RAM_COMPILED

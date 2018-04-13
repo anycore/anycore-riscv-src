@@ -27,7 +27,7 @@ module BP_RAM #(
 	parameter WIDTH  = 32
 ) (
 	input                   clk,
-	//input                   reset,
+	input                   reset,
 
 	input  [INDEX-1:0]      addr0_i,
 	output [WIDTH-1:0]      data0_o,
@@ -49,21 +49,20 @@ assign data0_o          = ram[addr0_i];
 always_ff @(posedge clk)
 begin
 	int i;
-	//if (reset)
-	//begin
-	//	for (i = 0; i < DEPTH; i++)
-	//	begin
-	//		ram[i]           <= 2;
-	//	end
-	//end
-  //
-	//else
-	//begin
-		if (we0_i)
+	if (reset)
+	begin
+		for (i = 0; i < DEPTH; i++)
 		begin
-			ram[addr0wr_i]   <= data0wr_i;
+			ram[i]           <= 2;
 		end
-	//end
+	end
+	else
+	begin
+	  if (we0_i)
+	  begin
+	  	ram[addr0wr_i]   <= data0wr_i;
+	  end
+	end
 end
 
 `ifdef BP_RAM_COMPILED

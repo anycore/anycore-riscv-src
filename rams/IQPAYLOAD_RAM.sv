@@ -113,7 +113,7 @@ module IQPAYLOAD_RAM #(
 `endif
 
 
-	//input                    reset,
+	input                    reset,
 	input                    clk
 );
 
@@ -163,16 +163,16 @@ module IQPAYLOAD_RAM #(
   begin
   	int i;
   
-  	//if (reset)
-  	//begin
-  	//	for (i = 0; i < DEPTH; i++)
-  	//	begin
-  	//		ram[i]         <= {WIDTH{1'b0}};
-  	//	end
-  	//end
-    //
-  	//else
-  	//begin
+  	if (reset)
+  	begin
+  		for (i = 0; i < DEPTH; i++)
+  		begin
+  			ram[i]         <= {WIDTH{1'b0}};
+  		end
+  	end
+    
+  	else
+  	begin
   		if (we0_i)
   		begin
   			ram[addr0wr_i] <= data0wr_i;
@@ -227,7 +227,7 @@ module IQPAYLOAD_RAM #(
   		end
   `endif
   
-  	//end
+  	end
   end
 
 `ifdef IQPAYLOAD_RAM_COMPILED

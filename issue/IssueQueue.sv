@@ -440,8 +440,8 @@ payloadRAM (
     .we7_i      (payloadWe[7]),
     `endif
 
-    .clk        (clk)
-    //.reset      (reset)
+    .clk        (clk),
+    .reset      (reset)
 );
 
 

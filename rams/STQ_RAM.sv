@@ -48,7 +48,7 @@ module STQ_RAM #(
 //  output                       stqRamReady_o,
 //`endif  
 
-	//input                    reset,
+	input                    reset,
 	input                    clk
 );
 
@@ -72,16 +72,16 @@ module STQ_RAM #(
   begin
   	int i;
   
-  	//if (reset)
-  	//begin
-  	//	for (i = 0; i < DEPTH; i++)
-  	//	begin
-  	//		ram[i]         <= {WIDTH{1'b0}};
-  	//	end
-  	//end
-    // 
-  	//else
-  	//begin
+  	if (reset)
+  	begin
+  		for (i = 0; i < DEPTH; i++)
+  		begin
+  			ram[i]         <= {WIDTH{1'b0}};
+  		end
+  	end
+     
+  	else
+  	begin
   		if (we0_i)
   		begin
   			ram[addr0wr_i] <= data0wr_i;
@@ -92,7 +92,7 @@ module STQ_RAM #(
   		//	ram[addr1wr_i] <= data1wr_i;
   		//end
   
-  	//end
+  	end
   end
 
 `ifdef STQ_RAM_COMPILED

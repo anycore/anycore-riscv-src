@@ -231,8 +231,8 @@ PRF_RAM #(
   .debugPRFWrEn_i    (debugPRFWrEn),
 `endif //PRF_DEBUG_PORT
 	
-	.clk               (clk)
-	//.reset             (reset && ~dbWe_i)
+	.clk               (clk),
+	.reset             (reset)
 	);
 
 endmodule

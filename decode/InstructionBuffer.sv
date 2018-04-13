@@ -351,8 +351,8 @@ IBUFF_RAM #(
 //  .ibuffRamReady_o(),
 //`endif
 
-	.clk         (clk)
-	//.reset       (reset | flush_i)
+	.clk         (clk),
+	.reset       (reset | flush_i)
 	);
 
 // Counting the number of active DISPATCH lanes

@@ -69,7 +69,7 @@ begin:ALU_OPERATION
     reg         [`SIZE_DATA-1:0]              result_32; // for OP_IMM_32
     
     //sign extend immediate to 64 bits
-    sign_ex_immd    = {{32{immd_i[`SIZE_IMMEDIATE-1]}}, immd_i}; 
+    sign_ex_immd    = {{(`SIZE_DATA-`SIZE_IMMEDIATE){immd_i[`SIZE_IMMEDIATE-1]}}, immd_i}; 
     shift_amt       = exePacket_i.inst[`SHAMT_HI:`SHAMT_LO];
     opcode          = exePacket_i.inst[`SIZE_OPCODE_P-1:0];
     fn3             = exePacket_i.inst[`FUNCT3_HI:`FUNCT3_LO];
@@ -82,7 +82,6 @@ begin:ALU_OPERATION
     case (opcode)
         `OP_LUI:
         begin
-            //result            = {sign_ex_immd[`SIZE_DATA-13:0],12'b0};
             result            = sign_ex_immd;
             flags.executed    = 1'h1;
             flags.destValid   = exePacket_i.phyDestValid;

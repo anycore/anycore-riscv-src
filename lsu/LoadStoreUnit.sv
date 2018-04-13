@@ -126,7 +126,7 @@ module LSU (
     // cache-to-memory interface for stores
     output [`DCACHE_ST_ADDR_BITS-1:0]   dc2memStAddr_o,  // memory read address
     output [`SIZE_DATA-1:0]             dc2memStData_o,  // memory read address
-    output [`SIZE_DATA_BYTE-1:0]        dc2memStByteEn_o,  // memory read address
+    output [2:0]                        dc2memStSize_o,  // memory read address
     output reg                          dc2memStValid_o, // memory read enable
 
     // memory-to-cache interface for stores
@@ -298,7 +298,7 @@ LSUDatapath datapath (
                                                    
   .dc2memStAddr_o               (dc2memStAddr_o     ), // memory read address
   .dc2memStData_o               (dc2memStData_o     ), // memory read address
-  .dc2memStByteEn_o             (dc2memStByteEn_o   ), // memory read address
+  .dc2memStSize_o               (dc2memStSize_o     ), // memory read address
   .dc2memStValid_o              (dc2memStValid_o    ), // memory read enable
                                                    
   .mem2dcStComplete_i           (mem2dcStComplete_i ),

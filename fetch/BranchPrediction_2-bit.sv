@@ -175,7 +175,7 @@ BP_RAM #(
 `else
 	.clk                      (clk),
 `endif
-	//.reset                    (reset),
+	.reset                    (reset),
 
 	.addr0_i                  (rdAddr[g]),
 	.data0_o                  (rdData[g]),
