@@ -199,6 +199,21 @@ reg  [`SIZE_PC-1:0]                 commitPC     [0:`COMMIT_WIDTH-1];
 /* integer                             commitCount_f; */
 
 /* integer                             commitCnt [0:`COMMIT_WIDTH-1]; */
+
+logic [`SIZE_PC-1:0]  currentCommitPC;
+assign currentCommitPC = commitPC[0];
+
+logic [`SIZE_PC-1:0] prevCommitPC;
+
+always @(posedge clk) begin
+    prevCommitPC <= currentCommitPC;
+end
+
+always @(posedge clk) begin
+    if (prevCommitPC != currentCommitPC) begin
+        $display("currentCommitPC changed from 0x%x to 0x%x", prevCommitPC, currentCommitPC);
+    end
+end
 `endif
 
 `ifdef DYNAMIC_CONFIG
