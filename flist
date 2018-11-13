@@ -1,9 +1,10 @@
++incdir+ISA
 +incdir+include
 +incdir+configs
-ISA/RISCV_ISA.sv
-configs/CommonConfig.svh
-configs/RAM_Params.svh
-include/structs.svh
+ISA/RISCV_ISA.h
+configs/CommonConfig.h
+configs/RAM_Params.h
+include/structs.sv
 chip_top/AnyCore_Piton.sv
 /*
 core_top/DebugConfig.sv
