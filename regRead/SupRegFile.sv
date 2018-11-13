@@ -48,8 +48,6 @@ module SupRegFile (
   output       [`CSR_WIDTH-1:0]       csr_evec_o
 	);
 
-// synopsys translate_off
-
 //`define SR_S              64'h0000000000000001
 //`define SR_PS             64'h0000000000000002
 //`define SR_EI             64'h0000000000000004
@@ -91,7 +89,7 @@ module SupRegFile (
 //`define RISCV_PGSIZE        (1 << `RISCV_PGSHIFT)
 //
 //
-localparam [`CSR_WIDTH-1:0] CSR_STATUS_MASK  = (64'h00000000ffffffff & ~`SR_EA & ~`SR_ZERO);
+//localparam [`CSR_WIDTH-1:0] CSR_STATUS_MASK  = (64'h00000000ffffffff & ~`SR_EA & ~`SR_ZERO);
 //`define CSR_FFLAGS_MASK   64'h00000000ffffffff
 //`define CSR_FRM_MASK      64'h00000000ffffffff
 //`define CSR_COMPARE_MASK  64'h00000000ffffffff
@@ -364,7 +362,7 @@ begin
     csr_compare   <=  wr_csr_compare   ? regWrDataCommit & `CSR_COMPARE_MASK : csr_compare; 
     csr_evec      <=  wr_csr_evec      ? regWrDataCommit : csr_evec; 
     csr_cause     <=  wr_csr_cause     ? regWrDataCommit : csr_cause_next;  
-    csr_status    <=  wr_csr_status    ? ((regWrDataCommit & ~`SR_IP) | (csr_status & `SR_IP)) & CSR_STATUS_MASK : csr_status_next;
+    csr_status    <=  wr_csr_status    ? ((regWrDataCommit & ~`SR_IP) | (csr_status & `SR_IP)) & `CSR_STATUS_MASK : csr_status_next;
     csr_hartid    <=  wr_csr_hartid    ? regWrDataCommit : csr_hartid;   
     csr_impl      <=  wr_csr_impl      ? regWrDataCommit : csr_impl;   
     csr_fatc      <=  wr_csr_fatc      ? regWrDataCommit : csr_fatc;   
@@ -495,8 +493,6 @@ begin
 end
 
 assign atomicRdVioFlag_o = atomicRdVioFlag & regRdChkptValid;
- 
-// synopsys translate_on
 
 endmodule
 
