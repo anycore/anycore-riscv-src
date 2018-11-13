@@ -365,20 +365,20 @@ module ICache_controller#(
   // This is only useful in scratch pad mode cause in cache mode, these lines are invalid.
   // The idea is to start the core in scratch pad mode after reset so that this BIST pattern
   // can run automatically and indicate successful completion by toggling an output.
-  localparam INIT_REG_1    =  0;//{16'h0000,`ADDI,8'h00,8'h01,16'h0000};  //  Initializes register 1 to 0 
-  localparam INIT_REG_2    =  0;//{16'h0000,`ADDI,8'h00,8'h02,16'h0000};  //  Initializes register 2 to 0 
-  localparam INIT_REG_3    =  0;//{16'h0000,`ADDI,8'h00,8'h03,16'h0004};  //  Initializes register 2 to 4 
-  localparam INIT_REG_4    =  0;//{16'h0000,`ADDI,8'h00,8'h04,16'h0002};  //  Initializes register 2 to 4 
-  localparam ADD_INST_1    =  0;//{16'h0000,`ADDI,8'h01,8'h01,16'h0005};  //  Accumulates 5 to register 1 
-  localparam ADD_INST_2    =  0;//{16'h0000,`ADDI,8'h02,8'h02,16'h000a};  //  Accumulates 10 to register 2
-  localparam ADD_INST_3    =  0;//{16'h0000,`ADDI,8'h03,8'h03,16'h0004};  //  Increments base address for loads and stores - word aligned
-  localparam ADD_INST_4    =  0;//{16'h0000,`ADDI,8'h04,8'h04,16'h0002};  //  Increments register 4 by 2
-  localparam TOGGLE_INST_S =  0;//{16'h0000,`TOGGLE_S,32'h00000000}    ;  //  Simple ALU Toggle
-  localparam TOGGLE_INST_C =  0;//{16'h0000,`TOGGLE_C,32'h00000000}    ;  //  Complex ALU Toggle
-  localparam JUMP_INST     =  0;//{16'h0000,`JUMP,32'h00000010}        ;  //  Jump to 0x00000040 and continue the loop
-  localparam NOP_INST      =  0;//{16'h0000,`NOP,32'h00000000}         ;  //  NOP
-  localparam ST_INST       =  0;//{16'h0000,`SW,8'h03,8'h04,16'h0000}  ;  //  Uses register 3 as base
-  localparam LD_INST       =  0;//{16'h0000,`LW,8'h03,8'h04,16'h0000}  ;  //  Uses register 3 as base
+  localparam INIT_REG_1    =  64'b0;//{16'h0000,`ADDI,8'h00,8'h01,16'h0000};  //  Initializes register 1 to 0 
+  localparam INIT_REG_2    =  64'b0;//{16'h0000,`ADDI,8'h00,8'h02,16'h0000};  //  Initializes register 2 to 0 
+  localparam INIT_REG_3    =  64'b0;//{16'h0000,`ADDI,8'h00,8'h03,16'h0004};  //  Initializes register 2 to 4 
+  localparam INIT_REG_4    =  64'b0;//{16'h0000,`ADDI,8'h00,8'h04,16'h0002};  //  Initializes register 2 to 4 
+  localparam ADD_INST_1    =  64'b0;//{16'h0000,`ADDI,8'h01,8'h01,16'h0005};  //  Accumulates 5 to register 1 
+  localparam ADD_INST_2    =  64'b0;//{16'h0000,`ADDI,8'h02,8'h02,16'h000a};  //  Accumulates 10 to register 2
+  localparam ADD_INST_3    =  64'b0;//{16'h0000,`ADDI,8'h03,8'h03,16'h0004};  //  Increments base address for loads and stores - word aligned
+  localparam ADD_INST_4    =  64'b0;//{16'h0000,`ADDI,8'h04,8'h04,16'h0002};  //  Increments register 4 by 2
+  localparam TOGGLE_INST_S =  64'b0;//{16'h0000,`TOGGLE_S,32'h00000000}    ;  //  Simple ALU Toggle
+  localparam TOGGLE_INST_C =  64'b0;//{16'h0000,`TOGGLE_C,32'h00000000}    ;  //  Complex ALU Toggle
+  localparam JUMP_INST     =  64'b0;//{16'h0000,`JUMP,32'h00000010}        ;  //  Jump to 0x00000040 and continue the loop
+  localparam NOP_INST      =  64'b0;//{16'h0000,`NOP,32'h00000000}         ;  //  NOP
+  localparam ST_INST       =  64'b0;//{16'h0000,`SW,8'h03,8'h04,16'h0000}  ;  //  Uses register 3 as base
+  localparam LD_INST       =  64'b0;//{16'h0000,`LW,8'h03,8'h04,16'h0000}  ;  //  Uses register 3 as base
 
   logic [`ICACHE_BITS_IN_LINE-1:0] BIST [3:0];
 
