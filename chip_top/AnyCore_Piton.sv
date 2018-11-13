@@ -103,6 +103,18 @@ assign ldData     = 32'h0;
 logic [`SIZE_PC-1:0]  currentInstPC;
 assign currentInstPC = instPC[0];
 
+logic [`SIZE_PC-1:0] prevInstPC;
+
+always @(posedge clk) begin
+    prevInstPC <= currentInstPC;
+end
+
+always @(posedge clk) begin
+    if (prevInstPC != currentInstPC) begin
+        $display("currentInstPC changed from 0x%x to 0x%x", prevInstPC, currentInstPC);
+    end
+end
+
 logic [`SIZE_INSTRUCTION-1:0]      inst   [0:`FETCH_WIDTH-1];
 logic                              instValid;
 logic [2:0]                        cancelCurrentFetch;
@@ -142,12 +154,7 @@ assign cancelCurrentFetch = 3'h0;
 
 `ifdef INST_CACHE
     logic                             instCacheBypass;
-//    logic [`ICACHE_BLOCK_ADDR_BITS-1:0] ic2memReqAddr_o;      // memory read address
-//    logic                             ic2memReqValid_o;     // memory read enable
-//    logic [`ICACHE_TAG_BITS-1:0]      mem2icTag_i;          // tag of the incoming data
-//    logic [`ICACHE_INDEX_BITS-1:0]    mem2icIndex_i;        // index of the incoming data
-//    logic [`ICACHE_BITS_IN_LINE-1:0]  mem2icData_i;         // requested data
-//    logic                             mem2icRespValid_i;    // requested data is ready
+
     logic                             icScratchModeEn;
     logic [`ICACHE_INDEX_BITS+`ICACHE_BYTES_IN_LINE_LOG-1:0]  icScratchWrAddr;
     logic                                                     icScratchWrEn;
@@ -158,22 +165,6 @@ assign cancelCurrentFetch = 3'h0;
 `ifdef DATA_CACHE
     logic                             dataCacheBypass;
     logic                             dcScratchModeEn;
-
-    // cache-to-memory interface for Loads
-    logic [`DCACHE_BLOCK_ADDR_BITS-1:0] dc2memLdAddr_o;  // memory read address
-    logic                             dc2memLdValid_o; // memory read enable
-
-    // memory-to-cache interface for Loads
-    logic  [`DCACHE_TAG_BITS-1:0]     mem2dcLdTag_i;       // tag of the incoming datadetermine
-    logic  [`DCACHE_INDEX_BITS-1:0]   mem2dcLdIndex_i;     // index of the incoming data
-    logic  [`DCACHE_BITS_IN_LINE-1:0] mem2dcLdData_i;      // requested data
-    logic                             mem2dcLdValid_i;     // indicates the requested data is ready
-
-    // cache-to-memory interface for stores
-    logic [`DCACHE_ST_ADDR_BITS-1:0]  dc2memStAddr_o;  // memory read address
-    logic [`SIZE_DATA-1:0]            dc2memStData_o;  // memory read address
-    logic [2:0]                       dc2memStSize_o;  // memory read address
-    logic                             dc2memStValid_o; // memory read enable
 
     logic [`DCACHE_INDEX_BITS+`DCACHE_BYTES_IN_LINE_LOG-1:0]  dcScratchWrAddr;
     logic                                                     dcScratchWrEn;
@@ -365,7 +356,7 @@ Core_OOO coreTop(
     .perfMonRegGlobalClr_i               (perfMonRegGlobalClr),                    
 `endif
 
-    .startPC_i                           (64'hfffffffff0000000),
+    .startPC_i                           (64'h0000000080000000),
 
     .instPC_o                            (instPC),
     .fetchReq_o                          (fetchReq),
