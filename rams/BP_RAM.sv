@@ -46,15 +46,28 @@ reg  [WIDTH-1:0]          ram [DEPTH-1:0];
 
 assign data0_o          = ram[addr0_i];
 
+`ifdef VERILATOR
+initial
+begin
+    int i;
+    for (i = 0; i < DEPTH; i++)
+    begin
+        ram[i]           = 2;
+    end
+end
+`endif
+
 always_ff @(posedge clk)
 begin
 	int i;
 	if (reset)
 	begin
+                `ifndef VERILATOR
 		for (i = 0; i < DEPTH; i++)
 		begin
 			ram[i]           <= 2;
 		end
+                `endif
 	end
 	else
 	begin

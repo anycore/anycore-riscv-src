@@ -175,6 +175,16 @@ module PRF_RAM #(
     assign data15_o          = ram[addr15_i];
   `endif
   
+  `ifdef VERILATOR
+  initial
+  begin
+      int i;
+      for (i = 0; i < DEPTH; i++)
+      begin
+          ram[i]         <= {WIDTH{1'b0}};
+      end
+  end
+  `endif
   
   /* Write operation */
   always_ff @(posedge clk)
@@ -183,10 +193,12 @@ module PRF_RAM #(
   
   	if (reset)
   	begin
+                `ifndef VERILATOR
   		for (i = 0; i < DEPTH; i++)
   		begin
   			ram[i]         <= {WIDTH{1'b0}};
   		end
+                `endif
   	end
     
   	else

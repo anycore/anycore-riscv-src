@@ -431,14 +431,20 @@ reg                             replayLdValid;
           ld_replay_valid       <= 1'b0;
 
         ld_already_hit          <= (ldPacket_i.lsqID == replayLSQId) & ldPacket_i.valid & loadDataValid_i; 
+
+`ifdef VERILATOR
+        replayPacket_o.valid <= (ldqAddrValid[replayLSQId] && !ldqWriteBack[replayLSQId]) & ~((ldPacket_i.lsqID == replayLSQId) & ldPacket_i.valid & loadDataValid_i);
+`endif
       end
     end
   end
 
+`ifndef VERILATOR
   always_comb
   begin
     replayPacket_o.valid    = ld_replay_valid & ~ld_already_hit;
   end
+`endif
 
   //always_comb
   //begin

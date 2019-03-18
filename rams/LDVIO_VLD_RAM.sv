@@ -112,6 +112,16 @@ assign data6_o                    = ram[addr6_i];
 assign data7_o                    = ram[addr7_i];
 `endif
 
+`ifdef VERILATOR
+initial
+begin
+    int i;
+    for (i = 0; i < DEPTH; i++)
+    begin
+        ram[i]         <= 0;
+    end
+end
+`endif
 
 /* Write operation */
 always_ff @(posedge clk)
@@ -120,10 +130,12 @@ begin
 
 	if (reset)
 	begin
+                `ifndef VERILATOR
 		for (i = 0; i < DEPTH; i++)
 		begin
 			ram[i]         <= 0;
 		end
+                `endif
 	end
 
 	else
