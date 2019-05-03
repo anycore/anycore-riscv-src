@@ -83,17 +83,6 @@ module ALVIO_RAM #(
   assign data3_o                    = ram[addr3_i];
   `endif
   
-  `ifdef VERILATOR
-  initial
-  begin
-      int i;
-      for (i = 0; i < DEPTH; i++)
-      begin
-          ram[i]         <= 0;
-      end
-  end
-  `endif
-  
   /* Write operation */
   always_ff @(posedge clk)
   begin
@@ -101,12 +90,10 @@ module ALVIO_RAM #(
   
   	if (reset)
   	begin
-                `ifndef VERILATOR
   		for (i = 0; i < DEPTH; i++)
   		begin
   			ram[i]         <= 0;
   		end
-                `endif
   	end
   
   	else
