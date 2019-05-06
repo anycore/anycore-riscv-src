@@ -19,7 +19,7 @@
 
 `timescale 1ns/1ps
 
-`define PRINT_EN
+//`define PRINT_EN
 
 //`define DUMP_STATS
 
