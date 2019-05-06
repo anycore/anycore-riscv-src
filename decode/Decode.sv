@@ -31,7 +31,7 @@ module Decode(
 	input                             fs2Ready_i,
 
 	input  decPkt                     decPacket_i [0:`FETCH_WIDTH-1],
-
+	
   // Number of ibPacket is twice the number of decPacket because potentially,
   // each instruction can be a complex instruction and can be split into two
   // parts
@@ -63,7 +63,7 @@ Decode_RISCV decode_RISCV (
 `endif
 
 	.decPacket_i             (decPacket_i[g]),
-
+	
 	.ibPacket0_o             (ibPacket_o[2*g]),
 	.ibPacket1_o             (ibPacket_o[2*g+1])
 	);

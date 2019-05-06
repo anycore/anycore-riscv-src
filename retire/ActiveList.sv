@@ -89,6 +89,7 @@ module ActiveList (
 	input  ldVioPkt                        ldVioPacket_i,
   input  exceptionPkt                    memExcptPacket_i,
   input  exceptionPkt                    disExcptPacket_i,
+  input  fpexcptPkt                    	 fpExcptPacket_i,	//Changes: Mohit(FP exception updates coming from FP_ALU)
   input                                  csrViolateFlag_i,
   input                                  interruptPending_i,
   input  [`SIZE_PC-1:0]                  csr_evec_i,
@@ -131,7 +132,8 @@ module ActiveList (
 	output [`EXCEPTION_CAUSE_LOG-1:0]      exceptionCause_o,
 
 	output                                 loadViolation_o,
-  output                                 alRamReady_o
+  output                                 alRamReady_o,
+  output     [`CSR_WIDTH-1:0]            csr_fflags_o
 	);
 
 
@@ -189,7 +191,7 @@ wire [`COMMIT_WIDTH-1:0]            commitReady;
 alPkt                               dataAl          [0:`COMMIT_WIDTH-1];
 wire [`SIZE_EXE_FLAGS+1-1:0]        ctrlAl          [0:`COMMIT_WIDTH-1]; // 1 extra for actualDir
 exceptionPkt                        exceptionAl     [0:`COMMIT_WIDTH-1];
-
+wire  [`CSR_WIDTH-1:0]		    fp_exceptionAl  [0:`COMMIT_WIDTH-1];
 
 `ifdef SIM
 reg  [`SIZE_PC-1:0]                 commitPC     [0:`COMMIT_WIDTH-1];
@@ -329,49 +331,49 @@ ALDATA_RAM #(
 
 
 	.addr0wr_i (bistEn ? bistAddrWr : tailAddr[0]),
-  .we0_i     (bistEn ? 1'b1       : alPacket_i[0].valid),
+  .we0_i     (bistEn ? 1'b1       : alPacket_i[0].valid),	
   .data0wr_i (bistEn ? bistDataWr : alPacket_i[0]),
 
 
 `ifdef DISPATCH_TWO_WIDE
 	.addr1wr_i (tailAddr[1]),
-	.we1_i     (alPacket_i[1].valid),
+	.we1_i     (alPacket_i[1].valid),	
 	.data1wr_i (alPacket_i[1]),
 `endif
 
 `ifdef DISPATCH_THREE_WIDE
 	.addr2wr_i (tailAddr[2]),
-	.we1_i     (alPacket_i[2].valid),
+	.we2_i     (alPacket_i[2].valid),	
 	.data2wr_i (alPacket_i[2]),
 `endif
 
 `ifdef DISPATCH_FOUR_WIDE
 	.addr3wr_i (tailAddr[3]),
-	.we1_i     (alPacket_i[3].valid),
+	.we3_i     (alPacket_i[3].valid),
 	.data3wr_i (alPacket_i[3]),
 `endif
 
 `ifdef DISPATCH_FIVE_WIDE
 	.addr4wr_i (tailAddr[4]),
-	.we1_i     (alPacket_i[4].valid),
+	.we4_i     (alPacket_i[4].valid),
 	.data4wr_i (alPacket_i[4]),
 `endif
 
 `ifdef DISPATCH_SIX_WIDE
 	.addr5wr_i (tailAddr[5]),
-	.we1_i     (alPacket_i[5].valid),
+	.we5_i     (alPacket_i[5].valid),
 	.data5wr_i (alPacket_i[5]),
 `endif
 
 `ifdef DISPATCH_SEVEN_WIDE
 	.addr6wr_i (tailAddr[6]),
-	.we1_i     (alPacket_i[6].valid),
+	.we6_i     (alPacket_i[6].valid),
 	.data6wr_i (alPacket_i[6]),
 `endif
 
 `ifdef DISPATCH_EIGHT_WIDE
 	.addr7wr_i (tailAddr[7]),
-	.we1_i     (alPacket_i[7].valid),
+	.we7_i     (alPacket_i[7].valid),
 	.data7wr_i (alPacket_i[7]),
 `endif
 
@@ -765,6 +767,65 @@ ALEXCPT_RAM #(
 	.clk        (clk),
 	.reset      (reset | violateFlag_reg | mispredFlag_reg | exceptionFlag_reg)
 	);
+
+
+/*-----------------------Changes: Mohit----------------------*/
+// RAM instance for Floating-point Exception bits corresponding to all FP 
+// instructions. The exception bits are then updated in CSR_FFLAGS during retire
+ALEXCPT_RAM #(
+  .RPORT      (`COMMIT_WIDTH),
+  .WPORT      (1),
+	.DEPTH      (`SIZE_ACTIVELIST),
+	.INDEX      (`SIZE_ACTIVELIST_LOG),
+	.WIDTH      (`CSR_WIDTH)	//Stores the fflags_csr for each alID
+	)
+
+	fp_excptActiveList (
+
+	.addr0_i    (headAddr[0]),
+	.data0_o    (fp_exceptionAl[0]),
+
+`ifdef COMMIT_TWO_WIDE
+	.addr1_i    (headAddr[1]),
+	.data1_o    (fp_exceptionAl[1]),
+`endif
+
+`ifdef COMMIT_THREE_WIDE
+	.addr2_i    (headAddr[2]),
+	.data2_o    (fp_exceptionAl[2]),
+`endif
+
+`ifdef COMMIT_FOUR_WIDE
+	.addr3_i    (headAddr[3]),
+	.data3_o    (fp_exceptionAl[3]),
+`endif
+
+	.addr0wr_i  (fpExcptPacket_i.alID),
+	.we0_i      (fpExcptPacket_i.valid),
+	.data0wr_i  (fpExcptPacket_i.fflags),
+
+	.we1_i      (1'b0),
+
+	.clk        (clk),
+	.reset      (reset | violateFlag_reg | exceptionFlag_reg)
+	);
+
+
+reg [`CSR_WIDTH-1:0]	csr_fflags_temp;
+// Combine the exception flags of all the retiring insturctions together
+always_comb
+begin	
+	int i;
+	csr_fflags_temp = (dataAl[0].isFP & dataAl[0].valid & commitReady[0])?fp_exceptionAl[0]:64'h0;
+	for(i = 1; i < `COMMIT_WIDTH; i++) begin
+		csr_fflags_temp = csr_fflags_temp | ((dataAl[i].isFP & dataAl[i].valid & commitReady[i])?fp_exceptionAl[i]:64'h0); 
+	end
+end
+
+assign  csr_fflags_o = csr_fflags_temp;
+
+
+/*-----------------------------------------------------------------*/
 
 
 // Counting the number of active DISPATCH lanes

@@ -39,6 +39,10 @@ module FP_ALU (
     
     input  [`SIZE_DATA-1:0]          data1_i,
     input  [`SIZE_DATA-1:0]          data2_i,
+    
+    input  [`CSR_WIDTH-1:0]          csr_frm_i,	//Changes: Mohit (Rounding mode register)
+    
+    output fpexcptPkt                fpExcptPacket_o,	//Changes: Mohit (FP_Exception Packet)
 
     output wbPkt                     wbPacket_o
     );
@@ -84,6 +88,42 @@ wire                           Dfeq;
 wire                           Dflt;
 
 reg [2:0]   rm_DW;
+reg [7:0]   fp_status; //Changes: Mohit (Execution status as evaluated by Designware modules)
+reg [4:0]   csr_fflags_temp; //Changes: Mohit (FP_Exception flag values as required by RISCV-ISA)
+
+/*-----------Changes: Mohit----------------*/
+wire [7:0]        Sfadd_status;
+wire [7:0]        Sfsub_status;
+wire [7:0]        Sfmult_status;
+wire [7:0]        Sfdiv_status;
+wire [7:0]        Sfsqrt_status;
+
+wire [7:0]        Sflt2i_status;
+wire [7:0]        Sflt2iU_status;
+wire [7:0]        Sflt2iL_status; 
+wire [7:0]        Sflt2iLU_status;
+
+wire [7:0]        Si2flt_status; 
+wire [7:0]        Si2fltU_status;
+wire [7:0]        Si2fltL_status;
+wire [7:0]        Si2fltLU_status;
+ 
+wire [7:0]        Dfadd_status; 
+wire [7:0]        Dfsub_status;
+wire [7:0]        Dfmult_status;
+wire [7:0]        Dfdiv_status;
+wire [7:0]        Dfsqrt_status;
+
+wire [7:0]        Dflt2i_status;
+wire [7:0]        Dflt2iU_status;
+wire [7:0]        Dflt2iL_status;
+wire [7:0]        Dflt2iLU_status;
+
+wire [7:0]        Di2flt_status; 
+wire [7:0]        Di2fltU_status;
+wire [7:0]        Di2fltL_status; 
+wire [7:0]        Di2fltLU_status;
+/*-----------------------------------------*/
 
 
 always_comb
@@ -97,6 +137,47 @@ begin
     wbPacket_o.seqNo    = exePacket_i.seqNo;
     wbPacket_o.valid    = exePacket_i.valid;
 end
+
+
+/*-------------Changes: Mohit--------------*/
+// Due to mismatch in definition between exception status specified 
+// by DW modules and RISCV-ISA, it is necessary to explicitly convert 
+// the Floating-point status upon execution
+always_comb
+begin
+    csr_fflags_temp = 5'h00;
+    case(fp_status)
+    8'h00: begin
+		csr_fflags_temp = 5'h00; //No exception generated
+	   end
+    8'h02: begin
+		csr_fflags_temp = 5'h08; //Divide by zero
+	   end
+    8'h04: begin
+		csr_fflags_temp = 5'h10; //Invalid operation
+	   end
+    8'h08: begin
+		csr_fflags_temp = 5'h02; //Underflow
+	   end
+    8'h10: begin
+		csr_fflags_temp = 5'h04; //Overflow
+	   end
+    8'h20: begin
+		csr_fflags_temp = 5'h01; //Inexact
+	   end
+    default: begin
+		csr_fflags_temp = 5'h00;
+	     end
+    endcase
+end
+
+always_comb
+begin
+	 fpExcptPacket_o.fflags = exePacket_i.valid ? {{59{1'b0}},csr_fflags_temp} : 64'h0; //Exception value is passed on
+	 fpExcptPacket_o.valid  = exePacket_i.valid; //If floating-point instruction then Exception Packet is valid
+	 fpExcptPacket_o.alID   = exePacket_i.alID;  //AL-ID of floating point instruction to write the result during retire
+end
+/*-----------------------------------------*/
 
 always_comb
 begin:FALU_OPERATION
@@ -118,6 +199,7 @@ begin:FALU_OPERATION
 
     result    = 0;
     flags   = 0;
+    fp_status = 0;
 
     case (opcode)
 
@@ -132,6 +214,7 @@ begin:FALU_OPERATION
                         `FN5_FADD:
                          begin
                          result[31:0]            = Sfadd;
+			 fp_status 		 = Sfadd_status;	//Changes: Mohit (Added support for FP_STATUS for all instruction)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -139,6 +222,7 @@ begin:FALU_OPERATION
                         `FN5_FSUB:
                          begin
                          result[31:0]            = Sfsub;
+			 fp_status 		 = Sfsub_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -146,6 +230,7 @@ begin:FALU_OPERATION
                         `FN5_FMUL:
                          begin
                          result[31:0]            = Sfmult;
+			 fp_status		 = Sfmult_status;	//Changes: Mohit (Selecting status from correct DW module) 
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -153,6 +238,7 @@ begin:FALU_OPERATION
                         `FN5_FDIV:
                          begin
                          result[31:0]            = Sfdiv;
+			 fp_status 		 = Sfdiv_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -160,6 +246,7 @@ begin:FALU_OPERATION
                          `FN5_FSQRT:
                          begin
                          result[31:0]            = Sfsqrt;
+			 fp_status		 = Sfsqrt_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -215,6 +302,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_W:
                                  begin
                                  result[31:0]            = Sflt2i;
+				 fp_status 		 = Sflt2i_status;	//Changes: Mohit (Selecting status from correct DW module) 
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -222,13 +310,15 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_WU:
                                  begin
                                  result[`SIZE_WORD-1:0]  = Sflt2iU[`SIZE_WORD-1:0]; // converting to 33 and dropping the sign bit
-                                 flags.executed          = 1'h1;
+                                 fp_status 	   	 = Sflt2iU_status;	//Changes: Mohit (Selecting status from correct DW module)
+				 flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
                                 
                                 `RS2_FCVT_L:
                                  begin
                                  result                  = Sflt2iL;
+				 fp_status 		 = Sflt2iL_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -236,7 +326,8 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_LU:
                                  begin
                                  result                  = Sflt2iLU[`SIZE_LONG-1:0]; // converting to 65 and dropping the sign bit
-                                 flags.executed          = 1'h1;
+                                 fp_status 		 = Sflt2iLU_status;	//Changes: Mohit (Selecting status from correct DW module)
+				 flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
                            endcase
@@ -290,10 +381,11 @@ begin:FALU_OPERATION
                              
                             `FN5_FCVT_I2FP:
                             begin
-                            case (fn3)
+                            case (rs2)	//Changes: Mohit (Changed case select field from fn3 to rs2)
                                 `RS2_FCVT_W:
                                  begin
                                  result[31:0]            = Si2flt;
+				 fp_status		 = Si2flt_status;	//Changes: Mohit (Selecting status from correct DW module) 
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -301,6 +393,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_WU:
                                  begin
                                  result[31:0]            = Si2fltU;
+				 fp_status 		 = Si2fltU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -308,6 +401,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_L:
                                  begin
                                  result                  = Si2fltL;
+				 fp_status		 = Si2fltL_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -315,6 +409,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_LU:
                                  begin
                                  result                  = Si2fltLU;
+			 	 fp_status 		 = Si2fltLU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -344,6 +439,7 @@ begin:FALU_OPERATION
                         `FN5_FADD:
                          begin
                          result                  = Dfadd;
+			 fp_status 		 = Dfadd_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -351,6 +447,7 @@ begin:FALU_OPERATION
                         `FN5_FSUB:
                          begin
                          result                  = Dfsub;
+			 fp_status 		 = Dfsub_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -358,6 +455,7 @@ begin:FALU_OPERATION
                         `FN5_FMUL:
                          begin
                          result                  = Dfmult;
+			 fp_status 		 = Dfmult_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -365,6 +463,7 @@ begin:FALU_OPERATION
                         `FN5_FDIV:
                          begin
                          result                  = Dfdiv;
+			 fp_status 		 = Dfdiv_status;	//Changes: Mohit (Selecting status from correct DW module)
                          flags.executed          = 1'h1;
                          flags.destValid         = exePacket_i.phyDestValid; 
                          end
@@ -400,6 +499,7 @@ begin:FALU_OPERATION
                           `FN5_FSQRT:
                           begin
                           result                  = Dfsqrt;
+			  fp_status 		  = Dfsqrt_status;	//Changes: Mohit (Selecting status from correct DW module)
                           flags.executed          = 1'h1;
                           flags.destValid         = exePacket_i.phyDestValid; 
                           end
@@ -429,6 +529,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_W:
                                  begin
                                  result                  = {{32{Dflt2i[31]}},Dflt2i};
+				 fp_status		 = Dflt2i_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -436,6 +537,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_WU:
                                  begin
                                  result                  = {32'b0,Dflt2iU[`SIZE_SINGLE-1:0]}; // converting to 33 and dropping the sign bit
+				 fp_status		 = Dflt2iU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -443,6 +545,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_L:
                                  begin
                                  result                  = Dflt2iL;
+				 fp_status 		 = Dflt2iL_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -450,6 +553,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_LU:
                                  begin
                                  result                  = Dflt2iLU[`SIZE_DATA-1:0]; // converting to 65 and dropping the sign bit
+				 fp_status		 = Dflt2iLU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -508,6 +612,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_W:
                                  begin
                                  result                  = Di2flt;
+				 fp_status		 = Di2flt_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -515,6 +620,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_WU:
                                  begin
                                  result                  = Di2fltU;
+				 fp_status 		 = Di2fltU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -522,6 +628,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_L:
                                  begin
                                  result                  = Di2fltL;
+				 fp_status 		 = Di2fltL_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -529,6 +636,7 @@ begin:FALU_OPERATION
                                 `RS2_FCVT_LU:
                                  begin
                                  result                  = Di2fltLU;
+				 fp_status		 = Di2fltLU_status;	//Changes: Mohit (Selecting status from correct DW module)
                                  flags.executed          = 1'h1;
                                  flags.destValid         = exePacket_i.phyDestValid; 
                                  end
@@ -563,7 +671,12 @@ begin
     reg [2:0]   rm_RISCV;
 
     rm_RISCV = exePacket_i.inst[`RM_HI:`RM_LO];
-    rm_DW = rm_RISCV; //default
+
+    if(rm_RISCV == 3'b111) begin //Changes: Mohit (Read value from frm register if the mode is dynamic rounding mode)
+	rm_RISCV = csr_frm_i[3:0];
+    end
+
+   rm_DW = rm_RISCV; //default
 
     case(rm_RISCV)
         `RM_RDN :
@@ -572,10 +685,10 @@ begin
         `RM_RUP :
             rm_DW = `RM_RDN;
 
-         default:
+         /*default:
          begin
-            rm_DW = `RM_RUP;
-         end
+            rm_DW = `RM_RUP;	//Changes: Mohit
+         end*/
     endcase
     rm_DW = exePacket_i.valid ? rm_DW : `RM_RUP;
 end
@@ -600,7 +713,7 @@ fp_add_S(
     .a(data1_S),
     .b(data2_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sfadd_status),
     .z(Sfadd)
 );
 
@@ -613,7 +726,7 @@ fp_sub_S(
     .a(data1_S),
     .b(data2_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sfsub_status),
     .z(Sfsub)
 );
 
@@ -626,7 +739,7 @@ fp_mult_S(
     .a(data1_S),
     .b(data2_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sfmult_status),
     .z(Sfmult)
 );
 
@@ -640,7 +753,7 @@ fp_div_S(
     .a(data1_S),
     .b(data2_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sfdiv_status),
     .z(Sfdiv)
 );
 
@@ -652,7 +765,7 @@ DW_fp_sqrt #(
 fp_sqrt_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sfsqrt_status),
     .z(Sfsqrt)
 );
 
@@ -665,7 +778,7 @@ DW_fp_flt2i #(
 fp_flt2i_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sflt2i_status),
     .z(Sflt2i)
 );
 
@@ -678,7 +791,7 @@ DW_fp_flt2i #(
 fp_flt2iU_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sflt2iU_status),
     .z(Sflt2iU)
 );
 
@@ -691,7 +804,7 @@ DW_fp_flt2i #(
 fp_flt2iL_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sflt2iL_status),
     .z(Sflt2iL)
 );
 
@@ -704,7 +817,7 @@ DW_fp_flt2i #(
 fp_flt2iLU_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Sflt2iLU_status),
     .z(Sflt2iLU)
 );
 
@@ -736,7 +849,7 @@ DW_fp_i2flt #(
 fp_i2flt_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Si2flt_status),
     .z(Si2flt)
 );
 
@@ -749,7 +862,7 @@ DW_fp_i2flt #(
 fp_i2fltU_S(
     .a(data1_S),
     .rnd(rm_DW),
-    .status(),
+    .status(Si2fltU_status),
     .z(Si2fltU)
 );
 
@@ -762,7 +875,7 @@ DW_fp_i2flt #(
 fp_i2fltL_S(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Si2fltL_status),
     .z(Si2fltL)
 );
 
@@ -775,7 +888,7 @@ DW_fp_i2flt #(
 fp_i2fltLU_S(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Si2fltLU_status),
     .z(Si2fltLU)
 );
 
@@ -790,7 +903,7 @@ fp_add_D(
     .a(data1_i),
     .b(data2_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dfadd_status),
     .z(Dfadd)
 );
 
@@ -803,7 +916,7 @@ fp_sub_D(
     .a(data1_i),
     .b(data2_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dfsub_status),
     .z(Dfsub)
 );
 
@@ -816,7 +929,7 @@ fp_mult_D(
     .a(data1_i),
     .b(data2_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dfmult_status),
     .z(Dfmult)
 );
 
@@ -828,7 +941,7 @@ DW_fp_sqrt #(
 fp_sqrt_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dfsqrt_status),
     .z(Dfsqrt)
 );
 
@@ -842,7 +955,7 @@ fp_div_D(
     .a(data1_i),
     .b(data2_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dfdiv_status),
     .z(Dfdiv)
 );
 
@@ -855,7 +968,7 @@ DW_fp_flt2i #(
 fp_flt2i_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dflt2i_status),
     .z(Dflt2i)
 );
 
@@ -868,7 +981,7 @@ DW_fp_flt2i #(
 fp_flt2iU_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dflt2iU_status),
     .z(Dflt2iU)
 );
 
@@ -881,7 +994,7 @@ DW_fp_flt2i #(
 fp_flt2iLU_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dflt2iLU_status),
     .z(Dflt2iLU)
 );
 
@@ -894,7 +1007,7 @@ DW_fp_flt2i #(
 fp_flt2iL_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Dflt2iL_status),
     .z(Dflt2iL)
 );
 
@@ -926,7 +1039,7 @@ DW_fp_i2flt #(
 fp_i2flt_D(
     .a(data1_i[`SIZE_WORD-1:0]),
     .rnd(rm_DW),
-    .status(),
+    .status(Di2flt_status),
     .z(Di2flt)
 );
 
@@ -939,7 +1052,7 @@ DW_fp_i2flt #(
 fp_i2fltU_D(
     .a(data1_i[`SIZE_WORD-1:0]),
     .rnd(rm_DW),
-    .status(),
+    .status(Di2fltU_status),
     .z(Di2fltU)
 );
 
@@ -952,7 +1065,7 @@ DW_fp_i2flt #(
 fp_i2fltL_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Di2fltL_status),
     .z(Di2fltL)
 );
 
@@ -965,7 +1078,7 @@ DW_fp_i2flt #(
 fp_i2fltLU_D(
     .a(data1_i),
     .rnd(rm_DW),
-    .status(),
+    .status(Di2fltLU_status),
     .z(Di2fltLU)
 );
 

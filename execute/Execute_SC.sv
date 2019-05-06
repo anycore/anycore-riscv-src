@@ -84,8 +84,11 @@ module Execute_SC #(
 
     /* all the bypasses coming from the different pipes */
     input  bypassPkt                    bypassPacket_i [0:`ISSUE_WIDTH-1],
+    input  [`CSR_WIDTH-1:0]		csr_frm_i,	//Changes: Mohit (Register for dynamic rounding mode)
 
-    output wbPkt                        wbPacket_o
+    output wbPkt                        wbPacket_o,
+    
+    output fpexcptPkt	                fpExcptPacket_o	//Changes: Mohit (FP_Exception flag packet for execution exceptions like Overflow, Underflow, Inexact etc.)
     );
 
 
@@ -123,6 +126,8 @@ assign tp_pc = exePacket_i.pc;
 wire toggleFlag_S;
 wire toggleFlag_C;
 wire toggleFlag_F;
+
+
 
 
 generate
@@ -188,13 +193,17 @@ begin:simple_complex_fp
       .inst_i                             (exePacket_C.inst),
       .wbPacket_o                         (wbPacket_C)
   );
+
+  fpexcptPkt	 	    fpExcptPacket_temp; //Changes: Mohit (FP_exception output from FP-ALU)
   
   FP_ALU falu(
       .exePacket_i                        (exePacket_F),
       .toggleFlag_o                       (toggleFlag_F),
       .data1_i                            (src1Data),
       .data2_i                            (src2Data),
-      .wbPacket_o                         (wbPacket_F)
+      .csr_frm_i                          (csr_frm_i),	//Changes: Mohit (Rounding mode)
+      .wbPacket_o                         (wbPacket_F),
+      .fpExcptPacket_o                    (fpExcptPacket_temp)	//Changes: Mohit (FP_Exception like Overflow, Underflow, Inexact etc.)
     );
 
   
@@ -210,6 +219,7 @@ begin:simple_complex_fp
   
   assign toggleFlag_o = toggleFlag_S | toggleFlag_C | toggleFlag_F;
 
+  assign fpExcptPacket_o = fpExcptPacket_temp;	//Changes: Mohit (FP_Exception like Overflow, Underflow, Inexact etc.)
 end
 
 
@@ -283,7 +293,8 @@ begin:simple_complex
   );
   
   assign toggleFlag_o = toggleFlag_S | toggleFlag_C;
-
+  
+  assign fpExcptPacket_o = 64'h0;	//Changes: Mohit (Assigned 0 when no FP_ALU)
 end
 
 
@@ -306,7 +317,7 @@ begin:simple
   );
   
   assign toggleFlag_o = toggleFlag_S;
-
+  assign fpExcptPacket_o = 64'h0;	//Changes: Mohit (Assigned 0 when no FP_ALU)
 end
 
 
@@ -340,7 +351,7 @@ begin:complex
   );
   
   assign toggleFlag_o = toggleFlag_C;
-
+  assign fpExcptPacket_o = 64'h0;	//Changes: Mohit (Assigned 0 when no FP_ALU)
 end
 endgenerate
 

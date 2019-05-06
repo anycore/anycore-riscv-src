@@ -41,11 +41,16 @@ module SupRegFile (
   input        [`SIZE_VIRT_ADDR-1:0]  stCommitAddr_i,
   input        [`SIZE_VIRT_ADDR-1:0]  ldCommitAddr_i,
   input                               sretFlag_i,
+  input        [`CSR_WIDTH-1:0]	      csr_fflags_i,
 
   output logic                        atomicRdVioFlag_o,
   output logic                        interruptPending_o,
   output       [`CSR_WIDTH-1:0]       csr_epc_o,
-  output       [`CSR_WIDTH-1:0]       csr_evec_o
+  output       [`CSR_WIDTH-1:0]       csr_evec_o,
+  //Changes: Mohit (Status output goes to Instruction Buffer used for checking FP_DISABLED status)	
+  output       [`CSR_WIDTH-1:0]       csr_status_o,
+  //Changes: Mohit (FRM register used for dynamic rounding mode)	
+  output       [`CSR_WIDTH-1:0]       csr_frm_o	
 	);
 
 // synopsys translate_off
@@ -182,6 +187,8 @@ assign interruptPending_o = (|interrupts) & (|(csr_status & `SR_EI)); //If inter
 
 assign csr_evec_o = csr_evec;
 assign csr_epc_o  = csr_epc;
+assign csr_status_o  = csr_status;	//Changes: Mohit
+assign csr_frm_o  = csr_frm;	//Changes: Mohit
 
 // Checkpoint the CSR address and Data read
 // by a CSR instruction to verify the atomic
@@ -233,6 +240,41 @@ begin
   begin
     regWrAddrCommit <=  regWrAddr_i;
     regWrDataCommit <=  regWrData_i;
+  end
+  //Changes: Mohit (Else if block added to handle case when misprediction occurs
+  //since execution results of CSRs need to flushed)
+  else if(flush_i) begin   
+    case(regWrAddrCommit)
+      12'h001:regWrDataCommit <= csr_fflags; 
+      12'h002:regWrDataCommit <= csr_frm   ; 
+      12'h003:regWrDataCommit <= csr_fcsr  ; 
+      12'h0c0:regWrDataCommit <= csr_stats ; 
+      12'h500:regWrDataCommit <= csr_sup0  ; 
+      12'h501:regWrDataCommit <= csr_sup1  ; 
+      12'h502:regWrDataCommit <= csr_epc   ; 
+      12'h503:regWrDataCommit <= csr_badvaddr; 
+      12'h504:regWrDataCommit <= csr_ptbr  ; 
+      12'h505:regWrDataCommit <= csr_asid  ; 
+      12'h506:regWrDataCommit <= csr_count ; 
+      12'h507:regWrDataCommit <= csr_compare; 
+      12'h508:regWrDataCommit <= csr_evec  ; 
+      12'h509:regWrDataCommit <= csr_cause ; 
+      12'h50a:regWrDataCommit <= csr_status; 
+      12'h50b:regWrDataCommit <= csr_hartid; 
+      12'h50c:regWrDataCommit <= csr_impl  ; 
+      12'h50d:regWrDataCommit <= csr_fatc  ; 
+      12'h50e:regWrDataCommit <= csr_send_ipi; 
+      12'h50f:regWrDataCommit <= csr_clear_ipi; 
+      12'h51d:regWrDataCommit <= csr_reset ; 
+      12'h51e:regWrDataCommit <= csr_tohost; 
+      12'h51f:regWrDataCommit <= csr_fromhost; 
+      12'hc00:regWrDataCommit <= csr_cycle; 
+      12'hc01:regWrDataCommit <= csr_time  ; 
+      12'hc02:regWrDataCommit <= csr_instret; 
+      12'hc80:regWrDataCommit <= csr_cycleh; 
+      12'hc81:regWrDataCommit <= csr_timeh ; 
+      12'hc82:regWrDataCommit <= csr_instreth; 
+    endcase
   end
 end
 
@@ -350,9 +392,11 @@ begin
   // Write the register when the CSR instruction commits
   else
   begin
-    csr_fflags    <=  wr_csr_fflags    ? regWrDataCommit & `CSR_FFLAGS_MASK : csr_fflags;
+    //Changes: Mohit (Update CSR_FFLAGS when floating-point instruction retire)
+    csr_fflags    <=  wr_csr_fflags    ? regWrDataCommit & `CSR_FFLAGS_MASK : (csr_fflags | (csr_fflags_i & `CSR_FFLAGS_MASK));	
     csr_frm       <=  wr_csr_frm       ? regWrDataCommit & `CSR_FRM_MASK : csr_frm;
-    csr_fcsr      <=  wr_csr_fcsr      ? regWrDataCommit : csr_fcsr;
+    //Changes: Mohit (FFLAGS is also part of FCSR register according to ISA)
+    csr_fcsr      <=  wr_csr_fcsr      ? regWrDataCommit : (csr_fcsr | (csr_fflags_i & `CSR_FFLAGS_MASK));	
     csr_stats     <=  wr_csr_stats     ? regWrDataCommit : csr_stats; 
     csr_sup0      <=  wr_csr_sup0      ? regWrDataCommit : csr_sup0; 
     csr_sup1      <=  wr_csr_sup1      ? regWrDataCommit : csr_sup1; 

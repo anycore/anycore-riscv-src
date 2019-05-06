@@ -92,6 +92,10 @@ module Dispatch(
   //output                                  stallForCsr_o
 	);
 
+
+reg [`DISPATCH_WIDTH-1:0] expVect;		//Changes:Mohit (Debug hook should be removed before synthesis)
+
+
 // Counting the number of active DISPATCH lanes
 // Should be 1 bit wider as it should hold values from 1 to `DISPATCH_WIDTH
 // RBRC
@@ -318,6 +322,7 @@ begin
 		alPacket_o[i].isScall        = disPacket_i[i].isScall;
 		alPacket_o[i].isSbreak       = disPacket_i[i].isSbreak;
 		alPacket_o[i].isSret         = disPacket_i[i].isSret;   
+		alPacket_o[i].isFP           = isFP[i];	 	//Changes: Mohit (Additional FP flag added to ActiveList and passed from Dispatch) 
 		alPacket_o[i].valid          = disPacket_i[i].valid & ~stall; // Write to AL even if exception
 	end
 end
@@ -338,7 +343,7 @@ begin:EXCPT_PKT
   exceptionValid = |exceptionVector;
 
   // Priority encoder to indicate the first instruction that excepted
-  casez(exceptionVector)
+  casex(exceptionVector) //Changes: Mohit (Changed casez -> casex since none of the switch input include 'z')
     8'bxxxxxxx1:exceptionID = 0;
     8'bxxxxxx10:exceptionID = 1;
     8'bxxxxx100:exceptionID = 2;
@@ -350,11 +355,14 @@ begin:EXCPT_PKT
     default    :exceptionID = 0;
   endcase
 
+  expVect = exceptionID;		//Changes:Mohit (Debug hook)
+
 	disExcptPacket_o.seqNo          = disPacket_i[exceptionID].seqNo;
 	disExcptPacket_o.alID           = alID_i[exceptionID];
 	disExcptPacket_o.exceptionCause = disPacket_i[exceptionID].exceptionCause;
 	disExcptPacket_o.exception      = disPacket_i[exceptionID].exception;
-	disExcptPacket_o.valid          = exceptionValid; // Write to AL only if exception
+	//Changes:Mohit (Added ~stall to avoid disExcptPacket updating Exception Activelist before AL entry is updated in case of backend stall)
+	disExcptPacket_o.valid          = exceptionValid & ~stall; // Write to AL only if exception 
 
 end
 

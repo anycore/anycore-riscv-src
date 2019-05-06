@@ -77,6 +77,12 @@ localparam SIGNED_REMAINDER     = 4'h5;
 localparam UNSIGNED_QUOTIENT    = 4'h6;
 localparam UNSIGNED_REMAINDER   = 4'h7;
 localparam TOGGLE               = 4'h8;
+localparam SIGNED_EXT_PRODUCT_L = 4'h9;	//Changes: Mohit (MULW)
+localparam SIGNED_EXT_QUOTIENT      = 4'ha; //Changes: Mohit (DIVW)
+localparam SIGNED_EXT_REMAINDER     = 4'hb; //Changes: Mohit (REMW)
+localparam UNSIGNED_EXT_QUOTIENT    = 4'hc; //Changes: Mohit (DIVUW)
+localparam UNSIGNED_EXT_REMAINDER   = 4'hd; //Changes: Mohit (REMUW)
+
 
 // exePacket_i after (DEPTH-1) cycles
 fuPkt                            shiftPacketOut;
@@ -196,6 +202,11 @@ begin
             UNSIGNED_QUOTIENT:  wbPacket_o.destData = unsignedQuotient;
             UNSIGNED_REMAINDER: wbPacket_o.destData = unsignedRemainder;
             TOGGLE            : wbPacket_o.destData = 0;
+            SIGNED_EXT_PRODUCT_L:   wbPacket_o.destData = {{32{signedProduct_l[31]}},signedProduct_l[31:0]};	// Result: MULW
+            SIGNED_EXT_QUOTIENT:    wbPacket_o.destData = {{32{signedQuotient[31]}},signedQuotient[31:0]};	// Result: DIVW
+            SIGNED_EXT_REMAINDER:   wbPacket_o.destData = {{32{signedRemainder[31]}},signedRemainder[31:0]};    // Result: REMW
+            UNSIGNED_EXT_QUOTIENT:  wbPacket_o.destData = {{32{1'b0}},unsignedQuotient[31:0]};			// Result: DIVUW
+            UNSIGNED_EXT_REMAINDER: wbPacket_o.destData = {{32{1'b0}},unsignedRemainder[31:0]};			// Result: REMUW
             default           : wbPacket_o.destData = 0;
         endcase
     end
@@ -204,6 +215,10 @@ end
 logic reset_n;
 
 assign reset_n = ~reset;
+
+//Changes: Mohit (Modified data values for RV64 instruction)
+reg [`SIZE_DATA-1:0]	data1;
+reg [`SIZE_DATA-1:0]	data2;
 
 always_comb
 begin:ALU_OPERATION
@@ -224,6 +239,9 @@ begin:ALU_OPERATION
     result1_s       = 0;
     result2_s       = 0;
     flags           = 0;
+
+    data1 = data1_i;	//Changes: Mohit //Default: data1
+    data2 = data2_i;	//Changes: Mohit //Default: data2
 
     /* result          = 0; */
     flags           = 0;
@@ -331,7 +349,7 @@ begin:ALU_OPERATION
                     endcase //case (fn3)
                   end
                 endcase // case (fn7)
-
+	   
            //`OP_SYSTEM:
            // begin 
            //     case (fn3)
@@ -351,6 +369,57 @@ begin:ALU_OPERATION
            //       end
            // end
         end
+
+        /*------------------------------------------------Changes: Mohit--------------------------------------------------*/
+        `OP_OP_32: begin
+		case(fn7)
+		   `FN7_MUL_DIV: begin
+			fuEnabled = 1'b1;
+			case(fn3)
+				`FN3_MUL: begin
+					data1 = {{32{1'b0}},data1_i[31:0]}; //Sign-extended lower 32-bit value
+					data2 = {{32{1'b0}},data2_i[31:0]}; //Sign-extended lower 32-bit value
+					flags.executed          = 1'h1;
+                            		flags.destValid         = exePacket_i.phyDestValid;
+                            		resultType              = SIGNED_EXT_PRODUCT_L;	
+				 end
+				`FN3_DIV: begin
+					flags.exception         = (data2_s[30:0] == 0) ? 1'b1 : 1'b0;	//Divide by zero check
+                            		flags.executed          = 1'h1;
+                            		flags.destValid         = exePacket_i.phyDestValid;
+                            		resultType              = SIGNED_EXT_QUOTIENT;
+					data1			= {{32{data1_i[31]}},data1_i[31:0]}; //Sign-extended lower 32 bit value
+                            		divisor			= {{32{1'b0}},data2_i[31:0]};
+				end	
+				`FN3_DIVU: begin
+					flags.exception         = (data2_i[30:0] == 0) ? 1'b1 : 1'b0; //Divide by zero check
+                            		flags.executed          = 1'h1;
+                            		flags.destValid         = exePacket_i.phyDestValid;
+                            		resultType              = UNSIGNED_EXT_QUOTIENT;
+					data1			= {{32{data1_i[31]}},data1_i[31:0]}; //Sign-extended lower 32-bit value
+                            		divisor                 = {{32{1'b0}},data2_i[31:0]};
+				end
+				`FN3_REM: begin
+					flags.exception         = (data2_s[30:0] == 0) ? 1'b1 : 1'b0; //Divide by zero check
+                            		flags.executed          = 1'h1;
+                            		flags.destValid         = exePacket_i.phyDestValid;
+                            		resultType              = SIGNED_EXT_REMAINDER;
+                            		data1			= {{32{data1_i[31]}},data1_i[31:0]}; //Sign-extended lower 32-bit value
+                            		divisor                 = {{32{1'b0}},data2_i[31:0]};
+				end
+				`FN3_REMU: begin
+					flags.exception         = (data2_i[30:0] == 0) ? 1'b1 : 1'b0; //Divide by zero check
+                            		flags.executed          = 1'h1;
+                            		flags.destValid         = exePacket_i.phyDestValid;
+                            		resultType              = UNSIGNED_EXT_REMAINDER;
+					data1			= {{32{data1_i[31]}},data1_i[31:0]};
+                            		divisor                 = {{32{1'b0}},data2_i[31:0]};
+				end
+			endcase	
+		   end
+		endcase
+	 end
+	/*----------------------------------------------------------------------------------------------------------------------------*/
     endcase // case (opcode)
 end //always_comb
 
@@ -426,8 +495,8 @@ DW_mult_pipe #(
     .rst_n          (reset_n),
     .en             (fuEnabled),
     .tc             (1'h1),     // 0:unsigned 1:signed,
-    .a              (data1_i),
-    .b              (data2_i),
+    .a              (data1),	//Changes: Mohit (Changed from data1_s to data1)
+    .b              (data2),	//Changes: Mohit (Changed from data2_s to data2)
     .product        ({signedProduct_h, signedProduct_l}) 
 );
 
@@ -445,8 +514,8 @@ DW_mult_pipe #(
     .rst_n          (reset_n),
     .en             (fuEnabled),
     .tc             (1'h0),     // 0:unsigned 1:signed,
-    .a              (data1_i),
-    .b              (data2_i),
+    .a              (data1),	//Changes: Mohit (Changed from data1_s to data1)
+    .b              (data2),	//Changes: Mohit (Changed from data2_s to data2)
     .product        ({unsignedProduct_h, unsignedProduct_l}) 
 );
 
@@ -466,7 +535,7 @@ DW_div_pipe #(
     .clk            (clk),
     .rst_n          (reset_n),
     .en             (fuEnabled),
-    .a              (data1_i),
+    .a              (data1),	//Changes: Mohit (Changed from data1_s to data1)
     .b              (divisor),
     .quotient       (signedQuotient),
     .remainder      (signedRemainder),
@@ -488,7 +557,7 @@ DW_div_pipe #(
     .clk            (clk),
     .rst_n          (reset_n),
     .en             (fuEnabled),
-    .a              (data1_i),
+    .a              (data1),	//Changes: Mohit (Changed from data1_s to data1)
     .b              (divisor),
     .quotient       (unsignedQuotient),
     .remainder      (unsignedRemainder),
