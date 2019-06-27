@@ -1,4 +1,4 @@
-/**:****************************************************************************
+/*******************************************************************************
 #                        NORTH CAROLINA STATE UNIVERSITY
 #
 #                              AnyCore Project
@@ -26,7 +26,7 @@ module Decode_RISCV (
 `endif
 
     input  decPkt                     decPacket_i,
-    
+
     output renPkt                     ibPacket0_o,
     output renPkt                     ibPacket1_o
     );
@@ -265,7 +265,7 @@ begin
           instFU_0           = `SIMPLE_TYPE;
         end
 
- `OP_OP_FP: begin 
+ `OP_OP_FP: begin
           case (instFunct5)
             `FN5_FADD,    
             `FN5_FSUB,    

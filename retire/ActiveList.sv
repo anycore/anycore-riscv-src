@@ -331,19 +331,19 @@ ALDATA_RAM #(
 
 
 	.addr0wr_i (bistEn ? bistAddrWr : tailAddr[0]),
-  .we0_i     (bistEn ? 1'b1       : alPacket_i[0].valid),	
+  .we0_i     (bistEn ? 1'b1       : alPacket_i[0].valid),
   .data0wr_i (bistEn ? bistDataWr : alPacket_i[0]),
 
 
 `ifdef DISPATCH_TWO_WIDE
 	.addr1wr_i (tailAddr[1]),
-	.we1_i     (alPacket_i[1].valid),	
+	.we1_i     (alPacket_i[1].valid),
 	.data1wr_i (alPacket_i[1]),
 `endif
 
 `ifdef DISPATCH_THREE_WIDE
 	.addr2wr_i (tailAddr[2]),
-	.we2_i     (alPacket_i[2].valid),	
+	.we2_i     (alPacket_i[2].valid),
 	.data2wr_i (alPacket_i[2]),
 `endif
 

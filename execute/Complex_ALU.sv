@@ -349,7 +349,7 @@ begin:ALU_OPERATION
                     endcase //case (fn3)
                   end
                 endcase // case (fn7)
-	   
+
            //`OP_SYSTEM:
            // begin 
            //     case (fn3)

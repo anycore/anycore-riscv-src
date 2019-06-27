@@ -730,7 +730,7 @@ begin
         prf_debug_print();
         exe_debug_print();
         lsu_debug_print();
-        alist_debug_print();	
+        alist_debug_print();
       end
     `endif
   //end
@@ -1005,7 +1005,7 @@ begin: VERIFY_INSTRUCTIONS
                     set_pcr(`CSR_STATUS,coreTop.supregisterfile.csr_status_next);
                   end
                   lastCommitPC = commitPC[i];
-		  checkPassed = checkPassed & checkInstruction(CYCLE_COUNT,COMMIT_COUNT,commitPC[i],logDest[i],result[i],isFission[i]);
+                  checkPassed = checkPassed & checkInstruction(CYCLE_COUNT,COMMIT_COUNT,commitPC[i],logDest[i],result[i],isFission[i]);
                   instRetired += 1;
                   set_pcr(12'h506,get_pcr(12'h506)+1); // Increment inst count in DPI
                   // If INTERLEAVE number of insts have been retired or those many idle cycles, 

@@ -96,7 +96,7 @@ ForwardCheck src1Bypass (
 
 	.bypassPacket_i                     (bypassPacket_i),
 
-	.dataOut_o                          (src1Data)	
+	.dataOut_o                          (src1Data)
 	);
 
 ForwardCheck src2Bypass (

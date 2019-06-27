@@ -19,9 +19,9 @@
 `timescale 1ns/100ps
 
 module ExecutionPipe_SC #(
-	parameter  SIMPLE  = 1,//`PIPE_HAS_SIMPLE,
-	parameter  COMPLEX = 0,//`PIPE_HAS_COMPLEX,
-  parameter  FP      = 0//`PIPE_HAS_FP
+	parameter  SIMPLE  = `PIPE_HAS_SIMPLE,
+	parameter  COMPLEX = `PIPE_HAS_COMPLEX,
+  parameter  FP      = `PIPE_HAS_FP
 )(
 
 	input                                clk,
