@@ -178,6 +178,7 @@ logic [`CSR_WIDTH_LOG-1:0]    regRdAddrChkpt;
 logic [`CSR_WIDTH-1:0]  regRdDataChkpt;
 logic [`CSR_WIDTH_LOG-1:0]    regWrAddrCommit;  
 logic [`CSR_WIDTH-1:0]  regWrDataCommit;
+logic 			regWrValid; //Changes: Mohit (Ensures correct regWrite irrespective of flush)
 logic                        atomicRdVioFlag;
 logic [7:0]                  interrupts;
 
@@ -240,43 +241,28 @@ begin
   begin
     regWrAddrCommit <=  regWrAddr_i;
     regWrDataCommit <=  regWrData_i;
+  end 
+end
+
+
+//Changes: Mohit (Block added to handle flush, after which CSR 
+// write should be disabled)
+always_ff @(posedge clk or posedge reset)
+begin
+  if(reset)
+  begin
+    regWrValid <= 1'b0;
   end
-  //Changes: Mohit (Else if block added to handle case when misprediction occurs
-  //since execution results of CSRs need to flushed)
-  else if(flush_i) begin   
-    case(regWrAddrCommit)
-      12'h001:regWrDataCommit <= csr_fflags; 
-      12'h002:regWrDataCommit <= csr_frm   ; 
-      12'h003:regWrDataCommit <= csr_fcsr  ; 
-      12'h0c0:regWrDataCommit <= csr_stats ; 
-      12'h500:regWrDataCommit <= csr_sup0  ; 
-      12'h501:regWrDataCommit <= csr_sup1  ; 
-      12'h502:regWrDataCommit <= csr_epc   ; 
-      12'h503:regWrDataCommit <= csr_badvaddr; 
-      12'h504:regWrDataCommit <= csr_ptbr  ; 
-      12'h505:regWrDataCommit <= csr_asid  ; 
-      12'h506:regWrDataCommit <= csr_count ; 
-      12'h507:regWrDataCommit <= csr_compare; 
-      12'h508:regWrDataCommit <= csr_evec  ; 
-      12'h509:regWrDataCommit <= csr_cause ; 
-      12'h50a:regWrDataCommit <= csr_status; 
-      12'h50b:regWrDataCommit <= csr_hartid; 
-      12'h50c:regWrDataCommit <= csr_impl  ; 
-      12'h50d:regWrDataCommit <= csr_fatc  ; 
-      12'h50e:regWrDataCommit <= csr_send_ipi; 
-      12'h50f:regWrDataCommit <= csr_clear_ipi; 
-      12'h51d:regWrDataCommit <= csr_reset ; 
-      12'h51e:regWrDataCommit <= csr_tohost; 
-      12'h51f:regWrDataCommit <= csr_fromhost; 
-      12'hc00:regWrDataCommit <= csr_cycle; 
-      12'hc01:regWrDataCommit <= csr_time  ; 
-      12'hc02:regWrDataCommit <= csr_instret; 
-      12'hc80:regWrDataCommit <= csr_cycleh; 
-      12'hc81:regWrDataCommit <= csr_timeh ; 
-      12'hc82:regWrDataCommit <= csr_instreth; 
-    endcase
+  else if(regWrEn_i)
+  begin
+    regWrValid <= 1'b1;
+  end
+  else if(flush_i)
+  begin
+    regWrValid <= 1'b0;
   end
 end
+
 
 logic [`CSR_WIDTH-1:0] status_val;
 
@@ -315,7 +301,7 @@ begin
   clear_irq_vector =  64'b0;
 
   // Write the register when the CSR instruction commits
-  if(commitReg_i)
+  if(commitReg_i && regWrValid) //Changes: Mohit Disables reg commit write after flush
   begin
     case(regWrAddrCommit)
       12'h001:wr_csr_fflags    = 1'b1; 
