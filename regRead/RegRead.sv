@@ -73,6 +73,7 @@ begin
 	exePacket_l0.valid        = rrPacket_i.valid;
 	exePacket_l0.ctiID        = rrPacket_i.ctiID;
 	exePacket_l0.isSimple     = rrPacket_i.isSimple;
+	exePacket_l0.isFP     	  = rrPacket_i.isFP;	//Changes: Mohit (Added missing copy statement from rrPacket to exePacket)
 	exePacket_l0.isCSR        = rrPacket_i.isCSR;
 	exePacket_l0.ctrlType     = rrPacket_i.ctrlType;
 	exePacket_l0.predNPC      = rrPacket_i.predNPC;

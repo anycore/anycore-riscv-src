@@ -354,8 +354,7 @@ task decode_debug_print;
 
     $fwrite(fd_decode, "\nvalid:        ");
     for (i = 0; i < `FETCH_WIDTH; i++)
-        $fwrite(fd_decode, "       %1x ", decPacket[i].valid);
-
+        $fwrite(fd_decode, "       %1x ", decPacket[i].valid); 
 
     $fwrite(fd_decode, "\n\n               -- ibPackets --\n");
     
@@ -533,7 +532,7 @@ task rename_debug_print;
     $fwrite(fd_rename, "\nisStore:      ");
     for (i = 0; i < `DISPATCH_WIDTH; i++)
         $fwrite(fd_rename, "       %1x ", disPacket[i].isStore);
-
+ 
     $fwrite(fd_rename, "\nldstSize:     ");
     for (i = 0; i < `DISPATCH_WIDTH; i++)
         $fwrite(fd_rename, "       %1x ", disPacket[i].ldstSize);
@@ -639,7 +638,7 @@ task dispatch_debug_print;
 
     $fwrite(fd_dispatch, "\nisStore:      ");
     for (i = 0; i < `DISPATCH_WIDTH; i++)
-        $fwrite(fd_dispatch, "       %1x ", disPacket_l1[i].isStore);
+        $fwrite(fd_dispatch, "       %1x ", disPacket_l1[i].isStore); 
 
     $fwrite(fd_dispatch, "\nldstSize:     ");
     for (i = 0; i < `DISPATCH_WIDTH; i++)
@@ -1170,6 +1169,11 @@ task regread_debug_print;
     $fwrite(fd_regread, "\nsrc2Data:         ");
     for (i = 0; i < `ISSUE_WIDTH; i++)
         $fwrite(fd_regread, "%08x ", exePacket[i].src2Data);
+
+    $fwrite(fd_regread, "\nisFP:            ");
+    for (i = 0; i < `ISSUE_WIDTH; i++)
+        $fwrite(fd_regread, "    %04x ", exePacket[i].isFP);
+
 
     $fwrite(fd_regread, "\nimmed:            ");
     for (i = 0; i < `ISSUE_WIDTH; i++)
@@ -2021,7 +2025,7 @@ endtask
 commitPkt                       amtPacket [0:`COMMIT_WIDTH-1];
 
 /* Prints active list/retire related signals and latch value. */
-task alist_debug_print;
+task alist_debug_print(); 
     int i;
     for (i = 0; i < `ISSUE_WIDTH; i++)
     begin
@@ -2083,6 +2087,15 @@ task alist_debug_print;
     $fwrite(fd_alist, "\nisStore:      ");
     for (i = 0; i < `DISPATCH_WIDTH; i++)
         $fwrite(fd_alist, "       %1x ", alPacket[i].isStore);
+
+    $fwrite(fd_alist, "\nException:      ");
+    for (i = 0; i < `DISPATCH_WIDTH; i++)
+        $fwrite(fd_alist, "       %1x ", alPacket[i].exception);
+
+    $fwrite(fd_alist, "\nExceptionCause:      ");
+    for (i = 0; i < `DISPATCH_WIDTH; i++)
+        $fwrite(fd_alist, "       %1x ", alPacket[i].exceptionCause);
+
 
     $fwrite(fd_alist, "\n\n\n               -- Executed Instructions --\n");
 

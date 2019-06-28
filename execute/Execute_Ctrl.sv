@@ -81,6 +81,13 @@ module Execute_Ctrl (
 wire [`SIZE_DATA-1:0]                  src1Data;
 wire [`SIZE_DATA-1:0]                  src2Data;
 
+//Changes: Mohit 
+wire [`SIZE_DATA-1:0]                  src2Data_temp;
+
+//Changes: Mohit (If CSR instruction is executing then src2 cannot use bypass since bypass-values correspond to physical registers)
+assign src2Data = exePacket_i.isCSR ? exePacket_i.src2Data : src2Data_temp; 
+
+/*-------------------------------------*/
 
 /* Check the bypasses for source data */
 ForwardCheck src1Bypass (
@@ -98,7 +105,7 @@ ForwardCheck src2Bypass (
 
 	.bypassPacket_i                     (bypassPacket_i),
 
-	.dataOut_o                          (src2Data)
+	.dataOut_o                          (src2Data_temp)	//Changes: Mohit (Non-CSR bypass)
 	);
 
 
