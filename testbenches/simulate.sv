@@ -261,7 +261,9 @@ begin:INIT_TB
   if(!INST_SCRATCH_ENABLED)
   begin
     initializeSim();
+    $display("Initialization Complete");
   end
+
 
 //  $display("");
 //  $display("");
@@ -709,10 +711,10 @@ end
 always @(posedge clk)
 begin
   update_stats();
-  //if(loggingOn)
-  //begin
+  if(loggingOn)
+  begin
     print_heartbeat();
-  //end
+  end
     `ifdef PRINT_EN
       if(resetDone & coreResetDone)
       begin
@@ -916,6 +918,7 @@ begin: VERIFY_INSTRUCTIONS
     reg                          isBranch     [`COMMIT_WIDTH-1:0];
     reg                          isMispredict [`COMMIT_WIDTH-1:0];
     reg                          isCSR        [`COMMIT_WIDTH-1:0];
+    reg                          isFP         [`COMMIT_WIDTH-1:0];	//Changes: Mohit
     reg                          commitValid  [`COMMIT_WIDTH-1:0];
     reg                          phyDestValid [`COMMIT_WIDTH-1:0];
     reg                          isFission    [`COMMIT_WIDTH-1:0];
@@ -943,6 +946,7 @@ begin: VERIFY_INSTRUCTIONS
         isMispredict[i] = ctrlAl[i][0] & ctrlAl[i][5];
 
         isCSR[i]        = dataAl[i].isCSR;
+        isFP[i]		= dataAl[i].isFP;	//Changes: Mohit
     end
 
     //if(coreTop.activeList.totalCommit >= 0)
@@ -981,6 +985,11 @@ begin: VERIFY_INSTRUCTIONS
                   begin
                     set_pcr(coreTop.supregisterfile.regWrAddrCommit,coreTop.supregisterfile.regWrDataCommit);
                   end
+		  if(isFP[i])
+		  begin
+		    //Changes: Mohit (Update FFLAGS in DPI-sim when FP instuction is retired)
+                    set_pcr(`CSR_FFLAGS,(coreTop.activeList.csr_fflags_o | coreTop.supregisterfile.csr_fflags));	
+		  end
                   //// Any CSR instruction that causes state to serialize, should pop
                   //// an extra debug buffer entry
                   //if(isCSR[i] & (coreTop.supregisterfile.regRdAddrChkpt == `CSR_CYCLE) & coreTop.supregisterfile.regRdChkptValid)
@@ -1078,7 +1087,10 @@ end
   end
 `endif
 
-always @(dcFlushDone)
+//always @(dcFlushDone)
+// Changes: Mohit (changed to posedge clk from latch based logic 
+// since the testbench would cause problem of not clearing dcFlushDone)
+always@(posedge clk)	
 begin
   if(dcFlushDone)
     dcFlush = 1'b0;

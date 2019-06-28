@@ -100,7 +100,7 @@ typedef struct packed {
   logic [`EXCEPTION_CAUSE_LOG-1:0]      exceptionCause;  
   logic                                 exception;  
 	logic [`SIZE_INSTRUCTION-1:0]         inst;
-	logic [`ISSUE_WIDTH_LOG-1:0]          fu;
+	logic [`INST_TYPES_LOG-1:0]          fu;	//Changes: Mohit (Changed from incorrect define ISSUE_WIDTH_LOG to INST_TYPES_LOG )
 
 	logic [`SIZE_RMT_LOG-1:0]             logDest;
 	logic                                 logDestValid;
@@ -140,7 +140,7 @@ typedef struct packed {
   logic                                 exception;  
 	logic [`SIZE_PC-1:0]                  pc;
 	logic [`SIZE_INSTRUCTION-1:0]         inst;
-	logic [`ISSUE_WIDTH_LOG-1:0]          fu;
+	logic [`INST_TYPES_LOG-1:0]          fu;	//Changes: Mohit (Changed from incorrect define ISSUE_WIDTH_LOG to INST_TYPES_LOG )
 
 	logic [`SIZE_RMT_LOG-1:0]             logDest;
 
@@ -236,11 +236,12 @@ typedef struct packed {
 	logic                                 isScall;
 	logic                                 isSbreak;
 	logic                                 isSret;
+	logic                                 isFP;	//Changes: Mohit(Added isFP flag to alpacket)
 
   logic                                 valid;
 } alPkt;
 
-`define AL_PKT_SIZE (32+`EXCEPTION_CAUSE_LOG+1+`SIZE_PC+`SIZE_RMT_LOG+`SIZE_PHYSICAL_LOG+1+1+1+1+1+1+1+1)
+`define AL_PKT_SIZE (32+`EXCEPTION_CAUSE_LOG+1+`SIZE_PC+`SIZE_RMT_LOG+`SIZE_PHYSICAL_LOG+1+1+1+1+1+1+1+1+1)	//Changes: Mohit(Added isFP flag to alpacket)
 
 typedef struct packed {
 	logic [31:0]                          seqNo;
@@ -437,6 +438,14 @@ typedef struct packed {
 
 
 `define EXCEPTION_PKT_SIZE   32+`SIZE_ACTIVELIST_LOG+`EXCEPTION_CAUSE_LOG+1+1
+
+
+//Changes: Mohit(Definition for fp_exception Packet)
+typedef struct packed {
+	logic [`SIZE_ACTIVELIST_LOG-1:0]     alID;
+	logic [`CSR_WIDTH-1:0]		     fflags;
+	logic				     valid;
+} fpexcptPkt;
 
 `endif // STRUCTS_SVH
 

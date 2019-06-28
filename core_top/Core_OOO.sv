@@ -271,7 +271,9 @@ payloadPkt                        rrPacket_l1   [0:`ISSUE_WIDTH-1];
 memPkt                            memPacket;
 logic  [`ISSUE_WIDTH-1:0]         toggleFlag;
 
-
+//Changes: Mohit (Floating-point exception_flags sent between fp-unit and Activelist)
+fpexcptPkt                        fpExcptPacket;
+	
 // logic from writeback module
 logic [`SIZE_PC-1:0]              exeCtrlPC;
 logic [`BRANCH_TYPE_LOG-1:0]          exeCtrlType;
@@ -343,6 +345,9 @@ reg                               csrViolateFlag;
 reg                               interruptPending;
 reg  [`SIZE_PC-1:0]               csr_epc;
 reg  [`SIZE_PC-1:0]               csr_evec;
+reg  [`CSR_WIDTH-1:0]        	  csr_status;		//Changes: Mohit (Checks FP_DISABLED status)
+reg  [`CSR_WIDTH-1:0]        	  csr_frm;		//Changes: Mohit (Used in FP-unit for dynamic rounding mode)
+reg  [`CSR_WIDTH-1:0]        	  csr_fflags;		//Changes: Mohit (Updated at retire in SupRegFile based on fp_exception)
 reg                               sretFlag;
 
 bypassPkt                         bypassPacket [0:`ISSUE_WIDTH-1];
@@ -782,6 +787,8 @@ InstructionBuffer instBuf (
 
 	.ibPacket_i           (ibPacket),
 
+	.csr_status_i	      (csr_status),	//Changes: Mohit (Check if FP_DISABLED and raise exception)
+
 	.instBufferFull_o     (instBufferFull),
 	.instBufferReady_o    (instBufferReady),
 `ifdef PERF_MON
@@ -1116,10 +1123,16 @@ SupRegFile supregisterfile (
   .ldCommitAddr_i       (ldCommitAddr),
   .sretFlag_i           (sretFlag),
 
+  .csr_fflags_i		(csr_fflags),		//Changes: Mohit (Update CSR_FFLAGS at retire)
+
   .atomicRdVioFlag_o    (csrViolateFlag),
   .interruptPending_o   (interruptPending),
   .csr_epc_o            (csr_epc),
-  .csr_evec_o           (csr_evec)
+  .csr_evec_o           (csr_evec),
+
+
+  .csr_status_o		(csr_status),		//Changes: Mohit (Check for FP_DISABLED)
+  .csr_frm_o		(csr_frm)		//Changes: Mohit (Pass-through to FP-ALU for dynamic rounding mode)
 
 );
 
@@ -1254,6 +1267,8 @@ ExecutionPipe_SC #(
 	// bypasses coming from adjacent execution pipes
 	.bypassPacket_i       (bypassPacket),
 
+	.csr_frm_i	      (csr_frm),
+
 	// bypass going from this pipe to other pipes
 	.bypassPacket_o       (bypassPacket_a1[2]),
 
@@ -1262,8 +1277,10 @@ ExecutionPipe_SC #(
 
 	// source operands extracted from the packet going to the physical register file
 	.phySrc1_o            (phySrc1[2]),
-	.phySrc2_o            (phySrc2[2])
-
+	.phySrc2_o            (phySrc2[2]),
+	
+	
+  	.fpExcptPacket_o     (fpExcptPacket)	//Changes: Mohit (Write FP_Exception Packet to Activelist)
 );
 
 
@@ -1679,6 +1696,7 @@ ActiveList activeList(
 	.ldVioPacket_i        (ldVioPacket_l1),
   .memExcptPacket_i     (memExcptPacket),
   .disExcptPacket_i     (disExcptPacket),
+  .fpExcptPacket_i     (fpExcptPacket),	//Changes: Mohit (FP_Exception Packet generated in FP execution unit)
   .csrViolateFlag_i     (csrViolateFlag),
   .interruptPending_i   (interruptPending),
 
@@ -1710,7 +1728,8 @@ ActiveList activeList(
 	.exceptionCause_o     (exceptionCause),
 
 	.loadViolation_o      (loadViolation),
-  .alRamReady_o         (alRamReady)
+  	.alRamReady_o         (alRamReady),
+        .csr_fflags_o         (csr_fflags)	//Changes: Mohit (Update CSR_FFLAGS at retire)
 	);
 
 

@@ -48,6 +48,8 @@ module ExecutionPipe_SC #(
 	/* bypasses coming from all execution pipes */
 	input  bypassPkt                     bypassPacket_i [0:`ISSUE_WIDTH-1],
 
+	input  [`CSR_WIDTH-1:0]              csr_frm_i, //Changes: Mohit (Rounding mode register)
+
 	/* bypass going from this pipe to other pipes */
 	output bypassPkt                     bypassPacket_o,
 
@@ -56,7 +58,9 @@ module ExecutionPipe_SC #(
 
 	/* source operands extracted from the packet going to the physical register file */
 	output [`SIZE_PHYSICAL_LOG-1:0]      phySrc1_o,
-	output [`SIZE_PHYSICAL_LOG-1:0]      phySrc2_o
+	output [`SIZE_PHYSICAL_LOG-1:0]      phySrc2_o,
+	
+        output fpexcptPkt       	     fpExcptPacket_o	//Changes: Mohit (FP_Exception Packet for exception states like Overflow, Underflow etc.)
 	);
 
 
@@ -131,10 +135,14 @@ Execute_SC #(
 
 	.recoverFlag_i                      (recoverFlag_i | exceptionFlag_i),
 
+        .csr_frm_i			    (csr_frm_i),	//Changes: Mohit (Rounding mode register) 
+
   .toggleFlag_o                       (toggleFlag_o),
 
 	.exePacket_i                        (exePacket_l1),
 	.wbPacket_o                         (wbPacket),
+	
+        .fpExcptPacket_o                    (fpExcptPacket_o),	//Changes: Mohit (FP_Exception Packet)
 
 	.bypassPacket_i                     (bypassPacket_i)
 );

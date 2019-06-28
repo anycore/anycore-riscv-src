@@ -41,11 +41,16 @@ module SupRegFile (
   input        [`SIZE_VIRT_ADDR-1:0]  stCommitAddr_i,
   input        [`SIZE_VIRT_ADDR-1:0]  ldCommitAddr_i,
   input                               sretFlag_i,
+  input        [`CSR_WIDTH-1:0]	      csr_fflags_i,
 
   output logic                        atomicRdVioFlag_o,
   output logic                        interruptPending_o,
   output       [`CSR_WIDTH-1:0]       csr_epc_o,
-  output       [`CSR_WIDTH-1:0]       csr_evec_o
+  output       [`CSR_WIDTH-1:0]       csr_evec_o,
+  //Changes: Mohit (Status output goes to Instruction Buffer used for checking FP_DISABLED status)	
+  output       [`CSR_WIDTH-1:0]       csr_status_o,
+  //Changes: Mohit (FRM register used for dynamic rounding mode)	
+  output       [`CSR_WIDTH-1:0]       csr_frm_o	
 	);
 
 //`define SR_S              64'h0000000000000001
@@ -171,6 +176,7 @@ logic [`CSR_WIDTH_LOG-1:0]    regRdAddrChkpt;
 logic [`CSR_WIDTH-1:0]  regRdDataChkpt;
 logic [`CSR_WIDTH_LOG-1:0]    regWrAddrCommit;  
 logic [`CSR_WIDTH-1:0]  regWrDataCommit;
+logic 			regWrValid; //Changes: Mohit (Ensures correct regWrite irrespective of flush)
 logic                        atomicRdVioFlag;
 logic [7:0]                  interrupts;
 
@@ -180,6 +186,8 @@ assign interruptPending_o = (|interrupts) & (|(csr_status & `SR_EI)); //If inter
 
 assign csr_evec_o = csr_evec;
 assign csr_epc_o  = csr_epc;
+assign csr_status_o  = csr_status;	//Changes: Mohit
+assign csr_frm_o  = csr_frm;	//Changes: Mohit
 
 // Checkpoint the CSR address and Data read
 // by a CSR instruction to verify the atomic
@@ -231,8 +239,28 @@ begin
   begin
     regWrAddrCommit <=  regWrAddr_i;
     regWrDataCommit <=  regWrData_i;
+  end 
+end
+
+
+//Changes: Mohit (Block added to handle flush, after which CSR 
+// write should be disabled)
+always_ff @(posedge clk or posedge reset)
+begin
+  if(reset)
+  begin
+    regWrValid <= 1'b0;
+  end
+  else if(regWrEn_i)
+  begin
+    regWrValid <= 1'b1;
+  end
+  else if(flush_i)
+  begin
+    regWrValid <= 1'b0;
   end
 end
+
 
 logic [`CSR_WIDTH-1:0] status_val;
 
@@ -271,7 +299,7 @@ begin
   clear_irq_vector =  64'b0;
 
   // Write the register when the CSR instruction commits
-  if(commitReg_i)
+  if(commitReg_i && regWrValid) //Changes: Mohit Disables reg commit write after flush
   begin
     case(regWrAddrCommit)
       12'h001:wr_csr_fflags    = 1'b1; 
@@ -348,9 +376,11 @@ begin
   // Write the register when the CSR instruction commits
   else
   begin
-    csr_fflags    <=  wr_csr_fflags    ? regWrDataCommit & `CSR_FFLAGS_MASK : csr_fflags;
+    //Changes: Mohit (Update CSR_FFLAGS when floating-point instruction retire)
+    csr_fflags    <=  wr_csr_fflags    ? regWrDataCommit & `CSR_FFLAGS_MASK : (csr_fflags | (csr_fflags_i & `CSR_FFLAGS_MASK));	
     csr_frm       <=  wr_csr_frm       ? regWrDataCommit & `CSR_FRM_MASK : csr_frm;
-    csr_fcsr      <=  wr_csr_fcsr      ? regWrDataCommit : csr_fcsr;
+    //Changes: Mohit (FFLAGS is also part of FCSR register according to ISA)
+    csr_fcsr      <=  wr_csr_fcsr      ? regWrDataCommit : (csr_fcsr | (csr_fflags_i & `CSR_FFLAGS_MASK));	
     csr_stats     <=  wr_csr_stats     ? regWrDataCommit : csr_stats; 
     csr_sup0      <=  wr_csr_sup0      ? regWrDataCommit : csr_sup0; 
     csr_sup1      <=  wr_csr_sup1      ? regWrDataCommit : csr_sup1; 

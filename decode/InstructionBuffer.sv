@@ -45,6 +45,8 @@ module InstructionBuffer(
 	input                                 decodeReady_i,
 
 	input  renPkt                         ibPacket_i [0:2*`FETCH_WIDTH-1],
+    
+	input  [`CSR_WIDTH-1:0]               csr_status_i,	//Changes: Mohit
 
 	/* instBufferFull_o is the signal for FetchStage1 and FetchStage2 if
 	* the instBuffer doesn't have enough space to store 4 (Fetch Bandwidth)
@@ -93,6 +95,7 @@ wire                                    instBufferFull;
 `endif
 
 renPkt                                  renPacket_t [0:`DISPATCH_WIDTH-1];
+renPkt                                  renPacket_temp [0:`DISPATCH_WIDTH-1];	//Changes: Mohit
 logic [`DISPATCH_WIDTH-1:0]             renPacketValid;
 
 // Logic used for dispatching CSR instructions atomically
@@ -119,6 +122,7 @@ begin
     renPacket_o[i]            = renPacket_t[i];
     // Override the control signals. Must squash the control
     // signals when instructionBuffer is not ready.
+
     renPacket_o[i].valid        = instBufferReady_o & instValidMask[i] & renPacket_t[i].valid & renPacketValid[i]        ; 
     renPacket_o[i].logDestValid = instBufferReady_o & instValidMask[i] & renPacket_t[i].logDestValid ; 
     renPacket_o[i].logSrc1Valid = instBufferReady_o & instValidMask[i] & renPacket_t[i].logSrc1Valid ; 
@@ -135,10 +139,12 @@ begin
 end
 
 // Do not drain pipe before dispatching CSR instruction
+reg [`DISPATCH_WIDTH_LOG:0] numDispatchLaneActive;
 always_comb
 begin
   int i;
-  csrInstDispatched           = renPacket_t[0].isCSR & renPacketValid[0] & ~stall_i;
+  //Changes: Mohit (We need to fetch entire bundle before stalling)
+  csrInstDispatched           = renPacket_t[0].isCSR & renPacketValid[0] & ~stall_i & (instCount >= numDispatchLaneActive);
   instValidMask               = {`DISPATCH_WIDTH{1'b0}};
   // First inst is always valid irrespective of whether it is a CSR inst
   instValidMask[0]            = 1'b1 & ~stall_i; 
@@ -150,7 +156,8 @@ begin
     // first occurence of a CSR inst in the bundle is valid and everything after
     // that is invalid.
     instValidMask[i]          = instValidMask[i-1] & ~(renPacket_t[i-1].isCSR | renPacket_t[i-1].exception) & renPacketValid[i-1] & ~stall_i;
-    csrInstDispatched         = csrInstDispatched | renPacket_t[i].isCSR & renPacketValid[i] & ~stall_i;
+    //Changes: Mohit (We need to fetch entire bundle before stalling)
+    csrInstDispatched         = csrInstDispatched | renPacket_t[i].isCSR & renPacketValid[i] & ~stall_i & (instCount >= numDispatchLaneActive);
   end
 end
 
@@ -183,18 +190,21 @@ begin
 end
 
 // Do not drain pipe before dispatching excepting instruction
+
 always_comb
 begin
   int i;
-  excptInstDispatched     = renPacket_t[0].exception & renPacketValid[0] & ~stall_i;
-
+  //Changes: Mohit (We need to fetch entire bundle before stalling)
+  excptInstDispatched     = renPacket_t[0].exception & renPacketValid[0] & ~stall_i & (instCount >= numDispatchLaneActive);
+	
   for(i=1; i<`DISPATCH_WIDTH; i++)
   begin
     // An instruction is valid if all instructions before it are valid and the
     // immediately preceding instruction is not a CSR inst. This ensures that the
     // first occurence of a CSR inst in the bundle is valid and everything after
     // that is invalid.
-    excptInstDispatched         = excptInstDispatched | renPacket_t[i].exception & renPacketValid[i] & ~stall_i;
+    //Changes: Mohit (We need to fetch entire bundle before stalling)
+    excptInstDispatched         = excptInstDispatched | renPacket_t[i].exception & renPacketValid[i] & ~stall_i & (instCount >= numDispatchLaneActive);
   end
 end
 
@@ -216,6 +226,35 @@ end
 
 assign stallForCsr_o = stallForCsr | stallForExcpt;
 
+/*------------------Changes: Mohit--------------------*/
+// Instruction_Buffer is the stage where further instruction from frontend are stalled. 
+// Hence at this stage we check value of CSR which is the most recent value since CSRs 
+// are updated atomically. If the SR_EF flag in CSR_status register is cleared then the 
+// FP-unit till this point is disabled and hence an exception is raised. This exception 
+// is then handled by the trap-handler which sets this bit in CSR_STATUS register and 
+// continues execution. The contents of the instructions in buffer are modified and 
+// then passed on to the DISPATCH stage.
+always_comb	
+begin
+	int i;
+
+	for(i=0; i<`DISPATCH_WIDTH; i++)
+  	begin
+   	    renPacket_t[i]            = renPacket_temp[i];
+
+    	    case(renPacket_temp[i].inst[`SIZE_OPCODE_P-1:0])	
+    	    	`OP_LOAD_FP, `OP_STORE_FP, `OP_OP_FP: begin
+    	    	    if(!(|(csr_status_i & `SR_EF))) begin
+    	    	         renPacket_t[i].exception = 1'b1;
+    	    	         renPacket_t[i].exceptionCause = `CAUSE_FP_DISABLED;
+    	    	    end
+    	    	end
+    	    endcase
+	end
+end
+/*----------------------------------------------------*/
+
+
 /* Following instantiate multiported FIFO for Instruction Buffer. */
 
 IBUFF_RAM #(
@@ -228,41 +267,41 @@ IBUFF_RAM #(
 	instBuffer(
 
 	.addr0_i     (rdAddrGated[0]),
-	.data0_o     (renPacket_t[0]),
+	.data0_o     (renPacket_temp[0]),		//Changes: Mohit (Temporary packet added).
 
 `ifdef DISPATCH_TWO_WIDE
 	.addr1_i     (rdAddrGated[1]),
-	.data1_o     (renPacket_t[1]),
+	.data1_o     (renPacket_temp[1]),
 `endif
 
 `ifdef DISPATCH_THREE_WIDE
 	.addr2_i     (rdAddrGated[2]),
-	.data2_o     (renPacket_t[2]),
+	.data2_o     (renPacket_temp[2]),
 `endif
 
 `ifdef DISPATCH_FOUR_WIDE
 	.addr3_i     (rdAddrGated[3]),
-	.data3_o     (renPacket_t[3]),
+	.data3_o     (renPacket_temp[3]),
 `endif
 
 `ifdef DISPATCH_FIVE_WIDE
 	.addr4_i     (rdAddrGated[4]),
-	.data4_o     (renPacket_t[4]),
+	.data4_o     (renPacket_temp[4]),
 `endif
 
 `ifdef DISPATCH_SIX_WIDE
 	.addr5_i     (rdAddrGated[5]),
-	.data5_o     (renPacket_t[5]),
+	.data5_o     (renPacket_temp[5]),
 `endif
 
 `ifdef DISPATCH_SEVEN_WIDE
 	.addr6_i     (rdAddrGated[6]),
-	.data6_o     (renPacket_t[6]),
+	.data6_o     (renPacket_temp[6]),
 `endif
 
 `ifdef DISPATCH_EIGHT_WIDE
 	.addr7_i     (rdAddrGated[7]),
-	.data7_o     (renPacket_t[7]),
+	.data7_o     (renPacket_temp[7]),
 `endif
 
 
@@ -358,7 +397,7 @@ IBUFF_RAM #(
 // Counting the number of active DISPATCH lanes
 // Should be 1 bit wider as it should hold values from 1 to `DISPATCH_WIDTH
 // RBRC
-reg [`DISPATCH_WIDTH_LOG:0] numDispatchLaneActive;
+//reg [`DISPATCH_WIDTH_LOG:0] numDispatchLaneActive;
 reg [`FETCH_WIDTH_LOG:0]    numFetchLaneActive;
 reg [`INST_QUEUE_LOG:0] ibuffSize;
 always_comb

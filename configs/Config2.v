@@ -17,20 +17,20 @@
 *******************************************************************************/
 
 //* Fetch Width
-`define FETCH_WIDTH             4
-`define FETCH_WIDTH_LOG         2
+`define FETCH_WIDTH             1
+`define FETCH_WIDTH_LOG         1
 
-`define FETCH_TWO_WIDE
-`define FETCH_THREE_WIDE
-`define FETCH_FOUR_WIDE
+//`define FETCH_TWO_WIDE
+//`define FETCH_THREE_WIDE
+//`define FETCH_FOUR_WIDE
 
 //* Dispatch Width
-`define DISPATCH_WIDTH          4
-`define DISPATCH_WIDTH_LOG      2
+`define DISPATCH_WIDTH          1
+`define DISPATCH_WIDTH_LOG      1
 
-`define DISPATCH_TWO_WIDE
-`define DISPATCH_THREE_WIDE
-`define DISPATCH_FOUR_WIDE
+//`define DISPATCH_TWO_WIDE
+//`define DISPATCH_THREE_WIDE
+//`define DISPATCH_FOUR_WIDE
 
 //* Issue Width
 `define ISSUE_WIDTH             3
@@ -42,12 +42,12 @@
 //`define ISSUE_FIVE_WIDE
 
 //* Commit Width
-`define COMMIT_WIDTH            4
-`define COMMIT_WIDTH_LOG        2
+`define COMMIT_WIDTH            1
+`define COMMIT_WIDTH_LOG        1
 
-`define COMMIT_TWO_WIDE
-`define COMMIT_THREE_WIDE
-`define COMMIT_FOUR_WIDE
+//`define COMMIT_TWO_WIDE
+//`define COMMIT_THREE_WIDE
+//`define COMMIT_FOUR_WIDE
 
 `define SIZE_ACTIVELIST         96
 `define SIZE_ACTIVELIST_LOG     7
@@ -66,11 +66,11 @@
 `define SIZE_FREE_LIST          (`SIZE_ACTIVELIST)
 `define SIZE_FREE_LIST_LOG      (`SIZE_ACTIVELIST_LOG)
 
-`define PIPE_HAS_FP 0
-`define FP_VECT 'b0100
+//`define PIPE_HAS_FP 1
+`define FP_VECT 'b00100
 
+`define SIMPLE_VECT 'b00100
 `define COMPLEX_VECT 'b00100
-`define SIMPLE_VECT  'b00100
 
 `define PRF_RAM_COMPILED
 

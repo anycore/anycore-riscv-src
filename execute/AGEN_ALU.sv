@@ -63,7 +63,7 @@ begin:ALU_OPERATION
 
 	  case(opcode)
 
-		    `OP_LOAD:
+		    `OP_LOAD, `OP_LOAD_FP:	//Changes: Mohit (Added FP-LOAD which behaves like a INT-LOAD)
          begin
            case(fn3)
              `FN3_LB:  
@@ -126,7 +126,7 @@ begin:ALU_OPERATION
            endcase //case(fn3)
        end
 
-       `OP_STORE:
+       `OP_STORE, `OP_STORE_FP:		//Changes: Mohit (Added FP-STORE which behaves like INT-LOAD)
        begin
          case(fn3)
            `FN3_SB:
@@ -162,7 +162,6 @@ begin:ALU_OPERATION
            end
          endcase //case(fn3)
        end
-
     // NOTE: Need this default to make the case statement
     // full case and stopping synthesis from screwing up
     // RBRC

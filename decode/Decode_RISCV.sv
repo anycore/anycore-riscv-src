@@ -213,10 +213,11 @@ begin
  `OP_STORE_FP : begin
           instLogical1_0[0]  = 1'b1;
           instLogical2_0[0]  = 1'b1;
+	  instLogical2_0[`SIZE_RMT_LOG:1] = instruction[`RS2_HI:`RS2_LO] + 32;		//Changes: Mohit (Correct RMT entry is selected)
           instImmediate_0    = {S_imm,1'b1};
           instFU_0           = `MEMORY_TYPE;
-          instLoad_0         = 1'b1;
-        end
+          instStore_0         = 1'b1;		//Changes: Mohit (Changed from instLoad_0 = 1 to instStore_0 = 1)
+	end
 
  `OP_STORE : begin
           instLogical1_0[0]  = 1'b1;
