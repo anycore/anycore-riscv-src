@@ -75,7 +75,7 @@
 //`define COMMIT_FOUR_WIDE
 
 // By default, synthesize with Designware components
-//`define USE_DESIGNWARE
+`define USE_DESIGNWARE
 
 
 /* Default configuration for ExecutionPipe_SC.
@@ -267,8 +267,10 @@
 
 `ifdef DATA_CACHE
   `define DCACHE_WORD_BYTE_OFFSET_LOG `SIZE_DATA_BYTE_OFFSET     // Byte offsets in a data word which is 8 byte long in RISCV
-  `define DCACHE_WORDS_IN_LINE 8            // 8 double words - basically 8*8 bytes = 64 bytes
-  `define DCACHE_WORDS_IN_LINE_LOG 3        // log2(DCACHE_WORDS_IN_LINE)
+//  `define DCACHE_WORDS_IN_LINE 8            // 8 double words - basically 8*8 bytes = 64 bytes
+//  `define DCACHE_WORDS_IN_LINE_LOG 3        // log2(DCACHE_WORDS_IN_LINE)
+  `define DCACHE_WORDS_IN_LINE 2            // 8 double words - basically 8*8 bytes = 64 bytes
+  `define DCACHE_WORDS_IN_LINE_LOG 1        // log2(DCACHE_WORDS_IN_LINE)
   `define DCACHE_BITS_IN_LINE (`DCACHE_WORDS_IN_LINE*`SIZE_DATA)  //In bits , using 64 for word size 
   `define DCACHE_BYTES_IN_LINE (`DCACHE_WORDS_IN_LINE*8) //Each word is 8 bytes in RISCV
   `define DCACHE_BYTES_IN_LINE_LOG (`DCACHE_WORDS_IN_LINE_LOG + `DCACHE_WORD_BYTE_OFFSET_LOG)
