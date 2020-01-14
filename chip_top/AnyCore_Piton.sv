@@ -356,7 +356,9 @@ Core_OOO coreTop(
     .perfMonRegGlobalClr_i               (perfMonRegGlobalClr),                    
 `endif
 
-    .startPC_i                           (64'h0000000080000000),
+    //.startPC_i                           (64'h0000000080000000),
+    //.startPC_i                           (64'h00000000800000b4), //vvad
+    .startPC_i                           (64'h00000000800001fc), //masked-filter
 
     .instPC_o                            (instPC),
     .fetchReq_o                          (fetchReq),
