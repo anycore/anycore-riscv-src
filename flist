@@ -209,3 +209,4 @@ writeback/Writeback_SC.sv
 //serdes/asym_fifo_2c.v
 //serdes/Depacketizer_Piton.v
 //serdes/Packetizer_Piton.v
+/usr/licensed/synopsys/syn_vN-2017.09-SP4/dw/sim_ver/
