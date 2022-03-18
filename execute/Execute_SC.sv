@@ -197,13 +197,17 @@ begin:simple_complex_fp
   fpexcptPkt	 	    fpExcptPacket_temp; //Changes: Mohit (FP_exception output from FP-ALU)
   
   FP_ALU falu(
-      .exePacket_i                        (exePacket_F),
-      .toggleFlag_o                       (toggleFlag_F),
-      .data1_i                            (src1Data),
-      .data2_i                            (src2Data),
-      .csr_frm_i                          (csr_frm_i),	//Changes: Mohit (Rounding mode)
-      .wbPacket_o                         (wbPacket_F),
-      .fpExcptPacket_o                    (fpExcptPacket_temp)	//Changes: Mohit (FP_Exception like Overflow, Underflow, Inexact etc.)
+        /*-----------Changes: fpnew----------------*/
+        .clk_i                            (clk),
+        .rst_ni                           (reset),
+        /*-----------------------------------------*/
+        .exePacket_i                      (exePacket_F),
+        .toggleFlag_o                     (toggleFlag_F),
+        .data1_i                          (src1Data),
+        .data2_i                          (src2Data),
+        .csr_frm_i                        (csr_frm_i),	//Changes: Mohit (Rounding mode)
+        .wbPacket_o                       (wbPacket_F),
+        .fpExcptPacket_o                  (fpExcptPacket_temp)	//Changes: Mohit (FP_Exception like Overflow, Underflow, Inexact etc.)
     );
 
   

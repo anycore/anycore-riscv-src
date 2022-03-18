@@ -57,13 +57,12 @@ module Demux3 (
 
 always_comb
 begin
-
 	output_1 = input_1;
 	output_2 = input_1;
 	output_3 = input_1;
 
 	if (input_1.isFP) // IT IS A FLOATING POINT INSTRUCTION , distinguish between FP and Simple insn here. FP insn has both Simple and FP marked
-	begin
+	begin	
 		output_1.valid    = 1'b0;
 		output_2.valid    = 1'b0;
 	end
