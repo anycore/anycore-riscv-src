@@ -359,7 +359,7 @@ begin
     csr_compare   <=  `CSR_WIDTH'b0;
     csr_evec      <=  `CSR_WIDTH'b0;
     csr_cause     <=  `CSR_WIDTH'b0;
-    csr_status    <=  (`SR_S | `SR_S64 | `SR_U64);
+    csr_status    <=  (`SR_S | `SR_S64 | `SR_U64 | `SR_EF);
     csr_hartid    <=  `CSR_WIDTH'b0;
     csr_impl      <=  `CSR_WIDTH'b0;
     csr_fatc      <=  `CSR_WIDTH'b0;
